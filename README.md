@@ -6,12 +6,12 @@ This is an n8n community node. It lets you use 0CodeKit in your n8n workflows.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-[Installation](#installation)  
-[Operations](#operations)  
-[Credentials](#credentials)  <!-- delete if no auth needed -->  
-[Compatibility](#compatibility)  
-[Resources](#resources)  
-[Version history](#version-history)  <!-- delete if not using this section -->  
+[Installation](#installation)
+[Operations](#operations)
+[Credentials](#credentials) <!-- delete if no auth needed -->
+[Compatibility](#compatibility)
+[Resources](#resources)
+[Version history](#version-history) <!-- delete if not using this section -->
 
 ## Installation
 
@@ -35,14 +35,11 @@ _State the minimum n8n version, as well as which versions you test against. You 
 
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-* [0CodeKit Api Documentation](https://docs.0codekit.com/api-documentation)
-* [0CodeKit Sign Up]()
-* [Start using 0codekit](https://my.0codekit.com/en/dashboard/account?utm_source=github&utm_medium=readme&utm_campaign=n8n-integration)
-
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [0CodeKit Api Documentation](https://docs.0codekit.com/api-documentation)
+- [0CodeKit Sign Up]()
+- [Start using 0codekit](https://my.0codekit.com/en/dashboard/account?utm_source=github&utm_medium=readme&utm_campaign=n8n-integration)
 
 ## Version history
 
 The community node version 1.0 is based on 0CodeKit (formerly 1SaaS) version 2.0.
-
-

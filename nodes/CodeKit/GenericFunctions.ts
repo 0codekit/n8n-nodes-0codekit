@@ -1,8 +1,13 @@
+import {
+	IDataObject,
+	IExecuteFunctions,
+	IHttpRequestMethods,
+	IHttpRequestOptions,
+	ILoadOptionsFunctions,
+	NodeApiError,
+	NodeOperationError,
+} from 'n8n-workflow';
 import { OptionsWithUri } from 'request';
-
-import { IExecuteFunctions } from 'n8n-core';
-
-import { IDataObject, IHttpRequestMethods, IHttpRequestOptions, ILoadOptionsFunctions, NodeApiError, NodeOperationError } from 'n8n-workflow';
 
 export async function codeKitRequest(
 	this: IExecuteFunctions,
@@ -28,13 +33,12 @@ export async function codeKitRequest(
 	};
 	options = Object.assign({}, options, option);
 	options.headers!['auth'] = `${credentials.apiKey}`;
-	options.headers!['ipaas']  = 'n8n';
+	options.headers!['ipaas'] = 'n8n';
 	try {
 		const responseData = await this.helpers.request(options);
 		return responseData;
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
-
 	}
 }
 
@@ -47,7 +51,6 @@ export async function codeKitRequestLoadOptions(
 	uri?: string,
 	option: IDataObject = {},
 ) {
-
 	const credentials = await this.getCredentials('codeKitApi');
 	if (credentials === undefined) {
 		throw new NodeOperationError(this.getNode(), 'No credentials got returned!');
@@ -63,7 +66,7 @@ export async function codeKitRequestLoadOptions(
 	};
 	options = Object.assign({}, options, option);
 	options.headers!['auth'] = `${credentials.apiKey}`;
-	options.headers!['ipaas']  = 'n8n';
+	options.headers!['ipaas'] = 'n8n';
 
 	try {
 		const responseData = await this.helpers.httpRequest(options);
@@ -79,13 +82,12 @@ export function mapArrayOfObjectsToStringArray(objectsArr: IDataObject[]) {
 	}
 	const resultArr: string[] = [];
 
-	objectsArr.forEach(el => {
+	objectsArr.forEach((el) => {
 		resultArr.push(el.name as string);
 	});
 
 	return resultArr;
 }
-
 
 // Interfaces for transformArrayToObject
 
@@ -110,10 +112,10 @@ export interface IRowKeyResponseItem {
 export function transformArrayToObject(inputArray: InputItem[]): OutputObject {
 	const initialAccumulator: OutputObject = { variables: {} };
 	const output: OutputObject = inputArray.reduce((acc, current) => {
-		const stringValue: string = typeof current.value === 'string' ? current.value : JSON.stringify(current.value);
+		const stringValue: string =
+			typeof current.value === 'string' ? current.value : JSON.stringify(current.value);
 		acc.variables[current.property] = stringValue;
 		return acc;
 	}, initialAccumulator);
 	return output;
 }
-

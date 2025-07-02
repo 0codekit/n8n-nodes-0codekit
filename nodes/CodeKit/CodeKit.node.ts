@@ -1,6 +1,12 @@
-import { IExecuteFunctions } from 'n8n-core';
-
-import { IDataObject, ILoadOptionsFunctions, INodeExecutionData, INodePropertyOptions, INodeType, INodeTypeDescription } from 'n8n-workflow';
+import {
+	IDataObject,
+	IExecuteFunctions,
+	ILoadOptionsFunctions,
+	INodeExecutionData,
+	INodePropertyOptions,
+	INodeType,
+	INodeTypeDescription,
+} from 'n8n-workflow';
 
 import {
 	aiFields,
@@ -33,7 +39,15 @@ import {
 	userOperations,
 } from './descriptions';
 
-import { codeKitRequest, codeKitRequestLoadOptions, InputItem, IRowKeyResponseItem, mapArrayOfObjectsToStringArray, OutputObject, transformArrayToObject } from './GenericFunctions';
+import {
+	codeKitRequest,
+	codeKitRequestLoadOptions,
+	InputItem,
+	IRowKeyResponseItem,
+	mapArrayOfObjectsToStringArray,
+	OutputObject,
+	transformArrayToObject,
+} from './GenericFunctions';
 
 type MergeFiles = {
 	files: {
@@ -175,7 +189,6 @@ export class CodeKit implements INodeType {
 			...userOperations,
 			...userFields,
 		],
-
 	};
 
 	methods = {
@@ -183,8 +196,16 @@ export class CodeKit implements INodeType {
 			async getRowKey(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 				const returnData: INodePropertyOptions[] = [];
 				const resource = 'editor/make';
-				const response = await codeKitRequestLoadOptions.call(this, 'GET', resource, {}) as IRowKeyResponseItem[];
-				if (Array.isArray(response) && response.every(item => typeof item === 'object' && 'label' in item && 'value' in item)) {
+				const response = (await codeKitRequestLoadOptions.call(
+					this,
+					'GET',
+					resource,
+					{},
+				)) as IRowKeyResponseItem[];
+				if (
+					Array.isArray(response) &&
+					response.every((item) => typeof item === 'object' && 'label' in item && 'value' in item)
+				) {
 					response.forEach((property: IRowKeyResponseItem) => {
 						returnData.push({
 							name: property.label,
@@ -277,15 +298,10 @@ export class CodeKit implements INodeType {
 						) {
 							body.prompt = this.getNodeParameter('prompt', i) as string;
 						}
-						if (
-							operation === 'generateJavascriptCode' ||
-							operation === 'generatePythonCode'
-						) {
+						if (operation === 'generateJavascriptCode' || operation === 'generatePythonCode') {
 							body.prompt = this.getNodeParameter('prompt', i) as string;
 						}
-						if (
-							operation === 'advancedocr'
-						) {
+						if (operation === 'advancedocr') {
 							body.url = this.getNodeParameter('url', i) as string;
 							body.buffer = this.getNodeParameter('buffer', i) as string;
 							body.resultType = this.getNodeParameter('resultType', i) as string;
@@ -293,9 +309,7 @@ export class CodeKit implements INodeType {
 							body.language = this.getNodeParameter('language', i) as string;
 							body.documentType = this.getNodeParameter('documentType', i) as string;
 						}
-						if (
-							operation === 'extract-from-text'
-						) {	
+						if (operation === 'extract-from-text') {
 							body.text = this.getNodeParameter('text', i) as string;
 							body.context = this.getNodeParameter('context', i) as string;
 
@@ -303,26 +317,24 @@ export class CodeKit implements INodeType {
 							const fieldsValues = fields.fieldsValues as IDataObject[];
 							body.fields = fieldsValues;
 						}
-						if (
-							operation === 'fuzzy-match'
-						) {	
+						if (operation === 'fuzzy-match') {
 							body.queryString = this.getNodeParameter('queryString', i) as string;
 							body.context = this.getNodeParameter('context', i) as string;
 
 							const targetListUI = this.getNodeParameter('targetListUI', i) as IDataObject;
-							const targetList = targetListUI.targetList as IDataObject[] || [];
+							const targetList = (targetListUI.targetList as IDataObject[]) || [];
 
-							const targetListStrings = Array.isArray(targetList) ? targetList.map(item => item.entry) : [];
-							
+							const targetListStrings = Array.isArray(targetList)
+								? targetList.map((item) => item.entry)
+								: [];
+
 							const optionsList = this.getNodeParameter('optionsListUI', i) as IDataObject;
 							const options = optionsList.options as IDataObject;
-							
-							body.options = options
+
+							body.options = options;
 							body.targetList = targetListStrings;
 						}
-						if (
-							operation === 'redact-pdf'
-						) {	
+						if (operation === 'redact-pdf') {
 							body.url = this.getNodeParameter('url', i) as string;
 							body.buffer = this.getNodeParameter('buffer', i) as string;
 							body.sensitiveContent = this.getNodeParameter('sensitiveContent', i) as string;
@@ -383,15 +395,11 @@ export class CodeKit implements INodeType {
 							body.xml = this.getNodeParameter('xml', i) as string;
 							body.getAsUrl = this.getNodeParameter('getAsUrl', i) as boolean;
 							body.fileName = this.getNodeParameter('fileName', i) as string;
-
-							console.log("This is the xml", body.xml)
-							console.dir(body, {depth: null})
 						}
 						if (operation === 'facturxValidate') {
 							operation = 'facturx/validate';
 							body.url = this.getNodeParameter('url', i) as string;
 							body.buffer = this.getNodeParameter('buffer', i) as string;
-							
 						}
 						break;
 					case 'calculate':
@@ -423,7 +431,6 @@ export class CodeKit implements INodeType {
 						}
 
 						if (operation === 'run-js-scripts-hosted-on-0codekit') {
-
 							resource = 'editor';
 							operation = 'make';
 							const rowKey = this.getNodeParameter('rowKey', i) as string;
@@ -777,7 +784,6 @@ export class CodeKit implements INodeType {
 								body.pages = this.getNodeParameter('pages', i) as string;
 							}
 							if (pageOperation === 'resize') {
-
 								body.width = this.getNodeParameter('width', i) as string;
 								body.height = this.getNodeParameter('height', i) as string;
 								body.pages = this.getNodeParameter('pages', i) as string;
@@ -816,7 +822,6 @@ export class CodeKit implements INodeType {
 								body.color = this.getNodeParameter('color', i) as string;
 								body.font = this.getNodeParameter('font', i) as string;
 							}
-
 						}
 						if (operation === 'watermark') {
 							const watermarkOperation = this.getNodeParameter('watermarkop', i) as string;
@@ -856,7 +861,6 @@ export class CodeKit implements INodeType {
 							body.buffer = this.getNodeParameter('buffer', i) as string;
 
 							if (metadataOperation === 'info') {
-
 							}
 							if (metadataOperation === 'edit') {
 								body.fileName = this.getNodeParameter('fileName', i) as string;
@@ -866,7 +870,6 @@ export class CodeKit implements INodeType {
 								body.subject = this.getNodeParameter('subject', i) as string;
 								body.keywords = this.getNodeParameter('keywords', i) as string;
 							}
-							
 						}
 						if (operation === 'encrypt') {
 							body.url = this.getNodeParameter('url', i) as string;
@@ -874,7 +877,6 @@ export class CodeKit implements INodeType {
 							body.getAsUrl = this.getNodeParameter('getAsUrl', i) as boolean;
 							body.userPassword = this.getNodeParameter('userPassword', i) as string;
 							body.ownerPassword = this.getNodeParameter('ownerPassword', i) as string;
-
 						}
 						if (operation === 'decrypt') {
 							body.url = this.getNodeParameter('url', i) as string;
@@ -922,7 +924,6 @@ export class CodeKit implements INodeType {
 							if (globalvariablesop === 'del') {
 								body.variableId = this.getNodeParameter('variableId', i) as string;
 							}
-
 						}
 						if (operation === 'temp') {
 							body.buffer = this.getNodeParameter('buffer', i) as string;
@@ -1144,7 +1145,13 @@ export class CodeKit implements INodeType {
 				}
 
 				// No Code Helper
-				responseData = await codeKitRequest.call(this, 'POST', `${resource}/${operation}`, body, qs);
+				responseData = await codeKitRequest.call(
+					this,
+					'POST',
+					`${resource}/${operation}`,
+					body,
+					qs,
+				);
 
 				if (Array.isArray(responseData)) {
 					returnData.push.apply(returnData, responseData as IDataObject[]);
