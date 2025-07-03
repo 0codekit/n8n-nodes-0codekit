@@ -1,8 +1,8 @@
-import { ICredentialType, INodeProperties } from 'n8n-workflow';
+import { IAuthenticateGeneric, ICredentialType, INodeProperties } from 'n8n-workflow';
 export class CodeKitApi implements ICredentialType {
 	name = 'codeKitApi';
 	displayName = '0CodeKit API';
-	documentationUrl = 'https://documenter.getpostman.com/view/18297710/UVkntwBv';
+	documentationUrl = 'https://scalar.0codekit.com/';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
@@ -14,4 +14,13 @@ export class CodeKitApi implements ICredentialType {
 			default: '',
 		},
 	];
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				auth: '={{$credentials.apiKey}}',
+				ipaas: 'n8n',
+			},
+		},
+	};
 }

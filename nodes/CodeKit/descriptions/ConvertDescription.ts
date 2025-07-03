@@ -1,6 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
 import { currencies } from '../ressources/currencies';
-import { languages } from '../ressources/languages';
 
 export const convertOperations: INodeProperties[] = [
 	{

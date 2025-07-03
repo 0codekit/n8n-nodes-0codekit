@@ -7,7 +7,6 @@ import {
 	NodeApiError,
 	NodeOperationError,
 } from 'n8n-workflow';
-import { OptionsWithUri } from 'request';
 
 export async function codeKitRequest(
 	this: IExecuteFunctions,
@@ -23,12 +22,12 @@ export async function codeKitRequest(
 		throw new NodeOperationError(this.getNode(), 'No credentials got returned!');
 	}
 
-	let options: OptionsWithUri = {
+	let options: IHttpRequestOptions = {
 		headers: {},
-		method,
+		method: method as IHttpRequestMethods,
 		body,
 		qs,
-		uri: uri || `https://v2.1saas.co/${resource}`,
+		url: uri || `https://v2.1saas.co/${resource}`,
 		json: true,
 	};
 	options = Object.assign({}, options, option);

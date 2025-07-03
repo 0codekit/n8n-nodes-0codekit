@@ -1,5 +1,4 @@
 import { INodeProperties } from 'n8n-workflow';
-import { languages } from '../ressources/languages';
 
 export const storageOperations: INodeProperties[] = [
 	{

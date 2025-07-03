@@ -1,8 +1,6 @@
 import { INodeProperties } from 'n8n-workflow';
 import { crytoMethods } from '../ressources/cryptoMethods';
-import { currencies } from '../ressources/currencies';
 import { hashMethods } from '../ressources/hashMethods';
-import { languages } from '../ressources/languages';
 
 export const cryptoOperations: INodeProperties[] = [
 	{
@@ -59,6 +57,7 @@ export const cryptoFields: INodeProperties[] = [
 		displayName: 'Secret Key',
 		name: 'secretKey',
 		type: 'string',
+		typeOptions: { password: true },
 		required: true,
 		displayOptions: {
 			show: {
@@ -101,6 +100,7 @@ export const cryptoFields: INodeProperties[] = [
 		displayName: 'Secret Key',
 		name: 'secretKey',
 		type: 'string',
+		typeOptions: { password: true },
 		required: true,
 		displayOptions: {
 			show: {
@@ -143,6 +143,7 @@ export const cryptoFields: INodeProperties[] = [
 		displayName: 'Secret Key',
 		name: 'secretKey',
 		type: 'string',
+		typeOptions: { password: true },
 		required: true,
 		displayOptions: {
 			show: {

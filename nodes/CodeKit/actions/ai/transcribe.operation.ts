@@ -1,0 +1,106 @@
+import { INodeProperties } from 'n8n-workflow';
+import { languages } from '../../ressources/languages';
+import { ResourceType } from '../resource.types';
+import { OperationType } from './operation.types';
+
+export const option = {
+	name: 'Remove Background Image',
+	value: OperationType.REMOVE_BACKGROUND,
+	description: 'Removes the background from an image using AI',
+	action: 'Remove background',
+};
+
+export const description: INodeProperties[] = [
+	{
+		displayName: 'Data Type',
+		name: 'dataType',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.REMOVE_BACKGROUND],
+			},
+		},
+		options: [
+			{
+				name: 'Use Audio File URL',
+				value: 'audioUrl',
+				description: 'Use an audio file URL for transcription',
+				action: 'Use audio file URL for transcription',
+			},
+			{
+				name: 'Use Audio File Buffer',
+				value: 'audioBuffer',
+				description: 'Use a Base64-encoded audio file for transcription',
+				action: 'Use audio buffer for transcription',
+			},
+		],
+		default: 'audioUrl',
+	},
+	{
+		displayName: 'Audio File URL',
+		name: 'url',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.TRANSCRIBE],
+				dataType: ['audioUrl'],
+			},
+		},
+		default: '',
+		placeholder: 'https://example.com/audio.mp3',
+		description: 'The URL of the audio file to transcribe',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.TRANSCRIBE}`,
+				body: {
+					url: '={{$value.audioUrl}}',
+				},
+			},
+		},
+	},
+	{
+		displayName: 'Audio Buffer',
+		name: 'audioBuffer',
+		type: 'string',
+		typeOptions: {
+			rows: 5,
+		},
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.TRANSCRIBE],
+				dataType: ['audioBuffer'],
+			},
+		},
+		default: '',
+		placeholder: 'The Base64-encoded audio file',
+		description: 'The Base64-encoded audio file. Can be provided instead of URL.',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.TRANSCRIBE}`,
+				body: {
+					buffer: '={{$value.audioBuffer}}',
+				},
+			},
+		},
+	},
+	{
+		displayName: 'Result Language',
+		name: 'resultLang',
+		type: 'options',
+		options: languages,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.TRANSCRIBE],
+			},
+		},
+		default: 'en',
+		description: 'The audio language. Default is en.',
+	},
+];
