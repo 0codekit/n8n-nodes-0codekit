@@ -57,7 +57,7 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.IMAGE}/${OperationType.BLUR}`,
 				body: {
-					imageUrl: '={{$value.url}}',
+					imageUrl: '={{$value}}',
 				},
 			},
 		},
@@ -94,17 +94,15 @@ export const description: INodeProperties[] = [
 		name: 'sigma',
 		type: 'number',
 		typeOptions: {
-			rows: 5,
+			minValue: 0.3,
+			maxValue: 1000,
+			numberPrecision: 1,
 		},
-		displayOptions: {
-			show: {
-				...displayOptions.show,
-				dataType: ['imageBuffer'],
-			},
-		},
-		default: 0,
+		displayOptions,
+		default: 1.0,
 		placeholder: 'Sigma value for blurring',
-		description: 'The sigma value for the Gaussian blur',
+		description:
+			'The sigma value for the Gaussian blur. Minimum value is 0.3, maximum is 1000.0. Higher values result in more blur.',
 	},
 	{
 		displayName: 'Get as URL',
