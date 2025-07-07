@@ -1,5 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
-import { crytoMethods } from '../../ressources/cryptoMethods';
+import { crytoMethods } from '../../resources/cryptoMethods';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 

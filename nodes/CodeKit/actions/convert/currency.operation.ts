@@ -1,5 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
-import { languages } from '../../ressources/languages';
+import { languages } from '../../resources/languages';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 

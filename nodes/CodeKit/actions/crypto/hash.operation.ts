@@ -1,5 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
-import { hashMethods } from '../../ressources/hashMethods';
+import { hashMethods } from '../../resources/hashMethods';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
