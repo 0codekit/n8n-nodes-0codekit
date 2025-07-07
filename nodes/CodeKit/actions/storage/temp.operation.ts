@@ -23,16 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Binary file data in base64 format',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.STORAGE}/${OperationType.TEMP}`,
-				body: {
-					buffer: '={{$parameter.buffer}}',
-					fileName: '={{$parameter.fileName}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'File Name',
@@ -47,17 +37,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'Test.txt',
 		description: 'Important: If you want to keep the filetype. Add the extension to the filename.',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.STORAGE}/${OperationType.TEMP}`,
-				body: {
-					fileName: '={{$parameter.fileName}}',
-					buffer: '={{$parameter.buffer}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -71,9 +52,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.STORAGE/OperationType.TEMP,
+				url: `/${ResourceType.STORAGE}/${OperationType.TEMP}`,
 				body: {
-					
+					buffer: '={{$parameter.buffer}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

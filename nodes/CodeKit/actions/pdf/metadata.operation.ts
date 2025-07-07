@@ -87,7 +87,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `=/${ResourceType.PDF}/metadata/{{$parameter.metadataop}}`,
+				url: `=/${ResourceType.PDF}/${OperationType.METADATA}/{{$parameter.metadataop}}`,
 				body: {
 					metadataop: '={{$parameter.metadataop}}',
 					url: '={{$parameter.url}}',

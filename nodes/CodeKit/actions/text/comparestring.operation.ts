@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -18,16 +19,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.COMPARE_STRING],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'string1',
-			},
-		},
 	},
 	{
 		displayName: 'Second String',
@@ -38,16 +33,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.COMPARE_STRING],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'string2',
-			},
-		},
 	},
 	{
 		displayName: 'Algorithm',
@@ -57,23 +46,18 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.COMPARE_STRING],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'algorithm',
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 				operation: [OperationType.COMPARE_STRING],
 			},
 		},
@@ -81,9 +65,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /'text'/OperationType.COMPARE_STRING,
+				url: `/${ResourceType.TEXT}/${OperationType.COMPARE_STRING}`,
 				body: {
-					
+					string1: '={{$parameter.string1}}',
+					string2: '={{$parameter.string2}}',
+					algorithm: '={{$parameter.algorithm}}',
 				},
 			},
 		},

@@ -99,7 +99,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.BARCODE_ENCODE}`,
+				url: `/${ResourceType.GENERATE}/barcode/encode`,
 				body: {
 					text: '={{$parameter.text}}',
 					format: '={{$parameter.format}}',

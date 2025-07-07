@@ -50,7 +50,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/pdf-to-image`,
+				url: `/${ResourceType.PDF}/${OperationType.PDF_TO_IMAGE}`,
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',

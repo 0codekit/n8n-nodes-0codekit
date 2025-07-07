@@ -50,7 +50,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/count`,
+				url: `/${ResourceType.PDF}/${OperationType.COUNT}`,
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',

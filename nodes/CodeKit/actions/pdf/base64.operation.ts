@@ -38,7 +38,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/base64`,
+				url: `/${ResourceType.PDF}/${OperationType.BASE64}`,
 				body: {
 					pdf: '={{$parameter.pdf}}',
 				},

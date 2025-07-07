@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The text to search in',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.TEXT}/${OperationType.CONTAINS}`,
-				body: {
-					text: '={{$value.text}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Search String',
@@ -59,7 +50,8 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether the search should be case sensitive',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -73,9 +65,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.TEXT/OperationType.CONTAINS,
+				url: `/${ResourceType.TEXT}/${OperationType.CONTAINS}`,
 				body: {
-					
+					text: '={{$parameter.text}}',
+					searchString: '={{$parameter.searchString}}',
+					caseSensitive: '={{$parameter.caseSensitive}}',
 				},
 			},
 		},

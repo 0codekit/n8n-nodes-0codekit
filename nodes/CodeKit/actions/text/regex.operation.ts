@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The text to evaluate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.TEXT}/${OperationType.REGEX}`,
-				body: {
-					text: '={{$value.text}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Pattern',
@@ -60,7 +51,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'g',
 		description: 'Regex flags (e.g., g, i, m)',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -74,9 +66,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.TEXT/OperationType.REGEX,
+				url: `/${ResourceType.TEXT}/${OperationType.REGEX}`,
 				body: {
-					
+					text: '={{$parameter.text}}',
+					pattern: '={{$parameter.pattern}}',
+					flags: '={{$parameter.flags}}',
 				},
 			},
 		},

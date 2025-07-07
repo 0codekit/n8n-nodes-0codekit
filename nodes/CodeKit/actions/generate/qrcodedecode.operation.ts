@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Decode Barcode',
-	value: OperationType.BARCODE_DECODE,
-	description: 'Decode a barcode from image',
-	action: 'Decode a barcode from image',
+	name: 'QR Code Decode',
+	value: OperationType.QRCODE_DECODE,
+	description: 'Decode a QR code from an image',
+	action: 'Decode QR code',
 };
 
 export const description: INodeProperties[] = [
@@ -15,53 +15,48 @@ export const description: INodeProperties[] = [
 		name: 'imageSource',
 		type: 'options',
 		options: [
-			{
-				name: 'URL',
-				value: 'url',
-			},
-			{
-				name: 'Buffer',
-				value: 'buffer',
-			},
+			{ name: 'Buffer', value: 'buffer' },
+			{ name: 'URL', value: 'url' },
 		],
-		default: 'url',
-		description: 'Source of the image containing the barcode',
+		required: true,
 		displayOptions: {
 			show: {
 				resource: [ResourceType.GENERATE],
-				operation: [OperationType.BARCODE_DECODE],
+				operation: [OperationType.QRCODE_DECODE],
 			},
 		},
+		default: 'url',
+		description: 'Whether to provide the QR code image as a URL or Base64 buffer',
 	},
 	{
 		displayName: 'Image URL',
-		name: 'imageUrl',
+		name: 'url',
 		type: 'string',
 		required: true,
-		default: '',
-		description: 'URL of the image containing the barcode',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.GENERATE],
-				operation: [OperationType.BARCODE_DECODE],
+				operation: [OperationType.QRCODE_DECODE],
 				imageSource: ['url'],
 			},
 		},
+		default: '',
+		description: 'The URL to the QR code image',
 	},
 	{
 		displayName: 'Image Buffer',
-		name: 'imageBuffer',
+		name: 'buffer',
 		type: 'string',
 		required: true,
-		default: '',
-		description: 'Base64 encoded image buffer',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.GENERATE],
-				operation: [OperationType.BARCODE_DECODE],
+				operation: [OperationType.QRCODE_DECODE],
 				imageSource: ['buffer'],
 			},
 		},
+		default: '',
+		description: 'The QR code as a Base64-encoded buffer',
 	},
 	{
 		displayName: '',
@@ -70,18 +65,17 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.GENERATE],
-				operation: [OperationType.BARCODE_DECODE],
+				operation: [OperationType.QRCODE_DECODE],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.GENERATE}/barcode/decode`,
+				url: `/${ResourceType.GENERATE}/qrcode/decode`,
 				body: {
-					imageSource: '={{$parameter.imageSource}}',
-					imageUrl: '={{$parameter.imageUrl}}',
-					imageBuffer: '={{$parameter.imageBuffer}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
 				},
 			},
 		},

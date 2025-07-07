@@ -16,4 +16,5 @@ export enum ResourceType {
 	DATE_AND_TIME = 'dateandtime',
 	PDF = 'pdf',
 	USER = 'user',
+	SHORTENED_URL = 'shortenedurl',
 }

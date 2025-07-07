@@ -64,7 +64,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/encrypt`,
+				url: `/${ResourceType.PDF}/${OperationType.ENCRYPT}`,
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',

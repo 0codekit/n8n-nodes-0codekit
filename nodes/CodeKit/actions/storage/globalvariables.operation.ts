@@ -58,7 +58,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/globalvariables/{{$parameter.globalvariablesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.GLOBAL_VARIABLES}/{{$parameter.globalvariablesop}}`,
 				body: {
 					variableName: '={{$parameter.variableName}}',
 					variableValue: '={{$parameter.variableValue}}',
@@ -82,7 +82,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/globalvariables/{{$parameter.globalvariablesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.GLOBAL_VARIABLES}/{{$parameter.globalvariablesop}}`,
 				body: {
 					variableValue: '={{$parameter.variableValue}}',
 					variableName: '={{$parameter.variableName}}',
@@ -108,7 +108,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/globalvariables/{{$parameter.globalvariablesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.GLOBAL_VARIABLES}/{{$parameter.globalvariablesop}}`,
 				body: {
 					variableId: '={{$parameter.variableId}}',
 				},
@@ -130,7 +130,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/globalvariables/{{$parameter.globalvariablesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.GLOBAL_VARIABLES}/{{$parameter.globalvariablesop}}`,
 				body: {},
 			},
 		},

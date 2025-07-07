@@ -61,7 +61,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/json/{{$parameter.jsonop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.JSON}/{{$parameter.jsonop}}`,
 				body: {
 					json: '={{$parameter.json}}',
 					binId: '={{$parameter.binId}}',
@@ -85,7 +85,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/json/{{$parameter.jsonop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.JSON}/{{$parameter.jsonop}}`,
 				body: {
 					binId: '={{$parameter.binId}}',
 					json: '={{$parameter.json}}',
@@ -109,7 +109,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/json/{{$parameter.jsonop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.JSON}/{{$parameter.jsonop}}`,
 				body: {},
 			},
 		},

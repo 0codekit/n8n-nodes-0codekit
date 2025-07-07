@@ -38,7 +38,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/create`,
+				url: `/${ResourceType.PDF}/${OperationType.CREATE}`,
 				body: {
 					getAsUrl: '={{$parameter.getAsUrl}}',
 				},

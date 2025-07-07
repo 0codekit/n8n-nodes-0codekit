@@ -89,7 +89,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/html`,
+				url: `/${ResourceType.PDF}/${OperationType.HTML}`,
 				body: {
 					htmlSource: '={{$parameter.htmlSource}}',
 					html: '={{$parameter.html}}',

@@ -51,7 +51,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/docx-to-pdf`,
+				url: `/${ResourceType.PDF}/${OperationType.DOCX_TO_PDF}`,
 				body: {
 					buffer: '={{$parameter.buffer}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',

@@ -10,7 +10,7 @@ export enum OperationType {
 	NAME = 'name',
 	NUMBER = 'number',
 	PICTURE = 'picture',
-	QRCODE = 'qrcode',
-	SHORTENED_URL = 'shortenedUrl',
+	QRCODE_DECODE = 'qrcode-decode',
+	QRCODE_ENCODE = 'qrcode-encode',
 	STRING = 'string',
 }

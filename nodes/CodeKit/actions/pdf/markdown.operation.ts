@@ -52,7 +52,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/markdownstringtopdf`,
+				url: `/${ResourceType.PDF}/${OperationType.MARKDOWN_TO_PDF}`,
 				body: {
 					markdown: '={{$parameter.markdown}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',

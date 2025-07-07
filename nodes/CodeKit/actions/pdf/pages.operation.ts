@@ -95,7 +95,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `=/${ResourceType.PDF}/pages/{{$parameter.pagesop}}`,
+				url: `=/${ResourceType.PDF}/${OperationType.PAGES}/{{$parameter.pagesop}}`,
 				body: {
 					pagesop: '={{$parameter.pagesop}}',
 					url: '={{$parameter.url}}',

@@ -99,7 +99,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/merge`,
+				url: `/${ResourceType.PDF}/${OperationType.MERGE}`,
 				body: {
 					files: '={{$parameter.files}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',

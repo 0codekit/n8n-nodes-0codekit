@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -18,16 +19,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.EXTRACTOR],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'start',
-			},
-		},
 	},
 	{
 		displayName: 'End String',
@@ -38,16 +33,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.EXTRACTOR],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'end',
-			},
-		},
 	},
 	{
 		displayName: 'Base String',
@@ -58,16 +47,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.EXTRACTOR],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'body',
-			},
-		},
 	},
 	{
 		displayName: 'Greedy',
@@ -77,23 +60,18 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.EXTRACTOR],
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 			},
 		},
 		default: false,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'greedy',
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
-				resource: ['text'],
+				resource: [ResourceType.TEXT],
 				operation: [OperationType.EXTRACTOR],
 			},
 		},
@@ -101,9 +79,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /'text'/OperationType.EXTRACTOR,
+				url: `/${ResourceType.TEXT}/${OperationType.EXTRACTOR}`,
 				body: {
-					
+					start: '={{$parameter.start}}',
+					end: '={{$parameter.end}}',
+					body: '={{$parameter.body}}',
+					greedy: '={{$parameter.greedy}}',
 				},
 			},
 		},

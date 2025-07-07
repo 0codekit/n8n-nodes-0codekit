@@ -58,7 +58,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/perm/{{$parameter.permfilesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.PERM}/{{$parameter.permfilesop}}`,
 				body: {
 					fileBuffer: '={{$parameter.fileBuffer}}',
 					uploadName: '={{$parameter.uploadName}}',
@@ -83,7 +83,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/perm/{{$parameter.permfilesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.PERM}/{{$parameter.permfilesop}}`,
 				body: {
 					uploadName: '={{$parameter.uploadName}}',
 					fileBuffer: '={{$parameter.fileBuffer}}',
@@ -108,7 +108,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/perm/{{$parameter.permfilesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.PERM}/{{$parameter.permfilesop}}`,
 				body: {
 					fileId: '={{$parameter.fileId}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
@@ -133,7 +133,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/perm/{{$parameter.permfilesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.PERM}/{{$parameter.permfilesop}}`,
 				body: {
 					getAsUrl: '={{$parameter.getAsUrl}}',
 					fileId: '={{$parameter.fileId}}',
@@ -156,7 +156,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/storage/perm/{{$parameter.permfilesop}}',
+				url: `=/${ResourceType.STORAGE}/${OperationType.PERM}/{{$parameter.permfilesop}}`,
 				body: {},
 			},
 		},

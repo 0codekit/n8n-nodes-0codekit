@@ -87,7 +87,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `=/${ResourceType.PDF}/watermark/{{$parameter.watermarkop}}`,
+				url: `=/${ResourceType.PDF}/${OperationType.WATERMARK}/{{$parameter.watermarkop}}`,
 				body: {
 					watermarkop: '={{$parameter.watermarkop}}',
 					url: '={{$parameter.url}}',
