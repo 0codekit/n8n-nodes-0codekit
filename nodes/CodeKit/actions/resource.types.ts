@@ -14,5 +14,6 @@ export enum ResourceType {
 	FACTURX = 'facturx',
 	CALCULATE = 'calculate',
 	DATE_AND_TIME = 'dateandtime',
-	PDF = "pdf"
+	PDF = 'pdf',
+	USER = 'user',
 }

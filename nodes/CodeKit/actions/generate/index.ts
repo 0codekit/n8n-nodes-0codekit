@@ -1,5 +1,13 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
+import {
+	description as barcodeDecodeDescription,
+	option as barcodeDecodeOption,
+} from './barcodedecode.operation';
+import {
+	description as barcodeEncodeDescription,
+	option as barcodeEncodeOption,
+} from './barcodeencode.operation';
 import { description as cityDescription, option as cityOption } from './city.operation';
 import { description as colorDescription, option as colorOption } from './color.operation';
 import {
@@ -40,6 +48,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		options: [
+			barcodeDecodeOption,
+			barcodeEncodeOption,
 			cityOption,
 			colorOption,
 			htmlScrapeOption,
@@ -55,6 +65,8 @@ export const description: INodeProperties[] = [
 		],
 		default: '',
 	},
+	...barcodeDecodeDescription,
+	...barcodeEncodeDescription,
 	...cityDescription,
 	...colorDescription,
 	...htmlScrapeDescription,

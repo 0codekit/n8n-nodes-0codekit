@@ -4,10 +4,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Remove Background Image',
-	value: OperationType.REMOVE_BACKGROUND,
-	description: 'Removes the background from an image using AI',
-	action: 'Remove background',
+	name: 'Transcribe',
+	value: OperationType.TRANSCRIBE,
+	description: 'Transcribe audio',
+	action: 'Transcribe',
 };
 
 export const description: INodeProperties[] = [
@@ -19,7 +19,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
-				operation: [OperationType.REMOVE_BACKGROUND],
+				operation: [OperationType.TRANSCRIBE],
 			},
 		},
 		options: [

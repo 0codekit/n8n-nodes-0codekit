@@ -1,14 +1,6 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
 import {
-	description as facturxEmbedDescription,
-	option as facturxEmbedOption,
-} from './facturxembed.operation';
-import {
-	description as facturxValidateDescription,
-	option as facturxValidateOption,
-} from './facturxvalidate.operation';
-import {
 	description as isFreeMailDescription,
 	option as isFreeMailOption,
 } from './isfreemail.operation';
@@ -58,8 +50,6 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			isFreeMailOption,
-			facturxEmbedOption,
-			facturxValidateOption,
 			lookupVatRatesOption,
 			validateBicOption,
 			validateEmailOption,
@@ -72,8 +62,6 @@ export const description: INodeProperties[] = [
 		default: '',
 	},
 	...isFreeMailDescription,
-	...facturxEmbedDescription,
-	...facturxValidateDescription,
 	...lookupVatRatesDescription,
 	...validateBicDescription,
 	...validateEmailDescription,

@@ -1,4 +1,6 @@
 export enum OperationType {
+	BARCODE_DECODE = 'barcode-decode',
+	BARCODE_ENCODE = 'barcode-encode',
 	CITY = 'city',
 	COLOR = 'color',
 	HTML_SCRAPE = 'html-scrape',

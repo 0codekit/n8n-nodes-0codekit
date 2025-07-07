@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Picture Text Recognition',
+	name: 'Entity Detection',
 	value: OperationType.ENTITY_DETECTION,
-	description: 'Detects the text in a picture using Optical Character Recognition AI',
-	action: 'Picture text recognition',
+	description: 'Detects entities in a text with natural language processing AI',
+	action: 'Entity detection',
 };
 
 export const description: INodeProperties[] = [
