@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -17,16 +18,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.MONTH],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'date',
-			},
-		},
 	},
 	{
 		displayName: 'Year',
@@ -36,41 +31,30 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.MONTH],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				operation: [OperationType.MONTH],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'year',
-			},
-		},
-	},
-	{
-		displayName: 'Operation',
-		name: 'operation',
-		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.MONTH,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/month',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.MONTH}`,
+				body: {
+					date: '={{$parameter.date}}',
+					year: '={{$parameter.year}}',
+				},
 			},
 		},
 	},

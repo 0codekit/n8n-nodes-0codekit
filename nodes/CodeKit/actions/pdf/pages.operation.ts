@@ -53,17 +53,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Public URL of the PDF file',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `=/${ResourceType.PDF}/${OperationType.PAGES}/{{$parameter.pagesop}}`,
-				body: {
-					url: '={{$parameter.url}}',
-					buffer: '={{$parameter.buffer}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -77,17 +66,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Buffer of the PDF',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `=/${ResourceType.PDF}/${OperationType.PAGES}/{{$parameter.pagesop}}`,
-				body: {
-					buffer: '={{$parameter.buffer}}',
-					url: '={{$parameter.url}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Get File as URL',
@@ -102,18 +80,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether you want the PDF as an URL',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `=/${ResourceType.PDF}/${OperationType.PAGES}/{{$parameter.pagesop}}`,
-				body: {
-					getAsUrl: '={{$parameter.getAsUrl}}',
-					url: '={{$parameter.url}}',
-					buffer: '={{$parameter.buffer}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -127,9 +95,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.PAGES,
+				url: `=/${ResourceType.PDF}/pages/{{$parameter.pagesop}}`,
 				body: {
-					
+					pagesop: '={{$parameter.pagesop}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
 				},
 			},
 		},

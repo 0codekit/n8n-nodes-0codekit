@@ -55,8 +55,8 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_PHONE_NUMBER}`,
 				body: {
-					phoneNumber: '={{$value.phoneNumber}}',
-					countryCode: '={{$value.countryCode}}',
+					phoneNumber: '={{$parameter.phoneNumber}}',
+					countryCode: '={{$parameter.countryCode}}',
 				},
 			},
 		},

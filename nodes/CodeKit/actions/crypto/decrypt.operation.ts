@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Cyphertext you want to decrypt',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CRYPTO}/${OperationType.DECRYPT}`,
-				body: {
-					ciphertext: '={{$value.ciphertext}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Secret Key',
@@ -46,6 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		description: 'Secret key for decryption',
 	},
 	{
 		displayName: 'Crypto Type',
@@ -67,7 +59,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'AES',
-	},	{
+		description: 'Encryption algorithm to use for decryption',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -81,9 +75,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CRYPTO/OperationType.DECRYPT,
+				url: `/${ResourceType.CRYPTO}/${OperationType.DECRYPT}`,
 				body: {
-					
+					ciphertext: '={{$parameter.ciphertext}}',
+					secretKey: '={{$parameter.secretKey}}',
+					cryptoType: '={{$parameter.cryptoType}}',
 				},
 			},
 		},

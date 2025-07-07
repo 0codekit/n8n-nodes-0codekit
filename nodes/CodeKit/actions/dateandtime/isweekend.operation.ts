@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -17,41 +18,29 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.IS_WEEKEND],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				operation: [OperationType.IS_WEEKEND],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'date',
-			},
-		},
-	},
-	{
-		displayName: 'Operation',
-		name: 'operation',
-		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.IS_WEEKEND,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/isweekend',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.IS_WEEKEND}`,
+				body: {
+					date: '={{$parameter.date}}',
+				},
 			},
 		},
 	},

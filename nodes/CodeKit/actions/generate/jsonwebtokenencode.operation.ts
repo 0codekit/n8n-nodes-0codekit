@@ -27,15 +27,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'JSON payload to encode',
 		placeholder: '{"sub": "1234567890", "name": "John Doe"}',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/jsonwebtoken/encode`,
-				body: {
-					payload: '={{$value.payload}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Secret',
@@ -83,7 +74,8 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'Token expiration time (e.g., "1h", "7d", "30m")',
 		placeholder: '1h',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -97,9 +89,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.JSONWEBTOKEN_ENCODE,
+				url: `/${ResourceType.GENERATE}/jsonwebtoken/encode`,
 				body: {
-					
+					payload: '={{$parameter.payload}}',
+					secret: '={{$parameter.secret}}',
+					algorithm: '={{$parameter.algorithm}}',
+					expiresIn: '={{$parameter.expiresIn}}',
 				},
 			},
 		},

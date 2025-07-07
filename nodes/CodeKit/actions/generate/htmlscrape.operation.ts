@@ -24,15 +24,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'URL to scrape',
 		placeholder: 'https://example.com',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.HTML_SCRAPE}`,
-				body: {
-					url: '={{$value.url}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Selector',
@@ -60,7 +51,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether to wait for the element to appear',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -74,9 +66,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.HTML_SCRAPE,
+				url: `/${ResourceType.GENERATE}/${OperationType.HTML_SCRAPE}`,
 				body: {
-					
+					url: '={{$parameter.url}}',
+					selector: '={{$parameter.selector}}',
+					waitForElement: '={{$parameter.waitForElement}}',
 				},
 			},
 		},

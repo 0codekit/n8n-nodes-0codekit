@@ -28,7 +28,6 @@ import {
 } from './mockdatauser.operation';
 import { description as nameDescription, option as nameOption } from './name.operation';
 import { description as numberDescription, option as numberOption } from './number.operation';
-import { description as pictureDescription, option as pictureOption } from './picture.operation';
 import { description as qrCodeDescription, option as qrCodeOption } from './qrcode.operation';
 import {
 	description as shortenedUrlDescription,
@@ -58,7 +57,6 @@ export const description: INodeProperties[] = [
 			mockdataUserOption,
 			nameOption,
 			numberOption,
-			pictureOption,
 			qrCodeOption,
 			shortenedUrlOption,
 			stringOption,
@@ -75,7 +73,6 @@ export const description: INodeProperties[] = [
 	...mockdataUserDescription,
 	...nameDescription,
 	...numberDescription,
-	...pictureDescription,
 	...qrCodeDescription,
 	...shortenedUrlDescription,
 	...stringDescription,

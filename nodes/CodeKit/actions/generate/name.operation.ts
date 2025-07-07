@@ -28,15 +28,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 'fullname',
 		description: 'Type of name to generate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.NAME}`,
-				body: {
-					type: '={{$value.type}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Gender',
@@ -55,7 +46,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'any',
 		description: 'Gender for the name',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -69,9 +61,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.NAME,
+				url: `/${ResourceType.GENERATE}/${OperationType.NAME}`,
 				body: {
-					
+					type: '={{$parameter.type}}',
+					gender: '={{$parameter.gender}}',
 				},
 			},
 		},

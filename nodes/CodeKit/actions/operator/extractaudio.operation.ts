@@ -22,11 +22,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.EXTRACT_AUDIO],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -40,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.EXTRACT_AUDIO,
+				url: `/${ResourceType.OPERATOR}/extractaudio`,
 				body: {
-					
+					videoUrl: '={{$parameter.videoUrl}}',
 				},
 			},
 		},

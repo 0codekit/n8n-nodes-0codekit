@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -26,17 +27,11 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.HTML],
-				resource: ['image'],
 			},
 		},
 		default: 'url',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'htmlurltype',
-			},
-		},
 	},
 	{
 		displayName: 'HTML',
@@ -44,19 +39,13 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.HTML],
-				resource: ['image'],
 				htmlurltype: ['html'],
 			},
 		},
 		default: '',
 		description: 'HTML to convert to an image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'html',
-			},
-		},
 	},
 	{
 		displayName: 'URL',
@@ -64,44 +53,34 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.HTML],
-				resource: ['image'],
 				htmlurltype: ['url'],
 			},
 		},
 		default: '',
 		description: 'URL of the HTML page to convert to an image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'url',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.HTML,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.HTML],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/image/html',
+				url: `/${ResourceType.IMAGE}/${OperationType.HTML}`,
+				body: {
+					htmlurltype: '={{$parameter.htmlurltype}}',
+					html: '={{$parameter.html}}',
+					url: '={{$parameter.url}}',
+				},
 			},
 		},
 	},

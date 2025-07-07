@@ -22,15 +22,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'URL of the image to resize',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.IMAGE}/${OperationType.RESIZE}`,
-				body: {
-					imageUrl: '={{$value.imageUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Width',
@@ -72,7 +63,8 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether to maintain the original aspect ratio',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -86,9 +78,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.IMAGE/OperationType.RESIZE,
+				url: `/${ResourceType.IMAGE}/${OperationType.RESIZE}`,
 				body: {
-					
+					imageUrl: '={{$parameter.imageUrl}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
+					maintainAspectRatio: '={{$parameter.maintainAspectRatio}}',
 				},
 			},
 		},

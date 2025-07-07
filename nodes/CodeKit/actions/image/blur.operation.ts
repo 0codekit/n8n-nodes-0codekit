@@ -52,15 +52,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'https://example.com/image.jpg',
 		description: 'The URL of the image to analyze',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.IMAGE}/${OperationType.BLUR}`,
-				body: {
-					imageUrl: '={{$value}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Image Buffer',
@@ -78,16 +69,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'Base64-encoded image data',
 		description: 'Base64-encoded image data for text recognition',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.BLUR}`,
-				body: {
-					buffer: '={{$value}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Sigma Value',
@@ -125,7 +106,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		description: 'The filename to use for the generated URL',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -139,9 +121,14 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.IMAGE/OperationType.BLUR,
+				url: `/${ResourceType.IMAGE}/${OperationType.BLUR}`,
 				body: {
-					
+					dataType: '={{$parameter.dataType}}',
+					url: '={{$parameter.url}}',
+					imageBuffer: '={{$parameter.imageBuffer}}',
+					sigma: '={{$parameter.sigma}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
+					urlFilename: '={{$parameter.urlFilename}}',
 				},
 			},
 		},

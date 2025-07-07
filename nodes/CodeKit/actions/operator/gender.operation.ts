@@ -22,11 +22,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.GENDER],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -40,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.GENDER,
+				url: `/${ResourceType.OPERATOR}/gender`,
 				body: {
-					
+					name: '={{$parameter.name}}',
 				},
 			},
 		},

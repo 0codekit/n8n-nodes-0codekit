@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -10,29 +11,21 @@ export const option = {
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.SWITCH_TIME_ZONE,
+		displayOptions: {
+			show: {
+				operation: [OperationType.SWITCH_TIME_ZONE],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/switchtimezone',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.SWITCH_TIME_ZONE}`,
+				body: {},
 			},
 		},
 	},

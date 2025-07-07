@@ -40,7 +40,7 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VERIFY_DOMAIN}`,
 				body: {
-					domain: '={{$value.domain}}',
+					domain: '={{$parameter.domain}}',
 				},
 			},
 		},

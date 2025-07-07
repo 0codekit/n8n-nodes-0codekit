@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -20,24 +21,19 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.PYTHON_B2],
-				resource: ['code'],
+				resource: [ResourceType.CODE],
 			},
 		},
 		default: '',
 		description: 'Your python code',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'code',
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
-				resource: ['code'],
+				resource: [ResourceType.CODE],
 				operation: [OperationType.PYTHON_B2],
 			},
 		},
@@ -45,9 +41,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /'code'/OperationType.PYTHON_B2,
+				url: `/${ResourceType.CODE}/${OperationType.PYTHON_B2}`,
 				body: {
-					
+					code: '={{$parameter.code}}',
 				},
 			},
 		},

@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 1,
 		description: 'Number of mock users to generate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.MOCKDATA_USER}`,
-				body: {
-					count: '={{$value.count}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Include Avatar',
@@ -64,7 +55,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'en_US',
 		description: 'Locale for the generated data',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -78,9 +70,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.MOCKDATA_USER,
+				url: `/${ResourceType.GENERATE}/${OperationType.MOCKDATA_USER}`,
 				body: {
-					
+					count: '={{$parameter.count}}',
+					includeAvatar: '={{$parameter.includeAvatar}}',
+					locale: '={{$parameter.locale}}',
 				},
 			},
 		},

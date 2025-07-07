@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
-import { OperationType } from './operation.types';
 import { ResourceType } from '../resource.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'ASYNC Python Script Advanced (Complex Script)',
@@ -27,12 +27,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description:
 			"A string of the code which should be executed asynchronously. Please notice that this endpoint unlike the other code execution endpoint does require import statements in the code and does not require a 'result' variable. In order to visualize data in the response just use a print statement, you can parse the printed JSON output at the receiving webhook.",
-		routing: {
-			send: {
-				type: 'body',
-				property: 'code',
-			},
-		},
 	},
 	{
 		displayName: 'Requirements',
@@ -65,14 +59,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CODE],
 			},
 		},
-		routing: {
-			send: {
-				type: 'body',
-				property: 'requirements',
-				value:
-					'={{ $parameter.requirementsUI?.requirementsValues ? $parameter.requirementsUI.requirementsValues.map(item => item.name) : [] }}',
-			},
-		},
 	},
 	{
 		displayName: 'Send To',
@@ -87,16 +73,8 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Webhook URL where the result will be sent to after finishing the execution',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.ASYNC_PYTHON}`,
-				body: {
-					prompt: '={{$value.prompt}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -110,9 +88,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CODE/OperationType.ASYNC_PYTHON,
+				url: `/${ResourceType.CODE}/${OperationType.ASYNC_PYTHON}`,
 				body: {
-					
+					code: '={{$parameter.code}}',
+					requirements:
+						'={{ $parameter.requirementsUI?.requirementsValues ? $parameter.requirementsUI.requirementsValues.map(item => item.name) : [] }}',
+					sendTo: '={{$parameter.sendTo}}',
 				},
 			},
 		},

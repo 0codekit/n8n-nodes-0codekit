@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'CSV string to convert',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CONVERT}/${OperationType.CSV_TO_JSON}`,
-				body: {
-					csv: '={{$value.csv}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Separator',
@@ -45,7 +36,8 @@ export const description: INodeProperties[] = [
 		},
 		default: ',',
 		description: 'CSV separator character',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -59,9 +51,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CONVERT/OperationType.CSV_TO_JSON,
+				url: `/${ResourceType.CONVERT}/${OperationType.CSV_TO_JSON}`,
 				body: {
-					
+					csv: '={{$parameter.csv}}',
+					separator: '={{$parameter.separator}}',
 				},
 			},
 		},

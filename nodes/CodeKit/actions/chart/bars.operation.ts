@@ -22,12 +22,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CHART],
 				operation: [ChartOperation.BARS],
 			},
-		}',
-					chartOptions: '={{$value.chartOptions}}',
-					width: '={{$value.width}}',
-					height: '={{$value.height}}',
-				},
-			},
 		},
 	},
 	{
@@ -68,7 +62,8 @@ export const description: INodeProperties[] = [
 				operation: [ChartOperation.BARS],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -82,9 +77,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CHART/ChartOperation.BARS,
+				url: `/generate/${ResourceType.CHART}/${ChartOperation.BARS}`,
 				body: {
-					
+					chartData: '={{$parameter.chartData}}',
+					chartOptions: '={{$parameter.chartOptions}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
 				},
 			},
 		},

@@ -22,16 +22,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Buffer of the DOCX file',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.DOCX_TO_PDF}`,
-				body: {
-					buffer: '={{$parameter.buffer}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Get File as URL',
@@ -46,17 +36,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether you want the PDF as an URL',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.DOCX_TO_PDF}`,
-				body: {
-					getAsUrl: '={{$parameter.getAsUrl}}',
-					buffer: '={{$parameter.buffer}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -70,9 +51,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.DOCX_TO_PDF,
+				url: `/${ResourceType.PDF}/docx-to-pdf`,
 				body: {
-					
+					buffer: '={{$parameter.buffer}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
 				},
 			},
 		},

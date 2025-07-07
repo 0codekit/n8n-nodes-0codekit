@@ -99,8 +99,13 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OTaeeinopprty.BARCODE_ENCODE,
-				body: {},
+				url: `/${ResourceType.GENERATE}/${OperationType.BARCODE_ENCODE}`,
+				body: {
+					text: '={{$parameter.text}}',
+					format: '={{$parameter.format}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
+				},
 			},
 		},
 	},

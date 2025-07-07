@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -26,17 +27,11 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.EXIF],
-				resource: ['image'],
 			},
 		},
 		default: 'url',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'urlbuffertype',
-			},
-		},
 	},
 	{
 		displayName: 'URL',
@@ -45,19 +40,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.EXIF],
-				resource: ['image'],
 				urlbuffertype: ['url'],
 			},
 		},
 		default: '',
 		description: 'This is the URL of the image, must be publicly accessible',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'url',
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -66,26 +55,21 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.EXIF],
-				resource: ['image'],
 				urlbuffertype: ['buffer'],
 			},
 		},
 		default: '',
 		description: 'Buffer of the image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'buffer',
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
-				resource: ['image'],
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.EXIF],
 			},
 		},
@@ -93,9 +77,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /'image'/OperationType.EXIF,
+				url: `/${ResourceType.IMAGE}/${OperationType.EXIF}`,
 				body: {
-					
+					urlbuffertype: '={{$parameter.urlbuffertype}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
 				},
 			},
 		},

@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -26,17 +27,12 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.SHARPEN],
-				resource: ['image'],
 			},
 		},
 		default: 'url',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'urlbuffertype',
-			},
-		},
+		description: 'Type of data to process',
 	},
 	{
 		displayName: 'URL',
@@ -45,19 +41,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.SHARPEN],
-				resource: ['image'],
 				urlbuffertype: ['url'],
 			},
 		},
 		default: '',
 		description: 'This is the URL of the image, must be publicly accessible',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'url',
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -66,19 +56,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.SHARPEN],
-				resource: ['image'],
 				urlbuffertype: ['buffer'],
 			},
 		},
 		default: '',
 		description: 'Buffer of the image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'buffer',
-			},
-		},
 	},
 	{
 		displayName: 'Sigma',
@@ -86,43 +70,34 @@ export const description: INodeProperties[] = [
 		type: 'number',
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.SHARPEN],
-				resource: ['image'],
 			},
 		},
 		default: 1,
 		description: 'Sigma of the image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'sigma',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.SHARPEN,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.SHARPEN],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/image/sharpen',
+				url: `/${ResourceType.IMAGE}/sharpen`,
+				body: {
+					urlbuffertype: '={{$parameter.urlbuffertype}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					sigma: '={{$parameter.sigma}}',
+				},
 			},
 		},
 	},

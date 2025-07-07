@@ -11,6 +11,20 @@ export const option = {
 
 export const description: INodeProperties[] = [
 	{
+		displayName: 'Markdown Content',
+		name: 'markdown',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.MARKDOWN_TO_PDF],
+			},
+		},
+		default: '',
+		description: 'Markdown content to convert to PDF',
+	},
+	{
 		displayName: 'Get File as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
@@ -23,17 +37,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether you want the PDF as an URL',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.MARKDOWN_TO_PDF}`,
-				body: {
-					getAsUrl: '={{$parameter.getAsUrl}}',
-					markdown: '={{$parameter.markdown}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -47,9 +52,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.MARKDOWN_TO_PDF,
+				url: `/${ResourceType.PDF}/markdownstringtopdf`,
 				body: {
-					
+					markdown: '={{$parameter.markdown}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
 				},
 			},
 		},

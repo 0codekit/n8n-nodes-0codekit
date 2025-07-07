@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
-import { OperationType } from './operation.types';
 import { ResourceType } from '../resource.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'BMI',
@@ -22,12 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'height',
-			},
-		},
+		description: 'The height in centimeters',
 	},
 	{
 		displayName: 'Weight in Kg',
@@ -41,13 +36,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'weight',
-			},
-		},
-	},	{
+		description: 'The weight in kilograms',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -61,9 +52,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CALCULATE/OperationType.BMI,
+				url: `/${ResourceType.CALCULATE}/${OperationType.BMI}`,
 				body: {
-					
+					height: '={{$parameter.height}}',
+					weight: '={{$parameter.weight}}',
 				},
 			},
 		},

@@ -21,14 +21,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.UTM_BUILD],
 			},
-		}',
-					source: '={{$value.source}}',
-					medium: '={{$value.medium}}',
-					campaign: '={{$value.campaign}}',
-					term: '={{$value.term}}',
-					content: '={{$value.content}}',
-				},
-			},
 		},
 	},
 	{
@@ -95,7 +87,8 @@ export const description: INodeProperties[] = [
 				operation: [OperatorOperation.UTM_BUILD],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -109,9 +102,14 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.UTM_BUILD,
+				url: `/${ResourceType.OPERATOR}/utmbuild`,
 				body: {
-					
+					url: '={{$parameter.url}}',
+					source: '={{$parameter.source}}',
+					medium: '={{$parameter.medium}}',
+					campaign: '={{$parameter.campaign}}',
+					term: '={{$parameter.term}}',
+					content: '={{$parameter.content}}',
 				},
 			},
 		},

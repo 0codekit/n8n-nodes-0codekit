@@ -22,11 +22,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.FACTURX],
 				operation: [FacturxOperation.VALIDATE],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -40,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.FACTURX/FacturxOperation.VALIDATE,
+				url: `/${ResourceType.FACTURX}/${FacturxOperation.VALIDATE}`,
 				body: {
-					
+					xml: '={{$parameter.xml}}',
 				},
 			},
 		},

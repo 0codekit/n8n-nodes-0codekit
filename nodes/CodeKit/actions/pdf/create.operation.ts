@@ -23,16 +23,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether you want the PDF as an URL',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.CREATE}`,
-				body: {
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -46,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.CREATE,
+				url: `/${ResourceType.PDF}/create`,
 				body: {
-					
+					getAsUrl: '={{$parameter.getAsUrl}}',
 				},
 			},
 		},

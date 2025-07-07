@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -26,17 +27,11 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.CROP],
-				resource: ['image'],
 			},
 		},
 		default: 'url',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'urlbuffertype',
-			},
-		},
 	},
 	{
 		displayName: 'URL',
@@ -45,19 +40,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.CROP],
-				resource: ['image'],
 				urlbuffertype: ['url'],
 			},
 		},
 		default: '',
 		description: 'This is the URL of the image, must be publicly accessible',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'url',
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -66,19 +55,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.CROP],
-				resource: ['image'],
 				urlbuffertype: ['buffer'],
 			},
 		},
 		default: '',
 		description: 'Buffer of the image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'buffer',
-			},
-		},
 	},
 	{
 		displayName: 'Options Cropping',
@@ -86,8 +69,8 @@ export const description: INodeProperties[] = [
 		type: 'json',
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.CROP],
-				resource: ['image'],
 			},
 		},
 		default: JSON.stringify({
@@ -97,37 +80,28 @@ export const description: INodeProperties[] = [
 			height: 100,
 		}),
 		description: 'Cropping options including top, left, width, height',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'options',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.CROP,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.CROP],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/image/crop',
+				url: `/${ResourceType.IMAGE}/${OperationType.CROP}`,
+				body: {
+					urlbuffertype: '={{$parameter.urlbuffertype}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					options: '={{$parameter.options}}',
+				},
 			},
 		},
 	},

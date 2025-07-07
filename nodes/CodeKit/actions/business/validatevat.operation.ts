@@ -41,7 +41,7 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_VAT}`,
 				body: {
-					vatId: '={{$value.vatId}}',
+					vatId: '={{$parameter.vatId}}',
 				},
 			},
 		},

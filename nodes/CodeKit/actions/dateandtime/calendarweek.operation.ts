@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -17,16 +18,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'date',
-			},
-		},
 	},
 	{
 		displayName: 'Unix Timestamp',
@@ -36,16 +31,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: 0,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'unixTimestamp',
-			},
-		},
 	},
 	{
 		displayName: 'Year',
@@ -55,16 +44,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'year',
-			},
-		},
 	},
 	{
 		displayName: 'Week Number',
@@ -74,41 +57,32 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: 0,
-		routing: {
-			send: {
-				type: 'body',
-				property: 'weekNumber',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.CALENDAR_WEEK,
+		displayOptions: {
+			show: {
+				operation: [OperationType.CALENDAR_WEEK],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/calendarweek',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.CALENDAR_WEEK}`,
+				body: {
+					date: '={{$parameter.date}}',
+					unixTimestamp: '={{$parameter.unixTimestamp}}',
+					year: '={{$parameter.year}}',
+					weekNumber: '={{$parameter.weekNumber}}',
+				},
 			},
 		},
 	},

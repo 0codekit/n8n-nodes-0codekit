@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { SchedulerOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Add Task',
-	value: SchedulerOperation.ADD,
+	value: OperationType.ADD,
 	description: 'Add scheduler task',
 	action: 'Add scheduler task',
 };
@@ -20,14 +20,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
-			},
-		}',
-					schedule: '={{$value.schedule}}',
-					url: '={{$value.url}}',
-					method: '={{$value.method}}',
-					payload: '={{$value.payload}}',
-				},
+				operation: [OperationType.ADD],
 			},
 		},
 	},
@@ -41,7 +34,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
+				operation: [OperationType.ADD],
 			},
 		},
 	},
@@ -55,7 +48,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
+				operation: [OperationType.ADD],
 			},
 		},
 	},
@@ -86,7 +79,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
+				operation: [OperationType.ADD],
 			},
 		},
 	},
@@ -99,26 +92,31 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
+				operation: [OperationType.ADD],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.ADD],
+				operation: [OperationType.ADD],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.SCHEDULER/SchedulerOperation.ADD,
+				url: `/operator/${ResourceType.SCHEDULER}/${OperationType.ADD}`,
 				body: {
-					
+					taskName: '={{$parameter.taskName}}',
+					schedule: '={{$parameter.schedule}}',
+					url: '={{$parameter.url}}',
+					method: '={{$parameter.method}}',
+					payload: '={{$parameter.payload}}',
 				},
 			},
 		},

@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { SchedulerOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Delete Task',
-	value: SchedulerOperation.DELETE,
+	value: OperationType.DELETE,
 	description: 'Delete scheduler task',
 	action: 'Delete scheduler task',
 };
@@ -20,29 +20,27 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.DELETE],
-			},
-		}',
-				},
+				operation: [OperationType.DELETE],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
-				operation: [SchedulerOperation.DELETE],
+				operation: [OperationType.DELETE],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.SCHEDULER/SchedulerOperation.DELETE,
+				url: `/operator/${ResourceType.SCHEDULER}/${OperationType.DELETE}`,
 				body: {
-					
+					taskId: '={{$parameter.taskId}}',
 				},
 			},
 		},

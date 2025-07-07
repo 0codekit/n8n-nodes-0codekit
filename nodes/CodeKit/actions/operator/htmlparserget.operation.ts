@@ -22,10 +22,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.HTML_PARSER_GET],
 			},
-		}',
-					selector: '={{$value.selector}}',
-				},
-			},
 		},
 	},
 	{
@@ -40,7 +36,8 @@ export const description: INodeProperties[] = [
 				operation: [OperatorOperation.HTML_PARSER_GET],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -54,9 +51,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.HTML_PARSER_GET,
+				url: `/${ResourceType.OPERATOR}/htmlparserget`,
 				body: {
-					
+					html: '={{$parameter.html}}',
+					selector: '={{$parameter.selector}}',
 				},
 			},
 		},

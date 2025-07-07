@@ -24,16 +24,8 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'Country name or ISO code',
 		placeholder: 'Germany or DE',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CONVERT}/${OperationType.NATION_ISO}`,
-				body: {
-					input: '={{$value.input}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -47,9 +39,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CONVERT/OperationType.NATION_ISO,
+				url: `/${ResourceType.CONVERT}/${OperationType.NATION_ISO}`,
 				body: {
-					
+					input: '={{$parameter.input}}',
 				},
 			},
 		},

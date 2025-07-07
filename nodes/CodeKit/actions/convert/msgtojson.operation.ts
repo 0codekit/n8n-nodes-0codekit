@@ -23,16 +23,8 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Message to convert to JSON',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CONVERT}/${OperationType.MSG_TO_JSON}`,
-				body: {
-					message: '={{$value.message}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -46,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CONVERT/OperationType.MSG_TO_JSON,
+				url: `/${ResourceType.CONVERT}/${OperationType.MSG_TO_JSON}`,
 				body: {
-					
+					message: '={{$parameter.message}}',
 				},
 			},
 		},

@@ -4,7 +4,7 @@ import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Picture Text Recognition',
-	value: OperationType.PICTURE_TEXT_RECONITION,
+	value: OperationType.PICTURE_TEXT_RECOGNITION,
 	description: 'Detects the text in a picture using Optical Character Recognition AI',
 	action: 'Picture text recognition',
 };
@@ -18,7 +18,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
-				operation: [OperationType.PICTURE_TEXT_RECONITION],
+				operation: [OperationType.PICTURE_TEXT_RECOGNITION],
 			},
 		},
 		default: '',
@@ -32,14 +32,14 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
-				operation: [OperationType.PICTURE_TEXT_RECONITION],
+				operation: [OperationType.PICTURE_TEXT_RECOGNITION],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.PICTURE_TEXT_RECONITION}`,
+				url: `/${ResourceType.AI}/${OperationType.PICTURE_TEXT_RECOGNITION}`,
 				body: {
 					imageUrl: '={{$parameter.imageUrl}}',
 				},

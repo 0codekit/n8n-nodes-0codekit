@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 0,
 		description: 'Start of the range',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.NUMBER}`,
-				body: {
-					rangeStart: '={{$value.rangeStart}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Range End',
@@ -46,7 +37,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 100,
 		description: 'End of the range',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -60,9 +52,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.NUMBER,
+				url: `/${ResourceType.GENERATE}/${OperationType.NUMBER}`,
 				body: {
-					
+					rangeStart: '={{$parameter.rangeStart}}',
+					rangeEnd: '={{$parameter.rangeEnd}}',
 				},
 			},
 		},

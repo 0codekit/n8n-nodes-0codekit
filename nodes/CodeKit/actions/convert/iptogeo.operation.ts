@@ -24,16 +24,8 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'IP address to get geolocation for',
 		placeholder: '8.8.8.8',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CONVERT}/${OperationType.IP_TO_GEO}`,
-				body: {
-					ip: '={{$value.ip}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -47,9 +39,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CONVERT/OperationType.IP_TO_GEO,
+				url: `/${ResourceType.CONVERT}/${OperationType.IP_TO_GEO}`,
 				body: {
-					
+					ip: '={{$parameter.ip}}',
 				},
 			},
 		},

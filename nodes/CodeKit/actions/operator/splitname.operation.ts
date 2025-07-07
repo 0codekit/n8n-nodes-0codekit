@@ -22,11 +22,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.SPLIT_NAME],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -40,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.SPLIT_NAME,
+				url: `/${ResourceType.OPERATOR}/splitname`,
 				body: {
-					
+					fullName: '={{$parameter.fullName}}',
 				},
 			},
 		},

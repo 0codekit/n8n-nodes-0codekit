@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -35,17 +36,11 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['shortenedUrl'],
-				resource: ['generate'],
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.SHORTENED_URL],
 			},
 		},
 		default: 'add',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-		},
 	},
 	{
 		displayName: 'Destination of the Shortened Url',
@@ -54,18 +49,12 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['shortenedUrl'],
-				resource: ['generate'],
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.SHORTENED_URL],
 				shortenedurlop: ['add', 'put'],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'destination',
-			},
-		},
 	},
 	{
 		displayName: 'Optional Custom Identifier',
@@ -73,18 +62,12 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['shortenedUrl'],
-				resource: ['generate'],
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.SHORTENED_URL],
 				shortenedurlop: ['add'],
 			},
 		},
 		default: '',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'custom',
-			},
-		},
 	},
 	{
 		displayName: 'Identifier',
@@ -93,43 +76,35 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
-				operation: ['shortenedUrl'],
-				resource: ['generate'],
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.SHORTENED_URL],
 				shortenedurlop: ['del', 'put'],
 			},
 		},
 		default: '',
 		description: 'Identifier of the shortened URL you want to edit or delete',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'identifier',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'shortenedUrl',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.SHORTENED_URL],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '={{$parameter.shortenedurlop === "add" ? "/generate/shortenedurl/add" : $parameter.shortenedurlop === "del" ? "/generate/shortenedurl/del" : $parameter.shortenedurlop === "put" ? "/generate/shortenedurl/put" : "/generate/shortenedurl/list"}}',
+				url: `={{/${ResourceType.GENERATE}/${OperationType.SHORTENED_URL}/$parameter.shortenedurlop}}`,
+				body: {
+					shortenedurlop: '={{$parameter.shortenedurlop}}',
+					destination: '={{$parameter.destination}}',
+					custom: '={{$parameter.custom}}',
+					identifier: '={{$parameter.identifier}}',
+				},
 			},
 		},
 	},

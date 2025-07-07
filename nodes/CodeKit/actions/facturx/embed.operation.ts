@@ -46,10 +46,6 @@ export const description: INodeProperties[] = [
 				operation: [FacturxOperation.EMBED],
 				pdfSource: ['url'],
 			},
-		}',
-					xml: '={{$value.xml}}',
-				},
-			},
 		},
 	},
 	{
@@ -64,10 +60,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.FACTURX],
 				operation: [FacturxOperation.EMBED],
 				pdfSource: ['buffer'],
-			},
-		}',
-					xml: '={{$value.xml}}',
-				},
 			},
 		},
 	},
@@ -84,7 +76,8 @@ export const description: INodeProperties[] = [
 				operation: [FacturxOperation.EMBED],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -98,9 +91,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.FACTURX/FacturxOperation.EMBED,
+				url: `/${ResourceType.FACTURX}/${FacturxOperation.EMBED}`,
 				body: {
-					
+					pdfSource: '={{$parameter.pdfSource}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					xml: '={{$parameter.xml}}',
 				},
 			},
 		},

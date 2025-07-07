@@ -22,16 +22,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Public URL of the PDF file',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.COUNT}`,
-				body: {
-					url: '={{$parameter.url}}',
-					buffer: '={{$parameter.buffer}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -45,17 +35,8 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Buffer of the PDF',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.COUNT}`,
-				body: {
-					buffer: '={{$parameter.buffer}}',
-					url: '={{$parameter.url}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -69,9 +50,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.COUNT,
+				url: `/${ResourceType.PDF}/count`,
 				body: {
-					
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
 				},
 			},
 		},

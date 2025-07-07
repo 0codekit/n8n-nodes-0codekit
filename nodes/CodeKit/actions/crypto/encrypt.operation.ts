@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Message you want to encrypt',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CRYPTO}/${OperationType.ENCRYPT}`,
-				body: {
-					message: '={{$value.message}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Secret Key',
@@ -46,6 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		description: 'Secret key for encryption',
 	},
 	{
 		displayName: 'Crypto Type',
@@ -67,7 +59,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'AES',
-	},	{
+		description: 'Encryption algorithm to use',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -81,9 +75,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CRYPTO/OperationType.ENCRYPT,
+				url: `/${ResourceType.CRYPTO}/${OperationType.ENCRYPT}`,
 				body: {
-					
+					message: '={{$parameter.message}}',
+					secretKey: '={{$parameter.secretKey}}',
+					cryptoType: '={{$parameter.cryptoType}}',
 				},
 			},
 		},

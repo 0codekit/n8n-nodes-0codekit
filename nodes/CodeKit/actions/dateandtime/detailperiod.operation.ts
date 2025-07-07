@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -10,29 +11,54 @@ export const option = {
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: 'Start Date',
+		name: 'startDate',
+		type: 'string',
+		description: 'Start date of the detail period',
+		displayOptions: {
+			show: {
+				operation: [OperationType.DETAIL_PERIOD],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
+	},
+	{
+		displayName: 'Duration',
+		name: 'duration',
+		type: 'number',
+		typeOptions: {
+			minValue: 0,
+			maxValue: 365,
+		},
+		description: 'Duration of days for which the detail period is retrieved',
+		displayOptions: {
+			show: {
+				operation: [OperationType.DETAIL_PERIOD],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: 0,
+	},
+	{
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.DETAIL_PERIOD,
+		displayOptions: {
+			show: {
+				operation: [OperationType.DETAIL_PERIOD],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/detailperiod',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.DETAIL_PERIOD}`,
+				body: {
+					startDate: '={{$parameter.startDate}}',
+					duration: '={{$parameter.duration}}',
+				},
 			},
 		},
 	},

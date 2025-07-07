@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Message you want to hash',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CRYPTO}/${OperationType.HASH}`,
-				body: {
-					message: '={{$value.message}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Secret Key',
@@ -46,6 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		description: 'Secret key for HMAC hashing (optional for non-HMAC methods)',
 	},
 	{
 		displayName: 'Hash Type',
@@ -75,7 +67,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'SHA256',
-	},	{
+		description: 'Hash algorithm to use',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -89,9 +83,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CRYPTO/OperationType.HASH,
+				url: `/${ResourceType.CRYPTO}/${OperationType.HASH}`,
 				body: {
-					
+					message: '={{$parameter.message}}',
+					secretKey: '={{$parameter.secretKey}}',
+					hashType: '={{$parameter.hashType}}',
 				},
 			},
 		},

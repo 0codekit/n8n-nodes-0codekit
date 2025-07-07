@@ -50,7 +50,7 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.SPLIT}`,
+				url: `/${ResourceType.PDF}/split`,
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',

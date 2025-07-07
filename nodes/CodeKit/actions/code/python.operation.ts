@@ -26,16 +26,8 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'The Python code to execute',
 		placeholder: 'print("Hello World")',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CODE}/${OperationType.PYTHON}`,
-				body: {
-					code: '={{$value.code}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -49,9 +41,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CODE/OperationType.PYTHON,
+				url: `/${ResourceType.CODE}/${OperationType.PYTHON}`,
 				body: {
-					
+					code: '={{$parameter.code}}',
 				},
 			},
 		},

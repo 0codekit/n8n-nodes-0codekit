@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -17,24 +18,19 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.TASK_STATUS],
-				resource: ['code'],
+				resource: [ResourceType.CODE],
 			},
 		},
 		default: '',
 		description: 'The ID of the task to check status',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'taskId',
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
 		displayOptions: {
 			show: {
-				resource: ['code'],
+				resource: [ResourceType.CODE],
 				operation: [OperationType.TASK_STATUS],
 			},
 		},
@@ -42,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /'code'/OperationType.TASK_STATUS,
+				url: `/${ResourceType.CODE}/${OperationType.TASK_STATUS}`,
 				body: {
-					
+					taskId: '={{$parameter.taskId}}',
 				},
 			},
 		},

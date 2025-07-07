@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 0,
 		description: 'Amount to convert',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.CONVERT}/${OperationType.CURRENCY}`,
-				body: {
-					amount: '={{$value.amount}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'From',
@@ -76,7 +67,8 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'Date for conversion rate (YYYY-MM-DD)',
 		placeholder: '2023-01-01',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -90,9 +82,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CONVERT/OperationType.CURRENCY,
+				url: `/${ResourceType.CONVERT}/${OperationType.CURRENCY}`,
 				body: {
-					
+					amount: '={{$parameter.amount}}',
+					from: '={{$parameter.from}}',
+					to: '={{$parameter.to}}',
+					date: '={{$parameter.date}}',
 				},
 			},
 		},

@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -17,16 +18,10 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.HOLIDAYS],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: 'DE',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'country',
-			},
-		},
 	},
 	{
 		displayName: 'Year',
@@ -36,41 +31,30 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				operation: [OperationType.HOLIDAYS],
-				resource: ['dateandtime'],
+				resource: [ResourceType.DATE_AND_TIME],
 			},
 		},
 		default: '2024',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'year',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.HOLIDAYS,
+		displayOptions: {
+			show: {
+				operation: [OperationType.HOLIDAYS],
+				resource: [ResourceType.DATE_AND_TIME],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/dateandtime/holidays',
+				url: `/${ResourceType.DATE_AND_TIME}/${OperationType.HOLIDAYS}`,
+				body: {
+					country: '={{$parameter.country}}',
+					year: '={{$parameter.year}}',
+				},
 			},
 		},
 	},

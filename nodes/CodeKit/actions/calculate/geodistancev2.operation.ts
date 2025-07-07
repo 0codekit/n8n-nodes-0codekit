@@ -22,12 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'Berlin',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'startPoint',
-			},
-		},
+		description: 'The starting location (address or coordinates)',
 	},
 	{
 		displayName: 'Ending Location',
@@ -41,13 +36,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'Flensburg',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'endPoint',
-			},
-		},
-	},	{
+		description: 'The ending location (address or coordinates)',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -61,9 +52,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CALCULATE/OperationType.GEODISTANCE_V2,
+				url: `/${ResourceType.CALCULATE}/${OperationType.GEODISTANCE_V2}`,
 				body: {
-					
+					startPoint: '={{$parameter.startPoint}}',
+					endPoint: '={{$parameter.endPoint}}',
 				},
 			},
 		},

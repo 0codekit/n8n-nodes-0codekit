@@ -22,11 +22,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.URL_EXPANDER],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -40,9 +38,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.OPERATOR/OperatorOperation.URL_EXPANDER,
+				url: `/${ResourceType.OPERATOR}/urlexpander`,
 				body: {
-					
+					shortenedUrl: '={{$parameter.shortenedUrl}}',
 				},
 			},
 		},

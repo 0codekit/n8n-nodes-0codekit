@@ -24,15 +24,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'JWT token to decode',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/jsonwebtoken/decode`,
-				body: {
-					token: '={{$value.token}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Secret',
@@ -60,7 +51,8 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether to verify the token signature',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -74,9 +66,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.JSONWEBTOKEN_DECODE,
+				url: `/${ResourceType.GENERATE}/jsonwebtoken/decode`,
 				body: {
-					
+					token: '={{$parameter.token}}',
+					secret: '={{$parameter.secret}}',
+					verify: '={{$parameter.verify}}',
 				},
 			},
 		},

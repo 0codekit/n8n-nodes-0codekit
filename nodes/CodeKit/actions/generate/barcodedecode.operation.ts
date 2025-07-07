@@ -46,9 +46,6 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.BARCODE_DECODE],
 				imageSource: ['url'],
 			},
-		}',
-				},
-			},
 		},
 	},
 	{
@@ -64,11 +61,9 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.BARCODE_DECODE],
 				imageSource: ['buffer'],
 			},
-		}',
-				},
-			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -82,9 +77,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.BARCODE_DECODE,
+				url: `/${ResourceType.GENERATE}/${OperationType.BARCODE_DECODE}`,
 				body: {
-					
+					imageSource: '={{$parameter.imageSource}}',
+					imageUrl: '={{$parameter.imageUrl}}',
+					imageBuffer: '={{$parameter.imageBuffer}}',
 				},
 			},
 		},

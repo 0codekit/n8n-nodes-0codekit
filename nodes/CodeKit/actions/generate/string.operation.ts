@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 10,
 		description: 'Length of the string to generate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.STRING}`,
-				body: {
-					length: '={{$value.length}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Include Numbers',
@@ -84,7 +75,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether to include symbols in the generated string',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -98,9 +90,13 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.STRING,
+				url: `/${ResourceType.GENERATE}/${OperationType.STRING}`,
 				body: {
-					
+					length: '={{$parameter.length}}',
+					includeNumbers: '={{$parameter.includeNumbers}}',
+					includeUppercase: '={{$parameter.includeUppercase}}',
+					includeLowercase: '={{$parameter.includeLowercase}}',
+					includeSymbols: '={{$parameter.includeSymbols}}',
 				},
 			},
 		},

@@ -16,7 +16,6 @@ import { ResourceType } from './actions/resource.types';
 import { description as schedulerDescription } from './actions/scheduler';
 import { description as storageDescription } from './actions/storage';
 import { description as textDescription } from './actions/text';
-import { description as userDescription } from './actions/user';
 
 export class CodeKit implements INodeType {
 	description: INodeTypeDescription = {
@@ -140,7 +139,6 @@ export class CodeKit implements INodeType {
 			...calculateDescription,
 			...dateAndTimeDescription,
 			...pdfDescription,
-			...userDescription,
 		],
 	};
 

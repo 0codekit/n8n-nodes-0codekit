@@ -1,4 +1,5 @@
 import type { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
@@ -26,17 +27,12 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.ROTATE],
-				resource: ['image'],
 			},
 		},
 		default: 'url',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'urlbuffertype',
-			},
-		},
+		description: 'Type of data to process',
 	},
 	{
 		displayName: 'URL',
@@ -45,19 +41,13 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.ROTATE],
-				resource: ['image'],
 				urlbuffertype: ['url'],
 			},
 		},
 		default: '',
 		description: 'This is the URL of the image, must be publicly accessible',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'url',
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -66,44 +56,48 @@ export const description: INodeProperties[] = [
 		required: true,
 		displayOptions: {
 			show: {
+				resource: [ResourceType.IMAGE],
 				operation: [OperationType.ROTATE],
-				resource: ['image'],
 				urlbuffertype: ['buffer'],
 			},
 		},
 		default: '',
 		description: 'Buffer of the image',
-		routing: {
-			send: {
-				type: 'body',
-				property: 'buffer',
-			},
-		},
 	},
 	{
-		displayName: 'Operation',
-		name: 'operation',
+		displayName: 'Rotation Angle',
+		name: 'angle',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.ROTATE],
+			},
+		},
+		default: 90,
+		description: 'Rotation angle in degrees',
+	},
+	{
+		displayName: '',
+		name: 'routing',
 		type: 'hidden',
-		default: 'undefined',
-		default: OperationType.ROTATE,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.ROTATE],
+			},
+		},
+		default: '',
 		routing: {
-			send: {
-				type: 'body',
-				property: 'operation',
-			},
-			output: {
-				postReceive: [
-					{
-						type: 'rootProperty',
-						properties: {
-							property: 'body',
-						},
-					},
-				],
-			},
 			request: {
 				method: 'POST',
-				url: '/image/rotate',
+				url: `/${ResourceType.IMAGE}/rotate`,
+				body: {
+					urlbuffertype: '={{$parameter.urlbuffertype}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					angle: '={{$parameter.angle}}',
+				},
 			},
 		},
 	},

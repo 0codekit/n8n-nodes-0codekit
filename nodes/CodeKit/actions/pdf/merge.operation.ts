@@ -70,16 +70,6 @@ export const description: INodeProperties[] = [
 				],
 			},
 		],
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.MERGE}`,
-				body: {
-					files: '={{$parameter.files}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Get File as URL',
@@ -94,17 +84,8 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether you want the PDF as an URL',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.MERGE}`,
-				body: {
-					getAsUrl: '={{$parameter.getAsUrl}}',
-					files: '={{$parameter.files}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -118,9 +99,10 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.PDF/OperationType.MERGE,
+				url: `/${ResourceType.PDF}/merge`,
 				body: {
-					
+					files: '={{$parameter.files}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
 				},
 			},
 		},

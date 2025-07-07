@@ -27,12 +27,6 @@ export const description: INodeProperties[] = [
 		},
 		default: 'encode',
 		description: 'Whether to encode or decode',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/qrcode/={{$value.qrOperation}}`,
-			},
-		},
 	},
 	{
 		displayName: 'Text to Encode',
@@ -48,13 +42,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Text to encode in QR code',
-		routing: {
-			request: {
-				body: {
-					text: '={{$value.text}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'QR Code Image URL',
@@ -70,13 +57,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'URL of QR code image to decode',
-		routing: {
-			request: {
-				body: {
-					imageUrl: '={{$value.imageUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Size',
@@ -91,7 +71,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 200,
 		description: 'Size of the QR code in pixels',
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -105,9 +86,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.QRCODE,
+				url: `/${ResourceType.GENERATE}/${OperationType.QRCODE}`,
 				body: {
-					
+					text: '={{$parameter.text}}',
+					imageUrl: '={{$parameter.imageUrl}}',
+					size: '={{$parameter.size}}',
 				},
 			},
 		},

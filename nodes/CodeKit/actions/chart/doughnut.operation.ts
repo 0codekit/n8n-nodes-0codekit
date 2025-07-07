@@ -22,12 +22,6 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CHART],
 				operation: [ChartOperation.DOUGHNUT],
 			},
-		}',
-					chartOptions: '={{$value.chartOptions}}',
-					width: '={{$value.width}}',
-					height: '={{$value.height}}',
-				},
-			},
 		},
 	},
 	{
@@ -68,7 +62,8 @@ export const description: INodeProperties[] = [
 				operation: [ChartOperation.DOUGHNUT],
 			},
 		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -82,9 +77,12 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.CHART/ChartOperation.DOUGHNUT,
+				url: `/generate/${ResourceType.CHART}/${ChartOperation.DOUGHNUT}`,
 				body: {
-					
+					chartData: '={{$parameter.chartData}}',
+					chartOptions: '={{$parameter.chartOptions}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
 				},
 			},
 		},

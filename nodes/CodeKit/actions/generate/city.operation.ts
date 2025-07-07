@@ -28,16 +28,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'en',
 		description: 'Language for the city name',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.CITY}`,
-				body: {
-					language: '={{$value.language}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -51,9 +43,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.CITY,
+				url: `/${ResourceType.GENERATE}/${OperationType.CITY}`,
 				body: {
-					
+					language: '={{$parameter.language}}',
 				},
 			},
 		},

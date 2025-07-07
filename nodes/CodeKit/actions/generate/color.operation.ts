@@ -27,16 +27,8 @@ export const description: INodeProperties[] = [
 		},
 		default: 'hex',
 		description: 'Color format to generate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.GENERATE}/${OperationType.COLOR}`,
-				body: {
-					format: '={{$value.format}}',
-				},
-			},
-		},
-	},	{
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -50,9 +42,9 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: /ResourceType.GENERATE/OperationType.COLOR,
+				url: `/${ResourceType.GENERATE}/${OperationType.COLOR}`,
 				body: {
-					
+					format: '={{$parameter.format}}',
 				},
 			},
 		},
