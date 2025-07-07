@@ -1,4 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
+import { languages } from '../../ressources/languages';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
@@ -27,7 +28,8 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'From',
 		name: 'from',
-		type: 'string',
+		type: 'options',
+		options: languages,
 		required: true,
 		displayOptions: {
 			show: {
@@ -35,14 +37,14 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.CURRENCY],
 			},
 		},
-		default: '',
+		default: 'EUR',
 		description: 'Source currency (ISO code)',
-		placeholder: 'USD',
 	},
 	{
 		displayName: 'To',
 		name: 'to',
-		type: 'string',
+		type: 'options',
+		options: languages,
 		required: true,
 		displayOptions: {
 			show: {
@@ -50,9 +52,8 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.CURRENCY],
 			},
 		},
-		default: '',
+		default: 'USD',
 		description: 'Target currency (ISO code)',
-		placeholder: 'EUR',
 	},
 	{
 		displayName: 'Date',

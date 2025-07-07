@@ -1,4 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
+import { crytoMethods } from '../../ressources/cryptoMethods';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
@@ -43,14 +44,7 @@ export const description: INodeProperties[] = [
 		displayName: 'Crypto Type',
 		name: 'cryptoType',
 		type: 'options',
-		options: [
-			{ name: 'AES', value: 'AES' },
-			{ name: 'DES', value: 'DES' },
-			{ name: 'Rabbit', value: 'Rabbit' },
-			{ name: 'RC4', value: 'RC4' },
-			{ name: 'RC4Drop', value: 'RC4Drop' },
-			{ name: 'TripleDES', value: 'TripleDES' },
-		],
+		options: crytoMethods,
 		required: true,
 		displayOptions: {
 			show: {

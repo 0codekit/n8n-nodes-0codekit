@@ -14,6 +14,7 @@ import { description as operatorDescription } from './actions/operator';
 import { description as pdfDescription } from './actions/pdf';
 import { ResourceType } from './actions/resource.types';
 import { description as schedulerDescription } from './actions/scheduler';
+import { description as shortenedUrlDescription } from './actions/shortenedurl';
 import { description as storageDescription } from './actions/storage';
 import { description as textDescription } from './actions/text';
 
@@ -116,8 +117,8 @@ export class CodeKit implements INodeType {
 						value: ResourceType.PDF,
 					},
 					{
-						name: 'User',
-						value: ResourceType.USER,
+						name: 'Shortened URL',
+						value: ResourceType.SHORTENED_URL,
 					},
 				],
 				default: '',
@@ -139,6 +140,7 @@ export class CodeKit implements INodeType {
 			...calculateDescription,
 			...dateAndTimeDescription,
 			...pdfDescription,
+			...shortenedUrlDescription,
 		],
 	};
 

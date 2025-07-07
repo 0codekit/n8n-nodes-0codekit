@@ -6,7 +6,7 @@ import { description as getDescription, option as getOption } from './get.operat
 import { description as listDescription, option as listOption } from './list.operation';
 import { description as updateDescription, option as updateOption } from './update.operation';
 
-export const shortenedUrlDescription: INodeProperties[] = [
+export const description: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
