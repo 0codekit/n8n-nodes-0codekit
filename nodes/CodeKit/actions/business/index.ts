@@ -1,5 +1,49 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
+import {
+	description as facturxEmbedDescription,
+	option as facturxEmbedOption,
+} from './facturxembed.operation';
+import {
+	description as facturxValidateDescription,
+	option as facturxValidateOption,
+} from './facturxvalidate.operation';
+import {
+	description as isFreeMailDescription,
+	option as isFreeMailOption,
+} from './isfreemail.operation';
+import {
+	description as lookupVatRatesDescription,
+	option as lookupVatRatesOption,
+} from './lookupvatrates.operation';
+import {
+	description as validateBicDescription,
+	option as validateBicOption,
+} from './validatebic.operation';
+import {
+	description as validateEmailDescription,
+	option as validateEmailOption,
+} from './validateemail.operation';
+import {
+	description as validateGeoLocationDescription,
+	option as validateGeoLocationOption,
+} from './validategeolocation.operation';
+import {
+	description as validateIbanDescription,
+	option as validateIbanOption,
+} from './validateiban.operation';
+import {
+	description as validatePhoneNumberDescription,
+	option as validatePhoneNumberOption,
+} from './validatephonenumber.operation';
+import {
+	description as validateVatDescription,
+	option as validateVatOption,
+} from './validatevat.operation';
+import {
+	description as verifyDomainDescription,
+	option as verifyDomainOption,
+} from './verifydomain.operation';
 
 export const description: INodeProperties[] = [
 	{
@@ -12,7 +56,30 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.BUSINESS],
 			},
 		},
-		options: [],
+		options: [
+			isFreeMailOption,
+			facturxEmbedOption,
+			facturxValidateOption,
+			lookupVatRatesOption,
+			validateBicOption,
+			validateEmailOption,
+			validateGeoLocationOption,
+			validateIbanOption,
+			validatePhoneNumberOption,
+			validateVatOption,
+			verifyDomainOption,
+		],
 		default: '',
 	},
+	...isFreeMailDescription,
+	...facturxEmbedDescription,
+	...facturxValidateDescription,
+	...lookupVatRatesDescription,
+	...validateBicDescription,
+	...validateEmailDescription,
+	...validateGeoLocationDescription,
+	...validateIbanDescription,
+	...validatePhoneNumberDescription,
+	...validateVatDescription,
+	...verifyDomainDescription,
 ];

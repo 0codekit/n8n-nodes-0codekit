@@ -3,90 +3,63 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Remove Background Image',
-	value: OperationType.REMOVE_BACKGROUND,
-	description: 'Removes the background from an image using AI',
-	action: 'Remove background',
+	name: 'Generate Image',
+	value: OperationType.GENERATE_IMAGE,
+	description: 'Generates an image from text using AI',
+	action: 'Generate image',
 };
 
 export const description: INodeProperties[] = [
 	{
 		displayName: 'Prompt',
-		name: 'url',
+		name: 'prompt',
 		type: 'string',
+		required: true,
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.GENERATE_IMAGE],
-				dataType: ['imageUrl'],
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'The URL of the image to analyze',
+		description: 'The prompt to generate the image',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.GENERATE_IMAGE}`,
 				body: {
-					imageUrl: '={{$value.url}}',
+					prompt: '={{$value.prompt}}',
 				},
 			},
 		},
 	},
 	{
-		displayName: 'Image Buffer',
-		name: 'imageBuffer',
-		type: 'string',
-		typeOptions: {
-			rows: 5,
-		},
+		displayName: 'Number of Results',
+		name: 'n',
+		type: 'number',
+		required: true,
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.GENERATE_IMAGE],
-				dataType: ['imageBuffer'],
 			},
 		},
-		default: '',
-		placeholder: 'Base64-encoded image data',
-		description: 'Base64-encoded image data for text recognition',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.GENERATE_IMAGE}`,
-				body: {
-					buffer: '={{$value.imageBuffer}}',
-				},
-			},
-		},
+		default: 1,
+		description: 'The number of results to generate',
 	},
 	{
-		displayName: 'Get as URL',
-		name: 'getAsUrl',
-		type: 'boolean',
-		default: false,
+		displayName: 'Resolution',
+		name: 'size',
+		type: 'string',
+		required: true,
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
-				operation: [OperationType.REMOVE_BACKGROUND],
+				operation: [OperationType.GENERATE_IMAGE],
 			},
 		},
+		default: '512x512',
 		description:
-			'Whether to return the result as a URL or as a Base64-encoded image. If true, the result will be a URL to the processed image; if false, it will be a Base64-encoded string.',
-	},
-	{
-		displayName: 'URL Filename',
-		name: 'urlFilename',
-		type: 'string',
-		default: 'image.png',
-		displayOptions: {
-			show: {
-				resource: [ResourceType.AI],
-				operation: [OperationType.REMOVE_BACKGROUND],
-				getAsUrl: [true],
-			},
-		},
-		description: 'The filename to use for the generated URL',
+			'The resolution of the image, only works for "256x256", "512x512", and "1024x1024"',
 	},
 ];

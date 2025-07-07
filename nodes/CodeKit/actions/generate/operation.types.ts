@@ -1,0 +1,14 @@
+export enum OperationType {
+	CITY = 'city',
+	COLOR = 'color',
+	HTML_SCRAPE = 'html-scrape',
+	JSONWEBTOKEN_DECODE = 'jsonwebtoken-decode',
+	JSONWEBTOKEN_ENCODE = 'jsonwebtoken-encode',
+	MOCKDATA_USER = 'mockdata-user',
+	NAME = 'name',
+	NUMBER = 'number',
+	PICTURE = 'picture',
+	QRCODE = 'qrcode',
+	SHORTENED_URL = 'shortenedUrl',
+	STRING = 'string',
+}

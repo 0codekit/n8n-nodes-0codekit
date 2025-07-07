@@ -1,0 +1,64 @@
+import { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
+import { OperationType } from './operation.types';
+
+export const option = {
+	name: 'Regex',
+	value: OperationType.REGEX,
+	description: 'Evaluate text against a regex',
+	action: 'Regex',
+};
+
+export const description: INodeProperties[] = [
+	{
+		displayName: 'Text',
+		name: 'text',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.REGEX],
+			},
+		},
+		default: '',
+		description: 'The text to evaluate',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.TEXT}/${OperationType.REGEX}`,
+				body: {
+					text: '={{$value.text}}',
+				},
+			},
+		},
+	},
+	{
+		displayName: 'Pattern',
+		name: 'pattern',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.REGEX],
+			},
+		},
+		default: '',
+		description: 'The regex pattern to match against',
+		placeholder: '[a-zA-Z0-9]+',
+	},
+	{
+		displayName: 'Flags',
+		name: 'flags',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.REGEX],
+			},
+		},
+		default: 'g',
+		description: 'Regex flags (e.g., g, i, m)',
+	},
+];
