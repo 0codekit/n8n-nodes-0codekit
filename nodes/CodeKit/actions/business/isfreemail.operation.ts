@@ -24,12 +24,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.IS_FREE_MAIL],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.IS_FREE_MAIL],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.IS_FREE_MAIL}`,
 				body: {
-					email: '={{$value.email}}',
+					email: '={{$parameter.email}}',
 				},
 			},
 		},

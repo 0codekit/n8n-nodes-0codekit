@@ -25,15 +25,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description:
 			'The main string you want to match against the target list. Typically, this is the name or entity you are searching for.',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.FUZZY_MATCH}`,
-				body: {
-					queryString: '={{$value.queryString}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Context',
@@ -111,6 +102,30 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.FUZZY_MATCH],
+			},
+		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.FUZZY_MATCH],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.FUZZY_MATCH}`,
+				body: {
+					queryString: '={{$parameter.queryString}}',
+					context: '={{$parameter.context}}',
+					targetListUI: '={{$parameter.targetListUI}}',
+					optionsListUI: '={{$parameter.optionsListUI}}',
+				},
 			},
 		},
 	},

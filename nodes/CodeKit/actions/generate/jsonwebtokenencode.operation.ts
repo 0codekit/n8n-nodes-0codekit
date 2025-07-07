@@ -83,5 +83,25 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'Token expiration time (e.g., "1h", "7d", "30m")',
 		placeholder: '1h',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.JSONWEBTOKEN_ENCODE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.JSONWEBTOKEN_ENCODE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

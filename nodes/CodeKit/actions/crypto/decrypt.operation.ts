@@ -67,5 +67,25 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'AES',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CRYPTO],
+				operation: [OperationType.DECRYPT],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CRYPTO/OperationType.DECRYPT,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

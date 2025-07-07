@@ -22,13 +22,7 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.SCHEDULER],
 				operation: [SchedulerOperation.ADD],
 			},
-		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/operator/scheduler/add',
-				body: {
-					taskName: '={{$value.taskName}}',
+		}',
 					schedule: '={{$value.schedule}}',
 					url: '={{$value.url}}',
 					method: '={{$value.method}}',
@@ -106,6 +100,26 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.SCHEDULER],
 				operation: [SchedulerOperation.ADD],
+			},
+		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.SCHEDULER],
+				operation: [SchedulerOperation.ADD],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.SCHEDULER/SchedulerOperation.ADD,
+				body: {
+					
+				},
 			},
 		},
 	},

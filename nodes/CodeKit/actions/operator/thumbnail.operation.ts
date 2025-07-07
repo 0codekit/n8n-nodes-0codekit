@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.THUMBNAIL],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.THUMBNAIL],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/operator/thumbnail',
+				url: /ResourceType.OPERATOR/OperatorOperation.THUMBNAIL,
 				body: {
-					videoUrl: '={{$value.videoUrl}}',
+					
 				},
 			},
 		},

@@ -72,5 +72,25 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether to maintain the original aspect ratio',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.RESIZE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.IMAGE/OperationType.RESIZE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

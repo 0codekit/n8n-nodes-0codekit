@@ -60,5 +60,25 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether to verify the token signature',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.JSONWEBTOKEN_DECODE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.JSONWEBTOKEN_DECODE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

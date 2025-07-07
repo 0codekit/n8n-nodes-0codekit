@@ -79,5 +79,25 @@ export const description: INodeProperties[] = [
 				property: 'buffer',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: ['image'],
+				operation: [OperationType.EXIF],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /'image'/OperationType.EXIF,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

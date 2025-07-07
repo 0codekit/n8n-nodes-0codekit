@@ -24,12 +24,24 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'https://example.com/image.jpg',
 		description: 'The URL of the image to be checked',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.DETECT_ADULT_CONTENT],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.DETECT_ADULT_CONTENT}`,
 				body: {
-					imageUrl: '={{$value.imageUrl}}',
+					imageUrl: '={{$parameter.imageUrl}}',
 				},
 			},
 		},

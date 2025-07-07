@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'URL of the image you want to analyse',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.DETECT_FACE],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.DETECT_FACE}`,
 				body: {
-					imageUrl: '={{$value.imageUrl}}',
+					imageUrl: '={{$parameter.imageUrl}}',
 				},
 			},
 		},

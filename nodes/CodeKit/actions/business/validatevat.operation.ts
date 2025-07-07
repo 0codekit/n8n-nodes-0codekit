@@ -24,6 +24,18 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VALIDATE_VAT],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_VAT],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',

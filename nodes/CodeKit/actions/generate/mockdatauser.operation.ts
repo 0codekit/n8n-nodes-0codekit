@@ -64,5 +64,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 'en_US',
 		description: 'Locale for the generated data',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.MOCKDATA_USER],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.MOCKDATA_USER,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

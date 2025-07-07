@@ -23,18 +23,6 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.BARCODE_ENCODE],
 			},
 		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/generate/barcode/encode',
-				body: {
-					text: '={{$value.text}}',
-					format: '={{$value.format}}',
-					width: '={{$value.width}}',
-					height: '={{$value.height}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Format',
@@ -94,6 +82,25 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.GENERATE],
 				operation: [OperationType.BARCODE_ENCODE],
+			},
+		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.BARCODE_ENCODE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OTaeeinopprty.BARCODE_ENCODE,
+				body: {},
 			},
 		},
 	},

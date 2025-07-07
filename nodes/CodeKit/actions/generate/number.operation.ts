@@ -46,5 +46,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 100,
 		description: 'End of the range',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.NUMBER],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.NUMBER,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

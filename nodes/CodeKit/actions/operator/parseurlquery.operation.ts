@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.PARSE_URL_QUERY],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.PARSE_URL_QUERY],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/operator/parseurlquery',
+				url: /ResourceType.OPERATOR/OperatorOperation.PARSE_URL_QUERY,
 				body: {
-					url: '={{$value.url}}',
+					
 				},
 			},
 		},

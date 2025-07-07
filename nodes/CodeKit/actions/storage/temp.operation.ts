@@ -57,5 +57,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.STORAGE],
+				operation: [OperationType.TEMP],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.STORAGE/OperationType.TEMP,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

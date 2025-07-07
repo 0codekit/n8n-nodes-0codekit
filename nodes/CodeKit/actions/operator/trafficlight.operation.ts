@@ -22,13 +22,7 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.TRAFFIC_LIGHT],
 			},
-		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/operator/trafficlight',
-				body: {
-					identifier: '={{$value.identifier}}',
+		}',
 					limit: '={{$value.limit}}',
 					timeWindow: '={{$value.timeWindow}}',
 				},
@@ -61,6 +55,26 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.TRAFFIC_LIGHT],
+			},
+		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.TRAFFIC_LIGHT],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.OPERATOR/OperatorOperation.TRAFFIC_LIGHT,
+				body: {
+					
+				},
 			},
 		},
 	},

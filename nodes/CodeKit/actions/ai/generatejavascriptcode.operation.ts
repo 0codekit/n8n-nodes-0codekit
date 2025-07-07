@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The prompt to generate the Code',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.GENERATE_JAVASCRIPT_CODE],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.GENERATE_JAVASCRIPT_CODE}`,
 				body: {
-					prompt: '={{$value.prompt}}',
+					prompt: '={{$parameter.prompt}}',
 				},
 			},
 		},

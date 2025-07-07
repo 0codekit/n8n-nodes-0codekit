@@ -125,5 +125,25 @@ export const description: INodeProperties[] = [
 			},
 		},
 		description: 'The filename to use for the generated URL',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.IMAGE],
+				operation: [OperationType.BLUR],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.IMAGE/OperationType.BLUR,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

@@ -96,5 +96,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CODE],
+				operation: [OperationType.ASYNC_PYTHON],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CODE/OperationType.ASYNC_PYTHON,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

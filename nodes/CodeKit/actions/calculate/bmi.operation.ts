@@ -47,5 +47,25 @@ export const description: INodeProperties[] = [
 				property: 'weight',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CALCULATE],
+				operation: [OperationType.BMI],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CALCULATE/OperationType.BMI,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The text you want to translate',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.TRANSLATE}`,
-				body: {
-					text: '={{$value.text}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Result Language',
@@ -58,5 +49,27 @@ export const description: INodeProperties[] = [
 		},
 		default: 'en',
 		description: 'The language to translate to',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.TRANSLATE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.TRANSLATE}`,
+				body: {
+					text: '={{$parameter.text}}',
+					resultLang: '={{$parameter.resultLang}}',
+				},
+			},
+		},
 	},
 ];

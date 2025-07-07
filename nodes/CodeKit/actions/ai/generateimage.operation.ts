@@ -23,15 +23,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The prompt to generate the image',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.GENERATE_IMAGE}`,
-				body: {
-					prompt: '={{$value.prompt}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Number of Results',
@@ -61,5 +52,28 @@ export const description: INodeProperties[] = [
 		default: '512x512',
 		description:
 			'The resolution of the image, only works for "256x256", "512x512", and "1024x1024"',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.GENERATE_IMAGE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.GENERATE_IMAGE}`,
+				body: {
+					prompt: '={{$parameter.prompt}}',
+					n: '={{$parameter.n}}',
+					size: '={{$parameter.size}}',
+				},
+			},
+		},
 	},
 ];

@@ -32,5 +32,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CONVERT],
+				operation: [OperationType.MSG_TO_JSON],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CONVERT/OperationType.MSG_TO_JSON,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

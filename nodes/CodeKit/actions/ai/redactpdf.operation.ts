@@ -25,15 +25,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description:
 			'A prompt that describes what content inside of the file should be considered as sensitive data. E.g (All information that have the words Adobe in it).',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.REDACT_PDF}`,
-				body: {
-					sensitiveContent: '={{$value.sensitiveContent}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'File Name',
@@ -86,5 +77,30 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: true,
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.REDACT_PDF],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.REDACT_PDF}`,
+				body: {
+					sensitiveContent: '={{$parameter.sensitiveContent}}',
+					fileName: '={{$parameter.fileName}}',
+					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
+				},
+			},
+		},
 	},
 ];

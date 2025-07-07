@@ -24,12 +24,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VALIDATE_EMAIL],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_EMAIL],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_EMAIL}`,
 				body: {
-					email: '={{$value.email}}',
+					email: '={{$parameter.email}}',
 				},
 			},
 		},

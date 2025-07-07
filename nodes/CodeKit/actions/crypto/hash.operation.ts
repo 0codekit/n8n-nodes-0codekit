@@ -75,5 +75,25 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'SHA256',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CRYPTO],
+				operation: [OperationType.HASH],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CRYPTO/OperationType.HASH,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

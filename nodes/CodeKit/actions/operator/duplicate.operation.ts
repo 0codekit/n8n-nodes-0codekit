@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.DUPLICATE],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.DUPLICATE],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/operator/duplicate',
+				url: /ResourceType.OPERATOR/OperatorOperation.DUPLICATE,
 				body: {
-					list: '={{$value.list}}',
+					
 				},
 			},
 		},

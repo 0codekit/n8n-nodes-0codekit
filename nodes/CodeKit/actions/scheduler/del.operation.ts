@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.SCHEDULER],
 				operation: [SchedulerOperation.DELETE],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.SCHEDULER],
+				operation: [SchedulerOperation.DELETE],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/operator/scheduler/del',
+				url: /ResourceType.SCHEDULER/SchedulerOperation.DELETE,
 				body: {
-					taskId: '={{$value.taskId}}',
+					
 				},
 			},
 		},

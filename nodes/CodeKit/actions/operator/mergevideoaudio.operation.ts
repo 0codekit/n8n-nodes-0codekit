@@ -22,13 +22,7 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
 			},
-		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/operator/merge-video-audio',
-				body: {
-					videoUrl: '={{$value.videoUrl}}',
+		}',
 					audioUrl: '={{$value.audioUrl}}',
 				},
 			},
@@ -45,6 +39,26 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+			},
+		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.OPERATOR/OperatorOperation.MERGE_VIDEO_AUDIO,
+				body: {
+					
+				},
 			},
 		},
 	},

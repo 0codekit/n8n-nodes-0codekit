@@ -72,5 +72,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 'nature',
 		description: 'Category of the image',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.PICTURE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.PICTURE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

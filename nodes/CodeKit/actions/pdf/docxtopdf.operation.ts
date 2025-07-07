@@ -56,5 +56,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.DOCX_TO_PDF],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.PDF/OperationType.DOCX_TO_PDF,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

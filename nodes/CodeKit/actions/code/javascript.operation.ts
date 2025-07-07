@@ -28,5 +28,25 @@ export const description: INodeProperties[] = [
 				property: 'code',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: ['code'],
+				operation: [OperationType.JAVASCRIPT],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /'code'/OperationType.JAVASCRIPT,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

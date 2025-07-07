@@ -76,5 +76,25 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'Date for conversion rate (YYYY-MM-DD)',
 		placeholder: '2023-01-01',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CONVERT],
+				operation: [OperationType.CURRENCY],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CONVERT/OperationType.CURRENCY,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

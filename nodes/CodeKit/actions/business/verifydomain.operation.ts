@@ -23,6 +23,18 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VERIFY_DOMAIN],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VERIFY_DOMAIN],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',

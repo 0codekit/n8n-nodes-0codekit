@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The text you want to analyse',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.CHECK_CONTENT_POLICY],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.CHECK_CONTENT_POLICY}`,
 				body: {
-					prompt: '={{$value.prompt}}',
+					prompt: '={{$parameter.prompt}}',
 				},
 			},
 		},

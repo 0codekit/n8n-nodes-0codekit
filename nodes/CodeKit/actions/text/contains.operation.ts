@@ -59,5 +59,25 @@ export const description: INodeProperties[] = [
 		},
 		default: true,
 		description: 'Whether the search should be case sensitive',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.CONTAINS],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.TEXT/OperationType.CONTAINS,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

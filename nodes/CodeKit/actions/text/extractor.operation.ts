@@ -87,5 +87,25 @@ export const description: INodeProperties[] = [
 				property: 'greedy',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: ['text'],
+				operation: [OperationType.EXTRACTOR],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /'text'/OperationType.EXTRACTOR,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

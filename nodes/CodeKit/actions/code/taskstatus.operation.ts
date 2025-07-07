@@ -28,5 +28,25 @@ export const description: INodeProperties[] = [
 				property: 'taskId',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: ['code'],
+				operation: [OperationType.TASK_STATUS],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /'code'/OperationType.TASK_STATUS,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

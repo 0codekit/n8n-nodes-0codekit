@@ -33,5 +33,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.MARKDOWN_TO_PDF],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.PDF/OperationType.MARKDOWN_TO_PDF,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.FACTURX],
 				operation: [FacturxOperation.VALIDATE],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.FACTURX],
+				operation: [FacturxOperation.VALIDATE],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/business/facturx/validate',
+				url: /ResourceType.FACTURX/FacturxOperation.VALIDATE,
 				body: {
-					xml: '={{$value.xml}}',
+					
 				},
 			},
 		},

@@ -91,5 +91,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 200,
 		description: 'Size of the QR code in pixels',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.QRCODE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.QRCODE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

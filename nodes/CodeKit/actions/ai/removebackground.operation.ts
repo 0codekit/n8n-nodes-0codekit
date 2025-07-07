@@ -51,15 +51,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'https://example.com/image.jpg',
 		description: 'The URL of the image to analyze',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.REMOVE_BACKGROUND}`,
-				body: {
-					imageUrl: '={{$value.url}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Image Buffer',
@@ -78,16 +69,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'Base64-encoded image data',
 		description: 'Base64-encoded image data for text recognition',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.REMOVE_BACKGROUND}`,
-				body: {
-					buffer: '={{$value}}',
-					getAsUrl: '={{$parameter.getAsUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Get as URL',
@@ -116,5 +97,30 @@ export const description: INodeProperties[] = [
 			},
 		},
 		description: 'The filename to use for the generated URL',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.REMOVE_BACKGROUND],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.REMOVE_BACKGROUND}`,
+				body: {
+					dataType: '={{$parameter.dataType}}',
+					url: '={{$parameter.url}}',
+					imageBuffer: '={{$parameter.imageBuffer}}',
+					getAsUrl: '={{$parameter.getAsUrl}}',
+					urlFilename: '={{$parameter.urlFilename}}',
+				},
+			},
+		},
 	},
 ];

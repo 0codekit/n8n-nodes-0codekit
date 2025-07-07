@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Text for language detection',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.LANGUAGE_DETECTION],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.LANGUAGE_DETECTION}`,
 				body: {
-					text: '={{$value.text}}',
+					text: '={{$parameter.text}}',
 				},
 			},
 		},

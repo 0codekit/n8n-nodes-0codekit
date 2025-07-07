@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'PDF to extract text with AI',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.PDF_OCR],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.PDF_OCR}`,
 				body: {
-					pdfUrl: '={{$value.pdfUrl}}',
+					pdfUrl: '={{$parameter.pdfUrl}}',
 				},
 			},
 		},

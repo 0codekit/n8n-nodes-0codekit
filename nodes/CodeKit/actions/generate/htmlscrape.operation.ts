@@ -60,5 +60,25 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether to wait for the element to appear',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.HTML_SCRAPE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.HTML_SCRAPE,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

@@ -67,5 +67,25 @@ export const description: INodeProperties[] = [
 				property: 'algorithm',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: ['text'],
+				operation: [OperationType.COMPARE_STRING],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /'text'/OperationType.COMPARE_STRING,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

@@ -22,13 +22,7 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.ADVANCED_SWITCH],
 			},
-		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/operator/advancedswitch',
-				body: {
-					jsonObject: '={{$value.jsonObject}}',
+		}',
 					keys: '={{$value.keys}}',
 				},
 			},
@@ -44,6 +38,26 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.ADVANCED_SWITCH],
+			},
+		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.ADVANCED_SWITCH],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.OPERATOR/OperatorOperation.ADVANCED_SWITCH,
+				body: {
+					
+				},
 			},
 		},
 	},

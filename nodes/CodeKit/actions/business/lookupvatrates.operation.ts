@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.LOOKUP_VAT_RATES],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.LOOKUP_VAT_RATES],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.LOOKUP_VAT_RATES}`,
 				body: {
-					countryCode: '={{$value.countryCode}}',
+					countryCode: '={{$parameter.countryCode}}',
 				},
 			},
 		},

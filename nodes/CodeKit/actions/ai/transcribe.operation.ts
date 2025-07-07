@@ -52,15 +52,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'https://example.com/audio.mp3',
 		description: 'The URL of the audio file to transcribe',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.TRANSCRIBE}`,
-				body: {
-					url: '={{$value.audioUrl}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Audio Buffer',
@@ -79,15 +70,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'The Base64-encoded audio file',
 		description: 'The Base64-encoded audio file. Can be provided instead of URL.',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.TRANSCRIBE}`,
-				body: {
-					buffer: '={{$value.audioBuffer}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Result Language',
@@ -102,5 +84,29 @@ export const description: INodeProperties[] = [
 		},
 		default: 'en',
 		description: 'The audio language. Default is en.',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.TRANSCRIBE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.TRANSCRIBE}`,
+				body: {
+					dataType: '={{$parameter.dataType}}',
+					url: '={{$parameter.url}}',
+					audioBuffer: '={{$parameter.audioBuffer}}',
+					resultLang: '={{$parameter.resultLang}}',
+				},
+			},
+		},
 	},
 ];

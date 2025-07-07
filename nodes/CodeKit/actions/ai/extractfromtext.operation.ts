@@ -24,15 +24,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The text in which the information will be searched',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.AI}/${OperationType.EXTRACT_FROM_TEXT}`,
-				body: {
-					text: '={{$value.text}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Context',
@@ -94,6 +85,29 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.EXTRACT_FROM_TEXT],
+			},
+		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.EXTRACT_FROM_TEXT],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.AI}/${OperationType.EXTRACT_FROM_TEXT}`,
+				body: {
+					text: '={{$parameter.text}}',
+					context: '={{$parameter.context}}',
+					fieldsUI: '={{$parameter.fieldsUI}}',
+				},
 			},
 		},
 	},

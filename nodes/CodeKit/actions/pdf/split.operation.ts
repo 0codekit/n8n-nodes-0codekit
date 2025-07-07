@@ -22,16 +22,6 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Public URL of the PDF file',
-		routing: {
-			request: {
-				method: 'POST',
-				url: `/${ResourceType.PDF}/${OperationType.SPLIT}`,
-				body: {
-					url: '={{$parameter.url}}',
-					buffer: '={{$parameter.buffer}}',
-				},
-			},
-		},
 	},
 	{
 		displayName: 'Buffer',
@@ -45,13 +35,25 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Buffer of the PDF',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.SPLIT],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.PDF}/${OperationType.SPLIT}`,
 				body: {
-					buffer: '={{$parameter.buffer}}',
 					url: '={{$parameter.url}}',
+					buffer: '={{$parameter.buffer}}',
 				},
 			},
 		},

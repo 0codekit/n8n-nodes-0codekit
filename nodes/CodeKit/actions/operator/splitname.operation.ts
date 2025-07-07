@@ -22,13 +22,27 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.OPERATOR],
 				operation: [OperatorOperation.SPLIT_NAME],
 			},
+		}',
+				},
+			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.SPLIT_NAME],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: '/operator/splitname',
+				url: /ResourceType.OPERATOR/OperatorOperation.SPLIT_NAME,
 				body: {
-					fullName: '={{$value.fullName}}',
+					
 				},
 			},
 		},

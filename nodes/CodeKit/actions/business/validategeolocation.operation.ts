@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VALIDATE_GEO_LOCATION],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_GEO_LOCATION],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_GEO_LOCATION}`,
 				body: {
-					address: '={{$value.address}}',
+					address: '={{$parameter.address}}',
 				},
 			},
 		},

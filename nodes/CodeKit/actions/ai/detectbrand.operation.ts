@@ -24,12 +24,24 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: 'https://example.com/image.jpg',
 		description: 'Image for brand detection',
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.DETECT_BRAND],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.DETECT_BRAND}`,
 				body: {
-					imageUrl: '={{$value.imageUrl}}',
+					imageUrl: '={{$parameter.imageUrl}}',
 				},
 			},
 		},

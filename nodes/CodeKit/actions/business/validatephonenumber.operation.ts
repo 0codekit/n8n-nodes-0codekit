@@ -39,4 +39,26 @@ export const description: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_PHONE_NUMBER],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_PHONE_NUMBER}`,
+				body: {
+					phoneNumber: '={{$value.phoneNumber}}',
+					countryCode: '={{$value.countryCode}}',
+				},
+			},
+		},
+	},
 ];

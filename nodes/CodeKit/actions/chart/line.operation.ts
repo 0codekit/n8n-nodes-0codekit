@@ -22,13 +22,7 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CHART],
 				operation: [ChartOperation.LINE],
 			},
-		},
-		routing: {
-			request: {
-				method: 'POST',
-				url: '/generate/chart/line',
-				body: {
-					chartData: '={{$value.chartData}}',
+		}',
 					chartOptions: '={{$value.chartOptions}}',
 					width: '={{$value.width}}',
 					height: '={{$value.height}}',
@@ -72,6 +66,26 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: [ResourceType.CHART],
 				operation: [ChartOperation.LINE],
+			},
+		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CHART/ChartOperation.LINE,
+				body: {
+					
+				},
 			},
 		},
 	},

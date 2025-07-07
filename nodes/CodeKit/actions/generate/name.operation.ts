@@ -55,5 +55,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 'any',
 		description: 'Gender for the name',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.NAME],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.NAME,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

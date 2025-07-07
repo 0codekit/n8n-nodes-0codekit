@@ -82,5 +82,25 @@ export const description: INodeProperties[] = [
 				},
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.COMPRESS],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.PDF/OperationType.COMPRESS,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

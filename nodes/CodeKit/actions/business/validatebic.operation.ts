@@ -23,12 +23,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VALIDATE_BIC],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_BIC],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_BIC}`,
 				body: {
-					bic: '={{$value.bic}}',
+					bic: '={{$parameter.bic}}',
 				},
 			},
 		},

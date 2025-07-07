@@ -60,5 +60,25 @@ export const description: INodeProperties[] = [
 		},
 		default: 'g',
 		description: 'Regex flags (e.g., g, i, m)',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.REGEX],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.TEXT/OperationType.REGEX,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

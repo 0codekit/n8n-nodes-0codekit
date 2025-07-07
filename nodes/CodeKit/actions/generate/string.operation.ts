@@ -84,5 +84,25 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether to include symbols in the generated string',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.GENERATE],
+				operation: [OperationType.STRING],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.GENERATE/OperationType.STRING,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

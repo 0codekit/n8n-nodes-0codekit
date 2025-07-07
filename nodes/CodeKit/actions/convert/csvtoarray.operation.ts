@@ -45,5 +45,25 @@ export const description: INodeProperties[] = [
 		},
 		default: ',',
 		description: 'CSV separator character',
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CONVERT],
+				operation: [OperationType.CSV_TO_ARRAY],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CONVERT/OperationType.CSV_TO_ARRAY,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];

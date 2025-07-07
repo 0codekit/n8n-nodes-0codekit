@@ -24,12 +24,24 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.VALIDATE_IBAN],
 			},
 		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.BUSINESS],
+				operation: [OperationType.VALIDATE_IBAN],
+			},
+		},
+		default: '',
 		routing: {
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.BUSINESS}/${OperationType.VALIDATE_IBAN}`,
 				body: {
-					iban: '={{$value.iban}}',
+					iban: '={{$parameter.iban}}',
 				},
 			},
 		},

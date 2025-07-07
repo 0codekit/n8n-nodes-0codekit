@@ -47,5 +47,25 @@ export const description: INodeProperties[] = [
 				property: 'endPoint',
 			},
 		},
+	},	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CALCULATE],
+				operation: [OperationType.GEODISTANCE_V2],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: /ResourceType.CALCULATE/OperationType.GEODISTANCE_V2,
+				body: {
+					
+				},
+			},
+		},
 	},
 ];
