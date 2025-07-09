@@ -1,11 +1,13 @@
 import type { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
+import { createDependenciesUIProperty, setDependencies } from './shared';
 
 export const option = {
 	name: 'Javascript',
 	value: OperationType.JAVASCRIPT,
-	description: 'Run Javascript via API',
+	description:
+		'This endpoint runs JavaScript code in a Linux sandbox using the Bun JavaScript runtime. You can return data from the code using a top-level return statement or by setting the global result variable. Logging something to the console has no effect. To import dependencies, use the require function. All dependencies will be automatically downloaded and installed for you, with the exception of native system dependencies. There is a time limit of 180s and a memory limit of 512MB applied to your code, which also includes the dependency download process. One execution of this module costs 50 credits.',
 	action: 'Run javascript code',
 };
 
@@ -22,39 +24,13 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Your javascript code',
-	},
-	{
-		displayName: 'Dependencies',
-		name: 'dependencies',
-		type: 'collection',
-		placeholder: 'Add Dependency',
-		default: {},
-		displayOptions: {
-			show: {
-				operation: [OperationType.JAVASCRIPT],
-				resource: [ResourceType.CODE],
-			},
+		typeOptions: {
+			rows: 4,
 		},
-		options: [
-			{
-				displayName: 'Name',
-				name: 'name',
-				type: 'string',
-				default: '',
-				description: 'Name of the dependency, e.g. "lodash"',
-			},
-			{
-				displayName: 'Version',
-				name: 'version',
-				type: 'string',
-				default: '',
-				description: 'Version of the dependency, e.g. "4.17.21"',
-			},
-		],
-		description:
-			'The system dependencies your JavaScript code requires. These will be installed using apk, the Alpine Package manager.',
+		placeholder: 'const _ = require("lodash"); return {data: _.chunk(["a", "b", "c", "d"], 2)};',
+		description: 'The JavaScript code that will be executed',
 	},
+	createDependenciesUIProperty([OperationType.JAVASCRIPT]),
 	{
 		displayName: '',
 		name: 'routing',
@@ -67,12 +43,14 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		routing: {
+			send: {
+				preSend: [setDependencies],
+			},
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.CODE}/${OperationType.JAVASCRIPT}`,
 				body: {
 					code: '={{$parameter.code}}',
-					dependencies: '={{$parameter.dependencies}}',
 				},
 			},
 		},

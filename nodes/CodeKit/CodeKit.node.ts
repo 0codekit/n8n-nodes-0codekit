@@ -39,7 +39,8 @@ export class CodeKit implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: 'https://prod.0codekit.com',
+			baseURL: 'https://dev.0codekit.com',
+			// baseURL: 'https://prod.0codekit.com',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
