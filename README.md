@@ -223,36 +223,6 @@ For detailed setup instructions, check out our [introduction video](https://docs
 - [0CodeKit Sign Up](https://my.0codekit.com/en/dashboard/account?utm_source=github&utm_medium=readme&utm_campaign=n8n-integration)
 - [Interactive API Explorer](https://scalar.0codekit.com/)
 
-## Version History
-
-### 0.3.1 (Latest)
-
-- Enhanced API compatibility
-- Bug fixes and performance improvements
-- Updated documentation
-
-### 0.3.0
-
-- Added new AI operations
-- Improved error handling
-- Enhanced credential management
-
-### 0.2.0
-
-- Added PDF operations
-- Introduced storage capabilities
-- Performance optimizations
-
-### 0.1.0
-
-- Initial release
-- Basic operations for Generate, Image, and Text resources
-- Community node version 1.0 based on 0CodeKit (formerly 1SaaS) version 2.0
-
-## Contributing
-
-We welcome contributions! Please read our contributing guidelines and submit pull requests for any improvements.
-
 ## License
 
 MIT License - see [LICENSE.md](LICENSE.md) for details.
