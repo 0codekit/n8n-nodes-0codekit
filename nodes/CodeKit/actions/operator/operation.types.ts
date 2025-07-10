@@ -1,0 +1,16 @@
+export enum OperatorOperation {
+	TRAFFIC_LIGHT = 'trafficlight',
+	DUPLICATE = 'duplicate',
+	GENDER = 'gender',
+	PARSE_URL_QUERY = 'parseurlquery',
+	LOGO = 'logo',
+	THUMBNAIL = 'thumbnail',
+	ADVANCED_SWITCH = 'advancedswitch',
+	SPLIT_NAME = 'splitname',
+	URL_EXPANDER = 'urlexpander',
+	UTM_BUILD = 'utmbuild',
+	UTM_PARSE = 'utmparse',
+	HTML_PARSER_GET = 'htmlparserget',
+	MERGE_VIDEO_AUDIO = 'mergevideoaudio',
+	EXTRACT_AUDIO = 'extractaudio',
+}

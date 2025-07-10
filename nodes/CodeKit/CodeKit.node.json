@@ -1,17 +1,17 @@
 {
-	"node": "n8n-nodes-base.codeKit",
+	"node": "n8n-nodes-base.0CodeKit",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Utility"],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://documenter.getpostman.com/view/18297710/UVkntwBv#authentication"
+				"url": "https://scalar.0codekit.com/"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://documenter.getpostman.com/view/18297710/UVkntwBv"
+				"url": "https://scalar.0codekit.com/"
 			}
 		]
 	}

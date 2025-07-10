@@ -1,0 +1,90 @@
+import { INodeProperties } from 'n8n-workflow';
+import { ResourceType } from '../resource.types';
+import { ChartOperation } from './operation.types';
+
+export const option = {
+	name: 'Line Chart',
+	value: ChartOperation.LINE,
+	description: 'Generate a line chart',
+	action: 'Generate a line chart',
+};
+
+export const description: INodeProperties[] = [
+	{
+		displayName: 'Chart Data',
+		name: 'chartData',
+		type: 'json',
+		required: true,
+		default: '{}',
+		description: 'Chart data in JSON format',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+	},
+	{
+		displayName: 'Chart Options',
+		name: 'chartOptions',
+		type: 'json',
+		default: '{}',
+		description: 'Chart options in JSON format',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+	},
+	{
+		displayName: 'Width',
+		name: 'width',
+		type: 'number',
+		default: 800,
+		description: 'Width of the chart in pixels',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+	},
+	{
+		displayName: 'Height',
+		name: 'height',
+		type: 'number',
+		default: 600,
+		description: 'Height of the chart in pixels',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+	},
+	{
+		displayName: '',
+		name: 'routing',
+		type: 'hidden',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.CHART],
+				operation: [ChartOperation.LINE],
+			},
+		},
+		default: '',
+		routing: {
+			request: {
+				method: 'POST',
+				url: `/generate/${ResourceType.CHART}/${ChartOperation.LINE}`,
+				body: {
+					chartData: '={{$parameter.chartData}}',
+					chartOptions: '={{$parameter.chartOptions}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
+				},
+			},
+		},
+	},
+];
