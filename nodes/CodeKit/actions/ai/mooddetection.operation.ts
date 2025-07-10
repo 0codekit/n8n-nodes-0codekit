@@ -15,6 +15,9 @@ export const description: INodeProperties[] = [
 		name: 'text',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 5,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],

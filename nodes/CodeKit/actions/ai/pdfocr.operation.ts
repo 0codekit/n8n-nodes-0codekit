@@ -3,10 +3,9 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'PDF OCR',
+	name: 'Extract Text PDF',
 	value: OperationType.PDF_OCR,
-	description: 'Extract text from PDF with AI',
-	action: 'Extracts text from PDF with AI',
+	action: 'Extract text from PDF using OCR',
 };
 
 export const description: INodeProperties[] = [

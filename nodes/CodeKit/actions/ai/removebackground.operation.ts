@@ -54,7 +54,7 @@ export const description: INodeProperties[] = [
 	},
 	{
 		displayName: 'Image Buffer',
-		name: 'imageBuffer',
+		name: 'buffer',
 		type: 'string',
 		typeOptions: {
 			rows: 5,
@@ -85,8 +85,8 @@ export const description: INodeProperties[] = [
 			'Whether to return the result as a URL or as a Base64-encoded image. If true, the result will be a URL to the processed image; if false, it will be a Base64-encoded string.',
 	},
 	{
-		displayName: 'URL Filename',
-		name: 'urlFilename',
+		displayName: 'File Name',
+		name: 'fileName',
 		type: 'string',
 		default: 'image.png',
 		displayOptions: {
@@ -114,11 +114,10 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.REMOVE_BACKGROUND}`,
 				body: {
-					dataType: '={{$parameter.dataType}}',
 					url: '={{$parameter.url}}',
-					imageBuffer: '={{$parameter.imageBuffer}}',
+					buffer: '={{$parameter.buffer}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
-					urlFilename: '={{$parameter.urlFilename}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

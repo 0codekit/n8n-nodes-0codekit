@@ -1,4 +1,10 @@
-import { INodeProperties } from 'n8n-workflow';
+import {
+	IDataObject,
+	IExecuteSingleFunctions,
+	IHttpRequestOptions,
+	INodeProperties,
+} from 'n8n-workflow';
+import { mapArrayOfObjectsToStringArray } from '../../helpers/utils';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
@@ -16,6 +22,9 @@ export const description: INodeProperties[] = [
 		name: 'queryString',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 5,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
@@ -46,7 +55,8 @@ export const description: INodeProperties[] = [
 		name: 'targetListUI',
 		placeholder: 'Add Additional Targets',
 		type: 'fixedCollection',
-		default: {},
+		required: true,
+		default: [],
 		typeOptions: {
 			multipleValues: true,
 		},
@@ -130,3 +140,15 @@ export const description: INodeProperties[] = [
 		},
 	},
 ];
+
+export async function setDependencies(
+	this: IExecuteSingleFunctions,
+	requestOptions: IHttpRequestOptions,
+): Promise<IHttpRequestOptions> {
+	const targetListUI = this.getNodeParameter('targetListUI') as IDataObject;
+	const targetListValues = targetListUI.targetList as IDataObject[];
+
+	const { body } = requestOptions;
+	body.targetList = mapArrayOfObjectsToStringArray(targetListValues);
+	return requestOptions;
+}

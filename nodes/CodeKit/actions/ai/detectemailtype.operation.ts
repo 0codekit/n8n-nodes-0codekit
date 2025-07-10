@@ -11,8 +11,8 @@ export const option = {
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
-		name: 'text',
+		displayName: 'Subject',
+		name: 'subject',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -22,7 +22,24 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Text you want to analyse',
+		description: 'The subject of the email you want to analyse',
+	},
+	{
+		displayName: 'Body',
+		name: 'body',
+		type: 'string',
+		required: true,
+		typeOptions: {
+			rows: 5,
+		},
+		displayOptions: {
+			show: {
+				resource: [ResourceType.AI],
+				operation: [OperationType.DETECT_EMAIL_TYPE],
+			},
+		},
+		default: '',
+		description: 'The body of the email you want to analyse',
 	},
 	{
 		displayName: '',
@@ -40,7 +57,8 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.AI}/${OperationType.DETECT_EMAIL_TYPE}`,
 				body: {
-					text: '={{$parameter.text}}',
+					subject: '={{$parameter.subject}}',
+					body: '={{$parameter.body}}',
 				},
 			},
 		},

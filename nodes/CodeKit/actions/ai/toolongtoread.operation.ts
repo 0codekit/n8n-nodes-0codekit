@@ -15,12 +15,16 @@ export const description: INodeProperties[] = [
 		name: 'prompt',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 5,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.TOO_LONG_TO_READ],
 			},
 		},
+		placeholder: 'Enter the text you want to summarize',
 		default: '',
 		description: 'The text you want to analyse',
 	},

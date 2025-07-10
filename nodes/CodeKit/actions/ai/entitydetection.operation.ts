@@ -5,8 +5,7 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Entity Detection',
 	value: OperationType.ENTITY_DETECTION,
-	description: 'Detects entities in a text with natural language processing AI',
-	action: 'Entity detection',
+	action: 'Detects entities in a text',
 };
 
 export const description: INodeProperties[] = [
@@ -15,6 +14,9 @@ export const description: INodeProperties[] = [
 		name: 'text',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 5,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],

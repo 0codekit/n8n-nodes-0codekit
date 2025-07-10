@@ -15,12 +15,16 @@ export const description: INodeProperties[] = [
 		name: 'prompt',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 5,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
 				operation: [OperationType.GENERATE_IMAGE],
 			},
 		},
+		placeholder: 'Describe the image you want to generate',
 		default: '',
 		description: 'The prompt to generate the image',
 	},
@@ -29,6 +33,10 @@ export const description: INodeProperties[] = [
 		name: 'n',
 		type: 'number',
 		required: true,
+		typeOptions: {
+			minValue: 1,
+			maxValue: 10,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.AI],
@@ -41,7 +49,7 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'Resolution',
 		name: 'size',
-		type: 'string',
+		type: 'options',
 		required: true,
 		displayOptions: {
 			show: {
@@ -49,6 +57,20 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.GENERATE_IMAGE],
 			},
 		},
+		options: [
+			{
+				name: '256x256',
+				value: '256x256',
+			},
+			{
+				name: '512x512',
+				value: '512x512',
+			},
+			{
+				name: '1024x1024',
+				value: '1024x1024',
+			},
+		],
 		default: '512x512',
 		description:
 			'The resolution of the image, only works for "256x256", "512x512", and "1024x1024"',
