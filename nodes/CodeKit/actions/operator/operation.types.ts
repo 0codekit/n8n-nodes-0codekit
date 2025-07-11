@@ -11,6 +11,7 @@ export enum OperatorOperation {
 	UTM_BUILD = 'utmbuild',
 	UTM_PARSE = 'utmparse',
 	HTML_PARSER_GET = 'htmlparserget',
-	MERGE_VIDEO_AUDIO = 'mergevideoaudio',
-	EXTRACT_AUDIO = 'extractaudio',
+	MERGE_VIDEO_AUDIO = 'merge-video-audio',
+	EXTRACT_AUDIO = 'extract-audio',
+	CONCAT_AUDIO = 'concat-audio',
 }

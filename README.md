@@ -1,8 +1,10 @@
 # n8n-nodes-0codekit
 
+> ⚠️ **PRE-RELEASE VERSION** - This is a pre-release version of the 0CodeKit n8n community nodes. Some features may be incomplete or subject to change. Use with caution in production environments.
+
 This is an n8n community node. It lets you use 0CodeKit in your n8n workflows.
 
-0CodeKit (formerly 1SaaS) brings you the tool platform for all your projects when working with low-code, no-code, APIs and automation. With over 100+ operations across multiple resources, 0CodeKit provides essential utilities for data processing, AI operations, image manipulation, PDF handling, and much more.
+0CodeKit brings you the tool platform for all your projects when working with low-code, no-code, APIs and automation. With over 100+ operations across multiple resources, 0CodeKit provides essential utilities for data processing, AI operations, image manipulation, PDF handling, and much more.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
@@ -21,14 +23,14 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 ### Community Installation
 
 1. Go to **Settings > Community Nodes** in your n8n instance
-2. Select **Install** and enter `n8n-nodes-0codekit`
+2. Select **Install** and enter `@0codekit/n8n-nodes-0codekit`
 3. Click **Install** and restart n8n
 
 ### Manual Installation
 
 ```bash
 # In your n8n root directory
-npm install n8n-nodes-0codekit
+npm install @0codekit/n8n-nodes-0codekit
 ```
 
 ## Operations
@@ -146,13 +148,6 @@ You need a 0CodeKit API key to use this node.
 5. Save the credential
 
 For detailed setup instructions, check out our [introduction video](https://docs.0codekit.com/).
-
-## Compatibility
-
-- **Minimum n8n version**: 0.198.0
-- **Tested with n8n versions**: 0.198.0 - 1.0.0+
-- **Node.js version**: >=20.15
-- **Known issues**: None
 
 ## Usage Examples
 

@@ -25,6 +25,42 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Audio Format',
+		name: 'audioFormat',
+		type: 'options',
+		required: true,
+		options: [
+			{
+				name: 'FLAC',
+				value: 'flac',
+			},
+			{
+				name: 'M4A',
+				value: 'm4a',
+			},
+			{
+				name: 'MP3',
+				value: 'mp3',
+			},
+			{
+				name: 'OGG',
+				value: 'ogg',
+			},
+			{
+				name: 'WAV',
+				value: 'wav',
+			},
+		],
+		default: 'mp3',
+		description: 'Format of the audio file to extract',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.EXTRACT_AUDIO],
+			},
+		},
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -38,9 +74,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.OPERATOR}/extractaudio`,
+				url: `/${ResourceType.OPERATOR}/${OperatorOperation.EXTRACT_AUDIO}`,
 				body: {
-					videoUrl: '={{$parameter.videoUrl}}',
+					video: '={{$parameter.videoUrl}}',
+					format: '={{$parameter.audioFormat}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

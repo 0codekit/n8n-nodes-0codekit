@@ -39,6 +39,19 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Output File Name',
+		name: 'fileName',
+		type: 'string',
+		default: 'merged-video-audio.mp4',
+		description: 'Name of the output file after merging video and audio',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.OPERATOR],
+				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+			},
+		},
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -52,10 +65,11 @@ export const description: INodeProperties[] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.OPERATOR}/mergevideoaudio`,
+				url: `/${ResourceType.OPERATOR}/${OperatorOperation.MERGE_VIDEO_AUDIO}`,
 				body: {
 					videoUrl: '={{$parameter.videoUrl}}',
 					audioUrl: '={{$parameter.audioUrl}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},
