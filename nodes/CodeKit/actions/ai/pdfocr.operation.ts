@@ -3,8 +3,9 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Extract Text PDF',
+	name: 'Extract Text From PDF',
 	value: OperationType.PDF_OCR,
+	description: 'Extract text from PDF documents using optical character recognition',
 	action: 'Extract text from PDF using OCR',
 };
 
@@ -21,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'PDF to extract text with AI',
+		placeholder: 'e.g. https://example.com/document.pdf',
+		description: 'The URL of the PDF document to extract text from using AI',
 	},
 	{
 		displayName: '',

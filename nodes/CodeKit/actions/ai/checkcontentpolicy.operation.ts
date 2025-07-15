@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Check Content Policy',
 	value: OperationType.CHECK_CONTENT_POLICY,
-	description: 'Check content policy of text',
-	action: 'Check content policy',
+	description: 'Check if text content complies with policy guidelines',
+	action: 'Check content policy compliance',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -22,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The text you want to analyse',
+		placeholder: 'e.g. This is the text to analyze for policy compliance',
+		description: 'The text content to analyze for policy compliance',
 	},
 	{
 		displayName: '',

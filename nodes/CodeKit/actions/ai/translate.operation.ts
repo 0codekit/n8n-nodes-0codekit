@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Translate',
+	name: 'Translate Text',
 	value: OperationType.TRANSLATE,
-	description: 'Translate text',
-	action: 'Translate',
+	description: 'Translate text content between different languages using AI',
+	action: 'Translate text to another language',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'text',
 		type: 'string',
 		required: true,
@@ -25,10 +25,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The text you want to translate',
+		placeholder: 'e.g. Hello, how are you today?',
+		description: 'The text content to translate to another language',
 	},
 	{
-		displayName: 'Result Language',
+		displayName: 'Target Language',
 		name: 'resultLang',
 		type: 'options',
 		options: [
@@ -51,7 +52,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'en',
-		description: 'The language to translate to',
+		description: 'The target language to translate the text to',
 	},
 	{
 		displayName: '',

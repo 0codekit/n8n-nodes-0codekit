@@ -1,4 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
+import { countryCodes } from '../../resources/countryCodes';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
@@ -13,9 +14,10 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'Country Code',
 		name: 'countryCode',
-		type: 'string',
+		type: 'options',
 		required: true,
-		default: '',
+		options: countryCodes,
+		default: 'DE',
 		description: 'The country code (e.g. DE, FR, IT)',
 		displayOptions: {
 			show: {

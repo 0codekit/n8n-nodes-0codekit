@@ -14,6 +14,9 @@ export const description: INodeProperties[] = [
 		displayName: 'CSV',
 		name: 'csv',
 		type: 'string',
+		typeOptions: {
+			rows: 5,
+		},
 		required: true,
 		displayOptions: {
 			show: {

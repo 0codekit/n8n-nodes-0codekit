@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'json',
 		required: true,
 		default: '{}',
-		description: 'Chart data in JSON format',
+		description:
+			'Chart data in JSON format. For more information, refer to the 0CodeKit API documentation.',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.CHART],
@@ -29,7 +30,8 @@ export const description: INodeProperties[] = [
 		name: 'chartOptions',
 		type: 'json',
 		default: '{}',
-		description: 'Chart options in JSON format',
+		description:
+			'Chart options in JSON format. For more information, refer to the 0CodeKit API documentation.',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.CHART],

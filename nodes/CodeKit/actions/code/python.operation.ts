@@ -32,7 +32,8 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The Python code to execute',
-		placeholder: 'import requests\nresult = {"data": requests.get("https://0codekit.com").text}',
+		placeholder:
+			'import requests\nimport json\ndef main():\n\t# Your code here\n\tdata = {"message": "Hello, World!"}\n\tprint(json.dumps(data))  # Print the result as JSON\nmain()',
 	},
 	createRequirementsUIProperty([OperationType.PYTHON]),
 	createDependenciesUIProperty([OperationType.PYTHON]),

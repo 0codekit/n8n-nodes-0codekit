@@ -5,8 +5,8 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Detect Color',
 	value: OperationType.DETECT_COLOR,
-	description: 'Detects color in image',
-	action: 'Detect color',
+	description: 'Detect dominant colors in images using AI analysis',
+	action: 'Detect color in image',
 };
 
 export const description: INodeProperties[] = [
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'Image for color detection',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'The URL of the image to analyze for color detection',
 	},
 	{
 		displayName: '',

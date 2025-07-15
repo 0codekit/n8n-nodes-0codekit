@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		typeOptions: {
-			rows: 4,
+			rows: 10,
 		},
 		displayOptions: {
 			show: {
@@ -31,6 +31,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: `import requests\nimport json\ndef main():\n\t# Your code here\n\tdata = {"message": "Hello, World!"}\n\tprint(json.dumps(data))  # Print the result as JSON\nmain()`,
 		description:
 			"A string of the code which should be executed asynchronously. Please notice that this endpoint unlike the other code execution endpoint does require import statements in the code and does not require a 'result' variable. In order to visualize data in the response just use a print statement, you can parse the printed JSON output at the receiving webhook.",
 	},

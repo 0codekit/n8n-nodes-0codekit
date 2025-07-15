@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Picture Object Recognition',
+	name: 'Recognize Objects in Image',
 	value: OperationType.PICTURE_OBJECT_RECOGNITION,
-	description: 'Detects objects in a picture',
-	action: 'Picture object recognition',
+	description: 'Detect and identify objects in images using AI analysis',
+	action: 'Recognize objects in image',
 };
 
 export const description: INodeProperties[] = [
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'The URL of the image to analyze',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'The URL of the image to analyze for object recognition',
 	},
 	{
 		displayName: '',

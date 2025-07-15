@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Generate Python Code',
 	value: OperationType.GENERATE_PYTHON_CODE,
-	description: 'Generates Python code from a prompt',
-	action: 'Generate Python code',
+	description: 'Generate Python code based on text prompts using AI',
+	action: 'Generate Python code from prompt',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Prompt',
+		displayName: 'Code Prompt',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -25,7 +25,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The prompt to generate Python code for',
+		placeholder: 'e.g. Create a function that calculates the factorial of a number',
+		description: 'The text prompt describing the Python code to generate',
 	},
 	{
 		displayName: '',

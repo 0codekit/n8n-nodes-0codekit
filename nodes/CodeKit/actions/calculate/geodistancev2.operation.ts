@@ -15,6 +15,9 @@ export const description: INodeProperties[] = [
 		name: 'startPoint',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 3,
+		},
 		displayOptions: {
 			show: {
 				operation: [OperationType.GEODISTANCE_V2],
@@ -28,6 +31,9 @@ export const description: INodeProperties[] = [
 		displayName: 'Ending Location',
 		name: 'endPoint',
 		type: 'string',
+		typeOptions: {
+			rows: 3,
+		},
 		required: true,
 		displayOptions: {
 			show: {

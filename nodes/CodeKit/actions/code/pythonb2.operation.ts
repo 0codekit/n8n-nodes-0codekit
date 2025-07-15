@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		typeOptions: {
-			rows: 4,
+			rows: 10,
 		},
 		displayOptions: {
 			show: {
@@ -31,6 +31,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: `import requests\nimport json\ndef main():\n\t# Your code here\n\tdata = {"message": "Hello, World!"}\n\tprint(json.dumps(data))  # Print the result as JSON\nmain()`,
 		description: 'Your python code',
 	},
 	createRequirementsUIProperty([OperationType.PYTHON_B2]),

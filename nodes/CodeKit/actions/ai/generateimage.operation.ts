@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Generate Image',
 	value: OperationType.GENERATE_IMAGE,
-	description: 'Generates an image from text using AI',
-	action: 'Generate image',
+	description: 'Generate images from text prompts using AI',
+	action: 'Generate image from text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Prompt',
+		displayName: 'Text Prompt',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -24,9 +24,9 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.GENERATE_IMAGE],
 			},
 		},
-		placeholder: 'Describe the image you want to generate',
+		placeholder: 'e.g. A beautiful sunset over the mountains',
 		default: '',
-		description: 'The prompt to generate the image',
+		description: 'The text prompt describing the image to generate',
 	},
 	{
 		displayName: 'Number of Results',
@@ -44,7 +44,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 1,
-		description: 'The number of results to generate',
+		description: 'The number of images to generate (1-10)',
 	},
 	{
 		displayName: 'Resolution',
@@ -72,8 +72,7 @@ export const description: INodeProperties[] = [
 			},
 		],
 		default: '512x512',
-		description:
-			'The resolution of the image, only works for "256x256", "512x512", and "1024x1024"',
+		description: 'The resolution/size of the generated image',
 	},
 	{
 		displayName: '',

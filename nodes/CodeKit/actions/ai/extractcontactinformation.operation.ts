@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Extract Contact Information',
 	value: OperationType.EXTRACT_CONTACT_INFORMATION,
-	description: 'Extract contact information from text',
-	action: 'Extract contact information',
+	description: 'Extract contact details like names, emails, and phone numbers from text',
+	action: 'Extract contact information from text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -25,7 +25,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The text you want to analyse',
+		placeholder:
+			'e.g. John Smith, CEO at Tech Corp. Email: john@techcorp.com, Phone: +1-555-123-4567',
+		description: 'The text content to analyze for contact information extraction',
 	},
 	{
 		displayName: '',

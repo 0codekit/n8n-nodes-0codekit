@@ -1,6 +1,7 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
+import { countryCodes } from '../../resources/countryCodes';
 
 export const option = {
 	name: 'Validate Phonenumber',
@@ -28,9 +29,10 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'Country Code',
 		name: 'countryCode',
-		type: 'string',
+		type: 'options',
+		options: countryCodes,
 		default: '',
-		placeholder: 'GB',
+		placeholder: 'DE',
 		description: 'The country code (optional)',
 		displayOptions: {
 			show: {

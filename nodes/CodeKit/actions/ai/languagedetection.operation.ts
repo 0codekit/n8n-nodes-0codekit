@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Language Detection',
+	name: 'Detect Language',
 	value: OperationType.LANGUAGE_DETECTION,
-	description: 'Detects the language of a given text',
-	action: 'Language detection',
+	description: 'Detect the language of text content using AI analysis',
+	action: 'Detect language of text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'text',
 		type: 'string',
 		required: true,
@@ -22,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Text for language detection',
+		placeholder: 'e.g. Hello, how are you today?',
+		description: 'The text content to analyze for language detection',
 	},
 	{
 		displayName: '',

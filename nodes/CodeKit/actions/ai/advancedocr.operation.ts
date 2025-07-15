@@ -3,16 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'AI Advanced OCR',
+	name: 'Extract Text From Document',
 	value: OperationType.ADVANCED_OCR,
-	description:
-		'Extracts text and specific data from documents with OCR support, streamlining specialized workflows',
-	action: 'AI Advanced OCR',
+	description: 'Extract text and data from documents using advanced OCR',
+	action: 'Extract text from document with OCR',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'URL',
+		displayName: 'Document URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -23,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/document.pdf',
-		description: 'The URL to the document',
+		placeholder: 'e.g. https://example.com/document.pdf',
+		description: 'The URL of the document to extract text from',
 	},
 	{
 		displayName: '',

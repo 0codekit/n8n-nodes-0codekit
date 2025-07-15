@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Picture Text Recognition',
+	name: 'Extract Text From Image',
 	value: OperationType.PICTURE_TEXT_RECOGNITION,
-	description: 'Detects the text in a picture using Optical Character Recognition AI',
-	action: 'Picture text recognition',
+	description: 'Extract text from images using optical character recognition AI',
+	action: 'Extract text from image using OCR',
 };
 
 export const description: INodeProperties[] = [
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'The URL of the image to analyze',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'The URL of the image to analyze for text extraction',
 	},
 	{
 		displayName: '',

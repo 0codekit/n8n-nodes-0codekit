@@ -25,7 +25,7 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		typeOptions: {
-			rows: 4,
+			rows: 10,
 		},
 		placeholder: 'const _ = require("lodash"); return {data: _.chunk(["a", "b", "c", "d"], 2)};',
 		description: 'The JavaScript code that will be executed',

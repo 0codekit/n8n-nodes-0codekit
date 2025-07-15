@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Generate Javascript Code',
+	name: 'Generate JavaScript Code',
 	value: OperationType.GENERATE_JAVASCRIPT_CODE,
-	description: 'Generate javascript code based on provided prompt',
-	action: 'Generate javascript code',
+	description: 'Generate JavaScript code based on text prompts using AI',
+	action: 'Generate JavaScript code from prompt',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Prompt',
+		displayName: 'Code Prompt',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -25,7 +25,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The prompt to generate the Code',
+		placeholder: 'e.g. Create a function that sorts an array of numbers in ascending order',
+		description: 'The text prompt describing the JavaScript code to generate',
 	},
 	{
 		displayName: '',

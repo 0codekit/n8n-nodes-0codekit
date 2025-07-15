@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Detect Email Type',
 	value: OperationType.DETECT_EMAIL_TYPE,
-	description: 'Detects the sender (type) of email',
-	action: 'Detect email type',
+	description: 'Analyze email content to detect the type and sender category',
+	action: 'Detect email type and sender',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Subject',
+		displayName: 'Email Subject',
 		name: 'subject',
 		type: 'string',
 		required: true,
@@ -22,10 +22,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The subject of the email you want to analyse',
+		placeholder: 'e.g. Your order confirmation #12345',
+		description: 'The subject line of the email to analyze',
 	},
 	{
-		displayName: 'Body',
+		displayName: 'Email Body',
 		name: 'body',
 		type: 'string',
 		required: true,
@@ -39,7 +40,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The body of the email you want to analyse',
+		placeholder: 'e.g. Thank you for your recent purchase...',
+		description: 'The body content of the email to analyze',
 	},
 	{
 		displayName: '',

@@ -3,14 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Entity Detection',
+	name: 'Extract Entities',
 	value: OperationType.ENTITY_DETECTION,
-	action: 'Detects entities in a text',
+	description: 'Extract entities like names, locations, and organizations from text',
+	action: 'Extract entities from text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'text',
 		type: 'string',
 		required: true,
@@ -24,8 +25,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'Text to analyze',
-		description: 'Text for entity detection',
+		placeholder: 'e.g. John Smith from New York works at OpenAI',
+		description: 'The text content to analyze for entity extraction',
 	},
 	{
 		displayName: '',

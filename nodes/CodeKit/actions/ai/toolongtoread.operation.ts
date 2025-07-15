@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Too Long To Read',
+	name: 'Summarize Text',
 	value: OperationType.TOO_LONG_TO_READ,
-	description: 'Create a summary of a text',
-	action: 'Too long to read',
+	description: 'Create concise summaries of long text content using AI',
+	action: 'Summarize long text content',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'prompt',
 		type: 'string',
 		required: true,
@@ -24,9 +24,10 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.TOO_LONG_TO_READ],
 			},
 		},
-		placeholder: 'Enter the text you want to summarize',
+		placeholder:
+			'e.g. This is a long article about artificial intelligence and its applications...',
 		default: '',
-		description: 'The text you want to analyse',
+		description: 'The long text content to summarize and analyze',
 	},
 	{
 		displayName: '',

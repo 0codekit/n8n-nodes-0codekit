@@ -5,8 +5,8 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Detect Faces',
 	value: OperationType.DETECT_FACE,
-	description: 'Detects faces in image',
-	action: 'Detect faces',
+	description: 'Detect faces in images using AI analysis',
+	action: 'Detect faces in image',
 };
 
 export const description: INodeProperties[] = [
@@ -22,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'URL of the image you want to analyse',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'The URL of the image to analyze for face detection',
 	},
 	{
 		displayName: '',

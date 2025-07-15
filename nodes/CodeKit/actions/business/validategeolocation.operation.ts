@@ -14,6 +14,9 @@ export const description: INodeProperties[] = [
 		displayName: 'Address',
 		name: 'address',
 		type: 'string',
+		typeOptions: {
+			rows: 3,
+		},
 		required: true,
 		default: '',
 		description: 'The address or coordinates to validate',

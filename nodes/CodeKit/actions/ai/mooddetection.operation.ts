@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Mood Detection',
+	name: 'Detect Mood',
 	value: OperationType.MOOD_DETECTION,
-	description: 'Detect the mood from text',
-	action: 'Mood detection',
+	description: 'Analyze text content to detect emotional mood and sentiment',
+	action: 'Detect mood from text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text Content',
 		name: 'text',
 		type: 'string',
 		required: true,
@@ -25,7 +25,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Text you want to analyse',
+		placeholder: 'e.g. I am feeling great today! The weather is wonderful.',
+		description: 'The text content to analyze for mood and sentiment detection',
 	},
 	{
 		displayName: '',

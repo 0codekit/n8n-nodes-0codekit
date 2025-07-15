@@ -5,8 +5,8 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Detect Adult Content',
 	value: OperationType.DETECT_ADULT_CONTENT,
-	description: 'Detects adult content in image',
-	action: 'Detect adult content',
+	description: 'Detect adult content in images using AI analysis',
+	action: 'Detect adult content in image',
 };
 
 export const description: INodeProperties[] = [
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'The URL of the image to be checked',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'The URL of the image to analyze for adult content',
 	},
 	{
 		displayName: '',
