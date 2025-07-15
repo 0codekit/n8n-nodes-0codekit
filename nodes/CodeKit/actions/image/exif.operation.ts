@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Exif',
+	name: 'Extract EXIF Data',
 	value: OperationType.EXIF,
-	description: 'Get the exif data of an image',
-	action: 'Exif',
+	description: 'Extract EXIF metadata from an image',
+	action: 'Extract EXIF Data',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'urlbuffertype',
 		type: 'options',
 		options: [
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Image URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -46,10 +47,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'This is the URL of the image, must be publicly accessible',
+		description: 'URL of the image to extract EXIF data from (must be publicly accessible)',
+		placeholder: 'e.g. https://example.com/image.jpg',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'Image Buffer',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -61,7 +63,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the image',
+		description: 'Base64-encoded image data to extract EXIF data from',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
 	},
 	{
 		displayName: '',

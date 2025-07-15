@@ -4,10 +4,10 @@ import { OperationType } from './operation.types';
 import { countryCodes } from '../../resources/countryCodes';
 
 export const option = {
-	name: 'Validate Phonenumber',
+	name: 'Validate Phone Number',
 	value: OperationType.VALIDATE_PHONE_NUMBER,
-	description: 'Checks whether the phone number is valid',
-	action: 'Validate Phonenumber',
+	description: 'Validate phone number format and verify carrier information',
+	action: 'Validate phone number format',
 };
 
 export const description: INodeProperties[] = [
@@ -17,8 +17,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		placeholder: '+99 123456789',
-		description: 'The phone number to validate',
+		placeholder: 'e.g. +1-555-123-4567',
+		description: 'The phone number to validate (with or without country code)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],
@@ -32,8 +32,8 @@ export const description: INodeProperties[] = [
 		type: 'options',
 		options: countryCodes,
 		default: '',
-		placeholder: 'DE',
-		description: 'The country code (optional)',
+		placeholder: 'e.g. US',
+		description: 'The country code for phone number validation (optional)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

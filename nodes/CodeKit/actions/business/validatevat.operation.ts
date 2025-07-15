@@ -6,18 +6,19 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Validate VAT ID',
 	value: OperationType.VALIDATE_VAT,
-	description: 'Checks whether the provided VAT ID is valid using VIES',
-	action: 'Validate VAT ID',
+	description: 'Validate VAT identification number using VIES database',
+	action: 'Validate VAT ID using VIES',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'VAT ID',
+		displayName: 'VAT ID Number',
 		name: 'vatId',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'The VAT ID to validate',
+		placeholder: 'e.g. DE123456789',
+		description: 'The VAT identification number to validate against VIES database',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

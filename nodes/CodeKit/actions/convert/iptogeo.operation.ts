@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'IP to Geo',
+	name: 'Convert IP to Geolocation',
 	value: OperationType.IP_TO_GEO,
-	description: 'Gets the geolocation of an IP address',
-	action: 'Ip to geo converter',
+	description: 'Get geolocation information for an IP address',
+	action: 'Convert IP to Geolocation',
 };
 
 export const description: INodeProperties[] = [
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'IP address to get geolocation for',
-		placeholder: '8.8.8.8',
+		description: 'IP address to get geolocation information for',
+		placeholder: 'e.g. 8.8.8.8',
 	},
 	{
 		displayName: '',

@@ -5,7 +5,8 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Resize Image',
 	value: OperationType.RESIZE,
-	action: 'Resize image',
+	description: 'Resize an image to specified dimensions',
+	action: 'Resize Image',
 };
 
 export const description: INodeProperties[] = [
@@ -21,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'URL of the image to resize',
+		description: 'URL of the image to resize (must be publicly accessible)',
+		placeholder: 'e.g. https://example.com/image.jpg',
 	},
 	{
 		displayName: 'Width',
@@ -36,6 +38,7 @@ export const description: INodeProperties[] = [
 		},
 		default: 800,
 		description: 'New width in pixels',
+		placeholder: 'e.g. 800',
 	},
 	{
 		displayName: 'Height',
@@ -50,6 +53,7 @@ export const description: INodeProperties[] = [
 		},
 		default: 600,
 		description: 'New height in pixels',
+		placeholder: 'e.g. 600',
 	},
 	{
 		displayName: 'Maintain Aspect Ratio',

@@ -6,18 +6,19 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Validate IBAN',
 	value: OperationType.VALIDATE_IBAN,
-	description: 'Checks whether the provided IBAN is valid',
-	action: 'Validate IBAN',
+	description: 'Validate International Bank Account Number (IBAN) format and checksum',
+	action: 'Validate IBAN format and checksum',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'IBAN',
+		displayName: 'IBAN Number',
 		name: 'iban',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'The IBAN to validate',
+		placeholder: 'e.g. DE89370400440532013000',
+		description: 'The International Bank Account Number (IBAN) to validate',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

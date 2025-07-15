@@ -4,10 +4,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Hash a Text',
+	name: 'Hash Text',
 	value: OperationType.HASH,
-	description: 'Hashes a text with selected methods',
-	action: 'Hash a text',
+	description: 'Generate hash from text using various hash methods',
+	action: 'Hash Text',
 };
 
 export const description: INodeProperties[] = [
@@ -23,7 +23,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Message you want to hash',
+		description: 'Text message to hash',
+		placeholder: 'e.g. Hello World',
 	},
 	{
 		displayName: 'Secret Key',
@@ -38,10 +39,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Secret key for HMAC hashing (optional for non-HMAC methods)',
+		description: 'Secret key for HMAC hashing (leave empty for non-HMAC methods)',
+		placeholder: 'e.g. mySecretKey123',
 	},
 	{
-		displayName: 'Hash Type',
+		displayName: 'Hash Algorithm',
 		name: 'hashType',
 		type: 'options',
 		options: hashMethods,

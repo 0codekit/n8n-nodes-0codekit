@@ -4,10 +4,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Lookup VAT Rates',
+	name: 'Get VAT Rates',
 	value: OperationType.LOOKUP_VAT_RATES,
-	description: 'Looks up the VAT rate for the specified country in the European Union',
-	action: 'Lookup VAT Rates',
+	description: 'Get current VAT rates for European Union countries',
+	action: 'Get VAT rates for EU country',
 };
 
 export const description: INodeProperties[] = [
@@ -18,7 +18,7 @@ export const description: INodeProperties[] = [
 		required: true,
 		options: countryCodes,
 		default: 'DE',
-		description: 'The country code (e.g. DE, FR, IT)',
+		description: 'The country code for VAT rate lookup (e.g. DE for Germany, FR for France)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

@@ -5,18 +5,19 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Verify Domain',
 	value: OperationType.VERIFY_DOMAIN,
-	description: 'Verifies a domain by performing an HTTP GET request against it',
-	action: 'Verify Domain',
+	description: 'Verify domain availability and status by performing HTTP requests',
+	action: 'Verify domain status and availability',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Domain',
+		displayName: 'Domain Name',
 		name: 'domain',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'The domain to verify',
+		placeholder: 'e.g. example.com',
+		description: 'The domain name to verify (without protocol)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

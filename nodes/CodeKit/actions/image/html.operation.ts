@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'HTML to Image',
+	name: 'Convert HTML to Image',
 	value: OperationType.HTML,
-	description: 'Convert HTML to an image',
-	action: 'Html to image',
+	description: 'Convert HTML content or webpage to image',
+	action: 'Convert HTML to Image',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'htmlurltype',
 		type: 'options',
 		options: [
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'HTML',
+		displayName: 'HTML Content',
 		name: 'html',
 		type: 'string',
 		displayOptions: {
@@ -45,10 +46,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'HTML to convert to an image',
+		description: 'HTML content to convert to image',
+		placeholder: 'e.g. <h1>Hello World</h1><p>This is a test</p>',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Webpage URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -59,7 +61,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'URL of the HTML page to convert to an image',
+		description: 'URL of the webpage to convert to image',
+		placeholder: 'e.g. https://example.com',
 	},
 	{
 		displayName: '',

@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Sharpen',
+	name: 'Sharpen Image',
 	value: OperationType.SHARPEN,
-	description: 'Sharpen an image',
-	action: 'Sharpen',
+	description: 'Sharpen an image to enhance details',
+	action: 'Sharpen Image',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'urlbuffertype',
 		type: 'options',
 		options: [
@@ -32,10 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
-		description: 'Type of data to process',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Image URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -47,10 +47,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'This is the URL of the image, must be publicly accessible',
+		description: 'URL of the image to sharpen (must be publicly accessible)',
+		placeholder: 'e.g. https://example.com/image.jpg',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'Image Buffer',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -62,10 +63,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the image',
+		description: 'Base64-encoded image data to sharpen',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
 	},
 	{
-		displayName: 'Sigma',
+		displayName: 'Sigma Value',
 		name: 'sigma',
 		type: 'number',
 		displayOptions: {
@@ -75,7 +77,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 1,
-		description: 'Sigma of the image',
+		description: 'Sigma value for sharpening intensity',
+		placeholder: 'e.g. 1.5',
 	},
 	{
 		displayName: '',

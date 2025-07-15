@@ -4,10 +4,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Encrypt a Message',
+	name: 'Encrypt Text',
 	value: OperationType.ENCRYPT,
-	description: 'Encrypts a message with a selected method',
-	action: 'Encrypt a message',
+	description: 'Encrypt text using various encryption methods',
+	action: 'Encrypt Text',
 };
 
 export const description: INodeProperties[] = [
@@ -23,7 +23,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Message you want to encrypt',
+		description: 'Text message to encrypt',
+		placeholder: 'e.g. Hello World, this is a secret message',
 	},
 	{
 		displayName: 'Secret Key',
@@ -38,10 +39,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Secret key for encryption',
+		description: 'Secret key used for encryption',
+		placeholder: 'e.g. mySecretKey123',
 	},
 	{
-		displayName: 'Crypto Type',
+		displayName: 'Encryption Algorithm',
 		name: 'cryptoType',
 		type: 'options',
 		options: crytoMethods,

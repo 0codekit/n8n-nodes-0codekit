@@ -3,18 +3,18 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Holidays',
+	name: 'Get Holidays',
 	value: OperationType.HOLIDAYS,
-	description: 'Get the holidays of a country',
-	action: 'Holidays',
+	description: 'Get holidays for a specific country and year',
+	action: 'Get Holidays',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Country',
+		displayName: 'Country Code',
 		name: 'country',
 		type: 'string',
-		description: 'Country to get holidays for',
+		description: 'Country code to get holidays for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.HOLIDAYS],
@@ -22,6 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'DE',
+		placeholder: 'e.g. DE, US, FR',
 	},
 	{
 		displayName: 'Year',
@@ -35,6 +36,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '2024',
+		placeholder: 'e.g. 2024',
 	},
 	{
 		displayName: '',

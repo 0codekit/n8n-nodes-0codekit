@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Calender Week',
+	name: 'Get Calendar Week',
 	value: OperationType.CALENDAR_WEEK,
-	description: 'Get the calender week of a date',
-	action: 'Calender week',
+	description: 'Get the calendar week number for a date',
+	action: 'Get Calendar Week',
 };
 
 export const description: INodeProperties[] = [
@@ -14,7 +14,7 @@ export const description: INodeProperties[] = [
 		displayName: 'Date',
 		name: 'date',
 		type: 'string',
-		description: 'Date in the calendar',
+		description: 'Date to get calendar week for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
@@ -22,12 +22,13 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023-01-01',
 	},
 	{
 		displayName: 'Unix Timestamp',
 		name: 'unixTimestamp',
 		type: 'number',
-		description: 'Unix timestamp to get the calender week from',
+		description: 'Unix timestamp to get calendar week for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
@@ -35,12 +36,13 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
+		placeholder: 'e.g. 1672531200',
 	},
 	{
 		displayName: 'Year',
 		name: 'year',
 		type: 'string',
-		description: 'Year in the calendar',
+		description: 'Year to get calendar week for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
@@ -48,12 +50,13 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023',
 	},
 	{
 		displayName: 'Week Number',
 		name: 'weekNumber',
 		type: 'number',
-		description: 'Week number to get the calender week from',
+		description: 'Week number to get calendar week for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.CALENDAR_WEEK],
@@ -61,6 +64,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
+		placeholder: 'e.g. 25',
 	},
 	{
 		displayName: '',

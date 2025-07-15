@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Is Weekend',
+	name: 'Check if Weekend',
 	value: OperationType.IS_WEEKEND,
-	description: 'Check if a date is a weekend',
-	action: 'Is weekend',
+	description: 'Check if a date falls on a weekend',
+	action: 'Check if Weekend',
 };
 
 export const description: INodeProperties[] = [
@@ -14,7 +14,7 @@ export const description: INodeProperties[] = [
 		displayName: 'Date',
 		name: 'date',
 		type: 'string',
-		description: 'Date to check if it is a weekend',
+		description: 'Date to check if it falls on a weekend',
 		displayOptions: {
 			show: {
 				operation: [OperationType.IS_WEEKEND],
@@ -22,6 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023-01-01',
 	},
 	{
 		displayName: '',

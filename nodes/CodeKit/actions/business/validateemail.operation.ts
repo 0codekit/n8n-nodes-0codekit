@@ -5,19 +5,19 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Validate Email',
 	value: OperationType.VALIDATE_EMAIL,
-	description: 'Checks whether the email address is valid',
-	action: 'Validate Email',
+	description: 'Validate email address format and deliverability',
+	action: 'Validate email address format',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		required: true,
 		default: '',
-		placeholder: 'name@email.com',
-		description: 'The email address to validate',
+		placeholder: 'e.g. user@example.com',
+		description: 'The email address to validate for format and deliverability',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

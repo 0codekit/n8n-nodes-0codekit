@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Rotate',
+	name: 'Rotate Image',
 	value: OperationType.ROTATE,
-	description: 'Rotate an image',
-	action: 'Rotate',
+	description: 'Rotate an image by specified angle',
+	action: 'Rotate Image',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'urlbuffertype',
 		type: 'options',
 		options: [
@@ -32,10 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
-		description: 'Type of data to process',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Image URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -47,10 +47,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'This is the URL of the image, must be publicly accessible',
+		description: 'URL of the image to rotate (must be publicly accessible)',
+		placeholder: 'e.g. https://example.com/image.jpg',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'Image Buffer',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -62,7 +63,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the image',
+		description: 'Base64-encoded image data to rotate',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
 	},
 	{
 		displayName: 'Rotation Angle',
@@ -75,7 +77,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 90,
-		description: 'Rotation angle in degrees',
+		description: 'Rotation angle in degrees (positive for clockwise)',
+		placeholder: 'e.g. 90, 180, 270',
 	},
 	{
 		displayName: '',

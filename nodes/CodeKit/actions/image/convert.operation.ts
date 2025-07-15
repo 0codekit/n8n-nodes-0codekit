@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Convert',
+	name: 'Convert Image Format',
 	value: OperationType.CONVERT,
-	description: 'Convert an image',
-	action: 'Convert',
+	description: 'Convert image to different format',
+	action: 'Convert Image Format',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'urlbuffertype',
 		type: 'options',
 		options: [
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Image URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -46,10 +47,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'This is the URL of the image, must be publicly accessible',
+		description: 'URL of the image to convert (must be publicly accessible)',
+		placeholder: 'e.g. https://example.com/image.jpg',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'Image Buffer',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -61,10 +63,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the image',
+		description: 'Base64-encoded image data to convert',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
 	},
 	{
-		displayName: 'Format',
+		displayName: 'Target Format',
 		name: 'format',
 		type: 'options',
 		options: [
@@ -83,9 +86,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'jpeg',
+		description: 'Image format to convert to',
 	},
 	{
-		displayName: 'With Metadata',
+		displayName: 'Include Metadata',
 		name: 'withMetaData',
 		type: 'boolean',
 		displayOptions: {
@@ -95,10 +99,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether to include metadata in the converted image',
+		description: 'Whether to preserve metadata in the converted image',
 	},
 	{
-		displayName: 'Options',
+		displayName: 'Conversion Options',
 		name: 'options',
 		type: 'json',
 		displayOptions: {
@@ -110,7 +114,8 @@ export const description: INodeProperties[] = [
 		default: JSON.stringify({
 			quality: 40,
 		}),
-		description: 'Additional options to pass to the convert operation',
+		description: 'Additional conversion options (e.g., quality for JPEG)',
+		placeholder: 'e.g. {"quality": 80}',
 	},
 	{
 		displayName: '',

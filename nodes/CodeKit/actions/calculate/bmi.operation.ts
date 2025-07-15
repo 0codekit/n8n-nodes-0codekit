@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'BMI',
+	name: 'Calculate BMI',
 	value: OperationType.BMI,
-	description: 'Calculates the Body Mass Index and outputs recommended nutrients distribution',
-	action: 'Bmi calculator',
+	description: 'Calculate Body Mass Index and get recommended nutrient distribution',
+	action: 'Calculate BMI from height and weight',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Height in Cm',
+		displayName: 'Height (Cm)',
 		name: 'height',
 		type: 'number',
 		required: true,
@@ -22,10 +22,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
+		placeholder: 'e.g. 175',
 		description: 'The height in centimeters',
 	},
 	{
-		displayName: 'Weight in Kg',
+		displayName: 'Weight (Kg)',
 		name: 'weight',
 		type: 'number',
 		required: true,
@@ -36,6 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
+		placeholder: 'e.g. 70',
 		description: 'The weight in kilograms',
 	},
 	{

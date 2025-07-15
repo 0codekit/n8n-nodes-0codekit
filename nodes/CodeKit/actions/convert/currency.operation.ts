@@ -6,8 +6,8 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Convert Currency',
 	value: OperationType.CURRENCY,
-	description: 'Converts a currency into another on specific dates',
-	action: 'Convert currencys',
+	description: 'Convert currency amounts between different currencies on specific dates',
+	action: 'Convert Currency',
 };
 
 export const description: INodeProperties[] = [
@@ -23,10 +23,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		description: 'Amount to convert',
+		description: 'Amount to convert to the target currency',
+		placeholder: 'e.g. 100.50',
 	},
 	{
-		displayName: 'From',
+		displayName: 'From Currency',
 		name: 'from',
 		type: 'options',
 		options: currencies,
@@ -38,10 +39,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'EUR',
-		description: 'Source currency (ISO code)',
+		description: 'Source currency to convert from',
 	},
 	{
-		displayName: 'To',
+		displayName: 'To Currency',
 		name: 'to',
 		type: 'options',
 		options: currencies,
@@ -53,7 +54,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'USD',
-		description: 'Target currency (ISO code)',
+		description: 'Target currency to convert to',
 	},
 	{
 		displayName: 'Date',
@@ -66,8 +67,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Date for conversion rate (YYYY-MM-DD)',
-		placeholder: '2023-01-01',
+		description: 'Date for conversion rate (leave empty for current rate)',
+		placeholder: 'e.g. 2023-01-01',
 	},
 	{
 		displayName: '',

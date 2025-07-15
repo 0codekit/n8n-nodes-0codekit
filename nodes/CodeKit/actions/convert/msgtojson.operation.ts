@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Message to JSON',
+	name: 'Convert Message to JSON',
 	value: OperationType.MSG_TO_JSON,
-	description: 'Converts a message to a JSON object',
-	action: 'Message to JSON',
+	description: 'Convert a message to a structured JSON object',
+	action: 'Convert Message to JSON',
 };
 
 export const description: INodeProperties[] = [
@@ -22,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Message to convert to JSON',
+		description: 'Message content to convert to JSON format',
+		placeholder: 'e.g. Hello world, this is a test message',
 	},
 	{
 		displayName: '',

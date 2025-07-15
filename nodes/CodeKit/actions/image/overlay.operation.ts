@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Overlay',
+	name: 'Overlay Images',
 	value: OperationType.OVERLAY,
-	description: 'Overlay an image',
-	action: 'Overlay',
+	description: 'Overlay one image onto another',
+	action: 'Overlay Images',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Data Type',
 		name: 'urlbuffertype',
 		type: 'options',
 		options: [
@@ -32,10 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
-		description: 'Type of data to process',
+		description: 'Choose data source type',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Base Image URL',
 		name: 'url',
 		type: 'string',
 		required: true,
@@ -47,10 +47,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'URL of the image to overlay',
+		description: 'URL of the base image',
+		placeholder: 'e.g. https://example.com/base-image.jpg',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'Base Image Buffer',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -62,10 +63,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the image to overlay',
+		description: 'Base64-encoded base image data',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
 	},
 	{
-		displayName: 'Overlay URL',
+		displayName: 'Overlay Image URL',
 		name: 'overlayurl',
 		type: 'string',
 		required: true,
@@ -78,9 +80,10 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		description: 'URL of the overlay image',
+		placeholder: 'e.g. https://example.com/overlay-image.png',
 	},
 	{
-		displayName: 'Overlay Buffer',
+		displayName: 'Overlay Image Buffer',
 		name: 'overlaybuffer',
 		type: 'string',
 		required: true,
@@ -92,7 +95,9 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the overlay image',
+		description: 'Base64-encoded overlay image data',
+		placeholder:
+			'e.g. data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
 	},
 	{
 		displayName: 'X Position',
@@ -105,7 +110,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		description: 'X position for the overlay',
+		description: 'Horizontal position for the overlay (in pixels)',
+		placeholder: 'e.g. 100',
 	},
 	{
 		displayName: 'Y Position',
@@ -118,7 +124,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
-		description: 'Y position for the overlay',
+		description: 'Vertical position for the overlay (in pixels)',
+		placeholder: 'e.g. 50',
 	},
 	{
 		displayName: '',

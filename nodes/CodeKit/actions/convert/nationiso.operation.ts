@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Nation ISO Switch',
+	name: 'Convert Country Name/ISO',
 	value: OperationType.NATION_ISO,
-	description: 'Get the Nation by Country Code ISO or reverse',
-	action: 'Nation ISO switch',
+	description: 'Convert between country names and ISO codes bidirectionally',
+	action: 'Convert country name to ISO code or vice versa',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Input',
+		displayName: 'Country Name or ISO Code',
 		name: 'input',
 		type: 'string',
 		required: true,
@@ -22,8 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Country name or ISO code',
-		placeholder: 'Germany or DE',
+		description: 'Country name or ISO code to convert',
+		placeholder: 'e.g. Germany or DE',
 	},
 	{
 		displayName: '',

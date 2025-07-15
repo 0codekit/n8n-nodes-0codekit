@@ -4,15 +4,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Decrypt a Ciphertext',
+	name: 'Decrypt Text',
 	value: OperationType.DECRYPT,
-	description: 'Decrypts a ciphertext with a selected method',
-	action: 'Decrypt a ciphertext',
+	description: 'Decrypt encrypted text using various encryption methods',
+	action: 'Decrypt Text',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Ciphertext',
+		displayName: 'Encrypted Text',
 		name: 'ciphertext',
 		type: 'string',
 		required: true,
@@ -23,7 +23,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Cyphertext you want to decrypt',
+		description: 'Encrypted text to decrypt',
+		placeholder: 'e.g. U2FsdGVkX1+F...',
 	},
 	{
 		displayName: 'Secret Key',
@@ -38,10 +39,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Secret key for decryption',
+		description: 'Secret key used for decryption',
+		placeholder: 'e.g. mySecretKey123',
 	},
 	{
-		displayName: 'Crypto Type',
+		displayName: 'Encryption Algorithm',
 		name: 'cryptoType',
 		type: 'options',
 		options: crytoMethods,

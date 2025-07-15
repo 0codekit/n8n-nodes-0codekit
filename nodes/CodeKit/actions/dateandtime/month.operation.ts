@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Month',
+	name: 'Get Month',
 	value: OperationType.MONTH,
-	description: 'Get the month of a date',
-	action: 'Month',
+	description: 'Get month information for a date',
+	action: 'Get Month',
 };
 
 export const description: INodeProperties[] = [
@@ -14,7 +14,7 @@ export const description: INodeProperties[] = [
 		displayName: 'Date',
 		name: 'date',
 		type: 'string',
-		description: 'Date in the calendar',
+		description: 'Date to get month information for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.MONTH],
@@ -22,12 +22,13 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023-01-01',
 	},
 	{
 		displayName: 'Year',
 		name: 'year',
 		type: 'string',
-		description: 'Year in the calendar',
+		description: 'Year to get month information for',
 		displayOptions: {
 			show: {
 				operation: [OperationType.MONTH],
@@ -35,6 +36,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023',
 	},
 	{
 		displayName: '',

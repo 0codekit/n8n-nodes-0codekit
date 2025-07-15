@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'QR Code Encode',
+	name: 'Generate QR Code',
 	value: OperationType.QRCODE_ENCODE,
 	description: 'Generate a QR code from text or data',
-	action: 'Encode QR code',
+	action: 'Generate QR Code',
 };
 
 export const description: INodeProperties[] = [
@@ -22,7 +22,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The data that should be encoded in the QR code',
+		description: 'Text or data to encode in the QR code',
+		placeholder: 'e.g. https://example.com or Hello World',
 	},
 	{
 		displayName: 'Width',
@@ -35,7 +36,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 500,
-		description: 'The width of the QR code in pixels',
+		description: 'Width of the QR code in pixels',
+		placeholder: 'e.g. 500',
 	},
 	{
 		displayName: 'Height',
@@ -48,7 +50,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 500,
-		description: 'The height of the QR code in pixels',
+		description: 'Height of the QR code in pixels',
+		placeholder: 'e.g. 500',
 	},
 	{
 		displayName: 'Center Image URL',

@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Geodistance Version 2',
+	name: 'Calculate Distance',
 	value: OperationType.GEODISTANCE_V2,
-	description: 'Calculates the geodistance between two addresses or geopoints',
-	action: 'Geodistance calculator',
+	description: 'Calculate the distance between two addresses or geographical coordinates',
+	action: 'Calculate distance between locations',
 };
 
 export const description: INodeProperties[] = [
@@ -24,8 +24,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CALCULATE],
 			},
 		},
-		default: 'Berlin',
-		description: 'The starting location (address or coordinates)',
+		default: '',
+		placeholder: 'e.g. Berlin, Germany or 52.5200,13.4050',
+		description: 'The starting location as an address or coordinates (latitude,longitude)',
 	},
 	{
 		displayName: 'Ending Location',
@@ -41,8 +42,9 @@ export const description: INodeProperties[] = [
 				resource: [ResourceType.CALCULATE],
 			},
 		},
-		default: 'Flensburg',
-		description: 'The ending location (address or coordinates)',
+		default: '',
+		placeholder: 'e.g. Hamburg, Germany or 53.5511,9.9937',
+		description: 'The ending location as an address or coordinates (latitude,longitude)',
 	},
 	{
 		displayName: '',

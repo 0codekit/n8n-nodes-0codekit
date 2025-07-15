@@ -5,18 +5,19 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Validate BIC',
 	value: OperationType.VALIDATE_BIC,
-	description: 'Checks whether a BIC (Bank Identifier Code) is valid',
-	action: 'Validate BIC',
+	description: 'Validate Bank Identifier Code (BIC) format and authenticity',
+	action: 'Validate BIC code format',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'BIC',
+		displayName: 'BIC Code',
 		name: 'bic',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'The BIC to validate',
+		placeholder: 'e.g. DEUTDEFF',
+		description: 'The Bank Identifier Code (BIC) to validate',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

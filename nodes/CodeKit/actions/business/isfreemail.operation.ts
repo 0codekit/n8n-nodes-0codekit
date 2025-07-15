@@ -3,21 +3,21 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Check Free Email',
+	name: 'Check Free Email Provider',
 	value: OperationType.IS_FREE_MAIL,
-	description: 'Checks whether the email address is from a free email provider',
-	action: 'Check Free Email',
+	description: 'Check if an email address uses a free email provider service',
+	action: 'Check if email uses free provider',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		required: true,
-		placeholder: 'name@email.com',
+		placeholder: 'e.g. user@gmail.com',
 		default: '',
-		description: 'The email address to check',
+		description: 'The email address to check for free provider usage',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.BUSINESS],

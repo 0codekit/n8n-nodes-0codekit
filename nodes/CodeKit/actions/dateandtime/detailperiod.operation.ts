@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Detail Period',
+	name: 'Get Detail Period',
 	value: OperationType.DETAIL_PERIOD,
-	description: 'Get the detail period of a date',
-	action: 'Detail period',
+	description: 'Get detailed period information for a date range',
+	action: 'Get Detail Period',
 };
 
 export const description: INodeProperties[] = [
@@ -14,7 +14,7 @@ export const description: INodeProperties[] = [
 		displayName: 'Start Date',
 		name: 'startDate',
 		type: 'string',
-		description: 'Start date of the detail period',
+		description: 'Start date for the detail period',
 		displayOptions: {
 			show: {
 				operation: [OperationType.DETAIL_PERIOD],
@@ -22,16 +22,17 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'e.g. 2023-01-01',
 	},
 	{
-		displayName: 'Duration',
+		displayName: 'Duration (Days)',
 		name: 'duration',
 		type: 'number',
 		typeOptions: {
 			minValue: 0,
 			maxValue: 365,
 		},
-		description: 'Duration of days for which the detail period is retrieved',
+		description: 'Number of days for the detail period',
 		displayOptions: {
 			show: {
 				operation: [OperationType.DETAIL_PERIOD],
@@ -39,6 +40,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 0,
+		placeholder: 'e.g. 30',
 	},
 	{
 		displayName: '',

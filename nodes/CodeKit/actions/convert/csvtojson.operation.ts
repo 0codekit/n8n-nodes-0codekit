@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Convert a CSV to JSON',
+	name: 'Convert CSV to JSON',
 	value: OperationType.CSV_TO_JSON,
-	description: 'Takes a CSV string and converts it to a valid JSON',
-	action: 'Convert a CSV to JSON',
+	description: 'Convert CSV data to valid JSON format',
+	action: 'Convert CSV to JSON',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'CSV',
+		displayName: 'CSV Data',
 		name: 'csv',
 		type: 'string',
 		typeOptions: {
@@ -25,7 +25,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'CSV string to convert',
+		description: 'CSV data to convert to JSON format',
+		placeholder: 'e.g. Name,Age,City\nJohn,30,New York\nJane,25,London',
 	},
 	{
 		displayName: 'Separator',
@@ -38,7 +39,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: ',',
-		description: 'CSV separator character',
+		description: 'Character used to separate CSV fields',
+		placeholder: 'e.g. , or ; or |',
 	},
 	{
 		displayName: '',

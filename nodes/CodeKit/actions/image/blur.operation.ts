@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Blur',
+	name: 'Blur Image',
 	value: OperationType.BLUR,
-	description: 'Blur an image',
-	action: 'Blur',
+	description: 'Apply blur effect to an image',
+	action: 'Blur Image',
 };
 
 const displayOptions = {
@@ -27,14 +27,14 @@ export const description: INodeProperties[] = [
 			{
 				name: 'Use Image URL',
 				value: 'imageUrl',
-				description: 'Use an image URL for background removal',
-				action: 'Use image URL for background removal',
+				description: 'Use an image URL for blurring',
+				action: 'Use image URL for blurring',
 			},
 			{
 				name: 'Use Image Buffer',
 				value: 'imageBuffer',
-				description: 'Use a Base64-encoded image for background removal',
-				action: 'Use image buffer for background removal',
+				description: 'Use a Base64-encoded image for blurring',
+				action: 'Use image buffer for blurring',
 			},
 		],
 		default: 'imageUrl',
@@ -50,8 +50,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'https://example.com/image.jpg',
-		description: 'The URL of the image to analyze',
+		placeholder: 'e.g. https://example.com/image.jpg',
+		description: 'URL of the image to blur',
 	},
 	{
 		displayName: 'Image Buffer',
@@ -67,8 +67,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		placeholder: 'Base64-encoded image data',
-		description: 'Base64-encoded image data for text recognition',
+		placeholder: 'e.g. data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...',
+		description: 'Base64-encoded image data for blurring',
 	},
 	{
 		displayName: 'Sigma Value',
@@ -81,9 +81,9 @@ export const description: INodeProperties[] = [
 		},
 		displayOptions,
 		default: 1.0,
-		placeholder: 'Sigma value for blurring',
+		placeholder: 'e.g. 2.5',
 		description:
-			'The sigma value for the Gaussian blur. Minimum value is 0.3, maximum is 1000.0. Higher values result in more blur.',
+			'Sigma value for Gaussian blur intensity. Higher values create more blur (0.3-1000.0).',
 	},
 	{
 		displayName: 'Get as URL',
@@ -105,7 +105,7 @@ export const description: INodeProperties[] = [
 				getAsUrl: [true],
 			},
 		},
-		description: 'The filename to use for the generated URL',
+		description: 'Filename to use when returning as URL',
 	},
 	{
 		displayName: '',
