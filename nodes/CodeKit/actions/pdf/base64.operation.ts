@@ -26,6 +26,19 @@ export const description: INodeProperties[] = [
 		placeholder: 'https://example.com/document.pdf',
 	},
 	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.BASE64],
+			},
+		},
+		default: '',
+		description: 'Name for the output file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -42,6 +55,7 @@ export const description: INodeProperties[] = [
 				url: `/${ResourceType.PDF}/${OperationType.BASE64}`,
 				body: {
 					pdf: '={{$parameter.pdf}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

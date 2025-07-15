@@ -38,6 +38,19 @@ export const description: INodeProperties[] = [
 		description: 'Binary buffer data of the PDF file',
 	},
 	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.PDF_TO_IMAGE],
+			},
+		},
+		default: '',
+		description: 'Name prefix for the output image files',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -55,6 +68,7 @@ export const description: INodeProperties[] = [
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

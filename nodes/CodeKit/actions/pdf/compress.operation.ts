@@ -52,6 +52,19 @@ export const description: INodeProperties[] = [
 		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.COMPRESS],
+			},
+		},
+		default: '',
+		description: 'Name for the output PDF file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -70,6 +83,7 @@ export const description: INodeProperties[] = [
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

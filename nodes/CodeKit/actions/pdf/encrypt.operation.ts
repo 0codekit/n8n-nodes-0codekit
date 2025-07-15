@@ -52,6 +52,52 @@ export const description: INodeProperties[] = [
 		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
+		displayName: 'User Password',
+		name: 'userPassword',
+		type: 'string',
+		typeOptions: {
+			password: true,
+		},
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.ENCRYPT],
+			},
+		},
+		default: '',
+		description: 'Password for user access to the PDF',
+	},
+	{
+		displayName: 'Owner Password',
+		name: 'ownerPassword',
+		type: 'string',
+		typeOptions: {
+			password: true,
+		},
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.ENCRYPT],
+			},
+		},
+		default: '',
+		description: 'Password for owner access to the PDF (optional)',
+	},
+	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.ENCRYPT],
+			},
+		},
+		default: '',
+		description: 'Name for the output PDF file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -70,6 +116,9 @@ export const description: INodeProperties[] = [
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					userPassword: '={{$parameter.userPassword}}',
+					ownerPassword: '={{$parameter.ownerPassword}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

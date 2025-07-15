@@ -25,6 +25,58 @@ export const description: INodeProperties[] = [
 		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
+		displayName: 'Number of Pages',
+		name: 'pages',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.CREATE],
+			},
+		},
+		default: 1,
+		description: 'Number of pages in the new PDF',
+	},
+	{
+		displayName: 'Page Width',
+		name: 'width',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.CREATE],
+			},
+		},
+		default: 595,
+		description: 'Width of the pages in points',
+	},
+	{
+		displayName: 'Page Height',
+		name: 'height',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.CREATE],
+			},
+		},
+		default: 842,
+		description: 'Height of the pages in points',
+	},
+	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.CREATE],
+			},
+		},
+		default: '',
+		description: 'Name for the output PDF file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -41,6 +93,10 @@ export const description: INodeProperties[] = [
 				url: `/${ResourceType.PDF}/${OperationType.CREATE}`,
 				body: {
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					pages: '={{$parameter.pages}}',
+					width: '={{$parameter.width}}',
+					height: '={{$parameter.height}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

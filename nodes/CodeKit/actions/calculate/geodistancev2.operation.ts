@@ -47,6 +47,38 @@ export const description: INodeProperties[] = [
 		description: 'The ending location as an address or coordinates (latitude,longitude)',
 	},
 	{
+		displayName: 'Mode',
+		name: 'mode',
+		type: 'options',
+		required: true,
+		displayOptions: {
+			show: {
+				operation: [OperationType.GEODISTANCE_V2],
+				resource: [ResourceType.CALCULATE],
+			},
+		},
+		options: [
+			{
+				name: 'Walking',
+				value: 'walking',
+			},
+			{
+				name: 'Driving',
+				value: 'driving',
+			},
+			{
+				name: 'Bicycling',
+				value: 'bicycling',
+			},
+			{
+				name: 'Transit',
+				value: 'transit',
+			},
+		],
+		default: 'driving',
+		description: 'The mode of transportation to calculate the distance',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -64,6 +96,7 @@ export const description: INodeProperties[] = [
 				body: {
 					startPoint: '={{$parameter.startPoint}}',
 					endPoint: '={{$parameter.endPoint}}',
+					mode: '={{$parameter.mode}}',
 				},
 			},
 		},

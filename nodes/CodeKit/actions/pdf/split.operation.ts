@@ -38,6 +38,90 @@ export const description: INodeProperties[] = [
 		description: 'Binary buffer data of the PDF file',
 	},
 	{
+		displayName: 'Split Method',
+		name: 'splitMethod',
+		type: 'options',
+		options: [
+			{
+				name: 'By Page Ranges',
+				value: 'pages',
+			},
+			{
+				name: 'By Interval',
+				value: 'interval',
+			},
+		],
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.SPLIT],
+			},
+		},
+		default: 'pages',
+		description: 'Method to split the PDF',
+	},
+	{
+		displayName: 'Page Ranges',
+		name: 'pages',
+		type: 'fixedCollection',
+		typeOptions: {
+			multipleValues: true,
+		},
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.SPLIT],
+				splitMethod: ['pages'],
+			},
+		},
+		default: {},
+		placeholder: 'Add page range',
+		description: 'Page ranges for splitting',
+		options: [
+			{
+				name: 'ranges',
+				displayName: 'Page Range',
+				values: [
+					{
+						displayName: 'Range',
+						name: 'range',
+						type: 'string',
+						default: '',
+						placeholder: '1-5',
+						description: 'Page range (e.g., 1-5, 10, ^1)',
+					},
+				],
+			},
+		],
+	},
+	{
+		displayName: 'Interval',
+		name: 'interval',
+		type: 'number',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.SPLIT],
+				splitMethod: ['interval'],
+			},
+		},
+		default: 1,
+		description: 'Number of pages per split file',
+	},
+	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.SPLIT],
+			},
+		},
+		default: '',
+		description: 'Name prefix for the output PDF files',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -55,6 +139,10 @@ export const description: INodeProperties[] = [
 				body: {
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',
+					pages:
+						'={{$parameter.pages.ranges ? $parameter.pages.ranges.map(r => r.range) : undefined}}',
+					interval: '={{$parameter.interval}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

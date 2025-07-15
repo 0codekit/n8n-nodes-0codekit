@@ -12,7 +12,7 @@ export const option = {
 export const description: INodeProperties[] = [
 	{
 		displayName: 'Markdown Content',
-		name: 'markdown',
+		name: 'markdownString',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -24,6 +24,20 @@ export const description: INodeProperties[] = [
 		default: '',
 		placeholder: '# Hello World\n\nThis is **bold** text.',
 		description: 'Markdown content to convert to PDF',
+	},
+	{
+		displayName: 'Custom CSS',
+		name: 'css',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.MARKDOWN_TO_PDF],
+			},
+		},
+		default: '',
+		placeholder: 'body { font-family: Arial; }',
+		description: 'Custom CSS to style the Markdown content',
 	},
 	{
 		displayName: 'Return as URL',
@@ -38,6 +52,19 @@ export const description: INodeProperties[] = [
 		},
 		default: false,
 		description: 'Whether to return the PDF as a downloadable URL',
+	},
+	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.MARKDOWN_TO_PDF],
+			},
+		},
+		default: '',
+		description: 'Name for the output PDF file',
 	},
 	{
 		displayName: '',
@@ -55,8 +82,10 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `/${ResourceType.PDF}/${OperationType.MARKDOWN_TO_PDF}`,
 				body: {
-					markdown: '={{$parameter.markdown}}',
+					markdownString: '={{$parameter.markdownString}}',
+					css: '={{$parameter.css}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

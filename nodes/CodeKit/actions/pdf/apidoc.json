@@ -1,0 +1,2644 @@
+{
+	"/pdf/draw/image": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Draw image on PDF.",
+			"operationId": "pdf_draw_image_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is false.",
+									"example": true,
+									"type": "boolean"
+								},
+								"imageUrl": {
+									"description": "The URL of the image to draw.",
+									"type": "string"
+								},
+								"imageBuffer": {
+									"description": "T?he image as a Base64-encoded buffer. Can be specified instead of `imageUrl`.",
+									"type": "string"
+								},
+								"anchor": {
+									"description": "The part of the page on which the image should be drawn. Default is `center`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"align": {
+									"description": "The part of the image that should be aligned with the specified position. Default is the value of `anchor`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"x": {
+									"description": "The horizontal offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"y": {
+									"description": "The vertical offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"width": {
+									"description": "The width of the image in points. This or `height` has to be provided. If only `width` is provided, `height` is calculated automatically.",
+									"example": 200,
+									"type": "number"
+								},
+								"height": {
+									"description": "The height of the image in points. This or `width` has to be provided. If only `height` is provided, `width` is calculated automatically.",
+									"example": 100,
+									"type": "number"
+								},
+								"rotate": {
+									"description": "The counter-clockwise rotation of the image in degrees. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"pages": {
+									"description": "The pages the image should be drawn onto. Given as a range of pages, where 1 means the first page and ^1 means the last page.",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {}
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/draw/text": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Draw text on PDF.",
+			"operationId": "pdf_draw_text_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is false.",
+									"example": true,
+									"type": "boolean"
+								},
+								"text": {
+									"description": "The text to draw.",
+									"example": "Hello, world!",
+									"type": "string"
+								},
+								"font": {
+									"description": "The font to use. Default is Helvetica.",
+									"example": "Helvetica",
+									"type": "string",
+									"enum": ["Helvetica", "Courier", "TimesRoman"]
+								},
+								"anchor": {
+									"description": "The part of the page on which the text should be drawn. Default is `center`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"align": {
+									"description": "The part of the text that should be aligned with the specified position. Default is the value of `anchor`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"x": {
+									"description": "The horizontal offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"y": {
+									"description": "The vertical offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"rotate": {
+									"description": "The counter-clockwise rotation of the text in degrees. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"size": {
+									"description": "The font size in points. Default is 32.",
+									"example": 32,
+									"type": "number"
+								},
+								"color": {
+									"description": "The font color as a six-digit hexcode, i.e. RRGGBB. Default is 000000, i.e. black.",
+									"example": "FFFF00",
+									"type": "string"
+								},
+								"pages": {
+									"description": "The pages the text should be drawn onto. Given as a range of pages, where 1 means the first page and ^1 means the last page.",
+									"example": "1,3-5,^3-^1",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["text"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/metadata/edit": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Edit PDF metadata.",
+			"operationId": "pdf_metadata_edit_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"title": {
+									"description": "The new title of the PDF.",
+									"type": "string"
+								},
+								"author": {
+									"description": "The new author of the PDF.",
+									"type": "string"
+								},
+								"subject": {
+									"description": "The new subject of the PDF.",
+									"type": "string"
+								},
+								"keywords": {
+									"description": "The new keywords of the PDF.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/metadata/info": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Get PDF metadata.",
+			"operationId": "pdf_metadata_info_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"title": {
+										"description": "The title of the PDF.",
+										"type": "string"
+									},
+									"author": {
+										"description": "The author of the PDF.",
+										"type": "string"
+									},
+									"subject": {
+										"description": "The subject of the PDF.",
+										"type": "string"
+									},
+									"keywords": {
+										"description": "The keywords of the PDF.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									},
+									"creator": {
+										"description": "The creator of the PDF, which is the software used to design it.",
+										"type": "string"
+									},
+									"creationDate": {
+										"description": "The creation date of the PDF.",
+										"type": "string",
+										"format": "date-time"
+									},
+									"modificationDate": {
+										"description": "The last modification date of the PDF.",
+										"type": "string",
+										"format": "date-time"
+									},
+									"isEncrypted": {
+										"description": "Whether the PDF is encrypted.",
+										"type": "boolean"
+									},
+									"pageCount": {
+										"description": "The page count of the PDF.",
+										"type": "number"
+									},
+									"pages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"width": {
+													"description": "The width of the page in points.",
+													"type": "number"
+												},
+												"height": {
+													"description": "The height of the page in points.",
+													"type": "number"
+												},
+												"rotation": {
+													"description": "The rotation of the page in degrees. This does not detect the actual rotation of the page content, but just returns the rotation value stored inside the PDF.",
+													"type": "number"
+												}
+											},
+											"required": ["width", "height", "rotation"]
+										}
+									}
+								},
+								"required": ["isEncrypted", "pageCount", "pages"]
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/pages/add": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Add PDF pages.",
+			"operationId": "pdf_pages_add_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"width": {
+									"description": "The width of the pages to add. Default is the width of the first page.",
+									"example": 595,
+									"type": "number"
+								},
+								"height": {
+									"description": "The height of the pages to add. Default is the height of the first page.",
+									"example": 842,
+									"type": "number"
+								},
+								"pages": {
+									"description": "The positions of the pages that should be added. Every number represents one page, and is the page number after which the new page should be added, e.g. 0 means inserting at the very beginning, while 10 means inserting after the 10th page.",
+									"type": "array",
+									"items": {
+										"type": "number"
+									}
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["pages"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/pages/remove": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Remove PDF pages.",
+			"operationId": "pdf_pages_remove_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"pages": {
+									"description": "The pages that should be removed from the PDF. Given as a range of pages, where 1 means the first page and ^1 means the last page.",
+									"example": "1,3-5,^3-^1",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["pages"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/pages/resize": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Resize PDF pages.",
+			"operationId": "pdf_pages_resize_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"width": {
+									"description": "The new width in points.",
+									"type": "number"
+								},
+								"height": {
+									"description": "The new height in points.",
+									"type": "number"
+								},
+								"pages": {
+									"description": "The pages that should be resized. Given as a range of pages, where 1 means the first page and ^1 means the last page.",
+									"example": "1,3-5,^3-^1",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["width", "height", "pages"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/pages/rotate": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Rotate PDF pages.",
+			"operationId": "pdf_pages_rotate_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"rotate": {
+									"description": "Clockwise rotation of the pages in degrees. Must be a multiple of 90.",
+									"example": 90,
+									"type": "number"
+								},
+								"pages": {
+									"description": "The pages that will be rotated. Given as a range of pages, where 1 means the first page and ^1 means the last page.",
+									"example": "1,3-5,^3-^1",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["rotate", "pages"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/base64": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Convert PDF to Base64.",
+			"operationId": "pdf_base64_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"pdf": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name will be returned again. If none is provided, one will be generated automatically.",
+									"type": "string"
+								}
+							},
+							"required": ["pdf"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"pdfBase64": {
+										"description": "The Base64-encoded PDF buffer.",
+										"type": "string"
+									},
+									"fileName": {
+										"description": "The provided file name or an auto-generated one.",
+										"type": "string"
+									}
+								},
+								"required": ["pdfBase64", "fileName"]
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/compress": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Compress PDF.",
+			"operationId": "pdf_compress_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"type": "string"
+								},
+								"buffer": {
+									"type": "string"
+								},
+								"getAsUrl": {
+									"type": "boolean"
+								},
+								"fileName": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/count": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Count PDF pages.",
+			"operationId": "pdf_count_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"pageCount": {
+										"description": "The number of pages in the PDF.",
+										"type": "number"
+									}
+								},
+								"required": ["pageCount"]
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/create": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Create empty PDF.",
+			"operationId": "pdf_create_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"pages": {
+									"description": "The number of pages the new PDF should have. Must be at least 1. Default is 1.",
+									"example": 10,
+									"type": "number",
+									"minimum": 1
+								},
+								"width": {
+									"description": "The width of the pages in points. Default is 595.",
+									"example": 595,
+									"type": "number"
+								},
+								"height": {
+									"description": "The height of the pages in points. Default is 842.",
+									"example": 842,
+									"type": "number"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/decrypt": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Decrypt PDF.",
+			"operationId": "pdf_decrypt_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"password": {
+									"description": "The password used to decrypt the PDF. Can be either the user or the owner password.",
+									"type": "string"
+								}
+							},
+							"required": ["password"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/docx-to-pdf": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Convert DOCX to PDF.",
+			"operationId": "pdf_docx-to-pdf_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The DOCX URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The DOCX as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"fileName": {
+									"description": "The file name of the result PDF. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/encrypt": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Encrypt PDF.",
+			"operationId": "pdf_encrypt_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"userPassword": {
+									"description": "The user password.",
+									"type": "string"
+								},
+								"ownerPassword": {
+									"description": "The owner password. Default is the user password.",
+									"type": "string"
+								}
+							},
+							"required": ["userPassword"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/getinfometadata": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Get PDF metadata.",
+			"description": "WARNING: This endpoint is deprecated. Please use `/pdf/metadata/info` instead.",
+			"operationId": "pdf_getinfometadata_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"pdf": {
+									"description": "The PDF URL or Base64-encoded buffer.",
+									"type": "string"
+								},
+								"filename": {
+									"description": "The PDF file name. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["pdf"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"title": {
+										"description": "The title of the PDF.",
+										"type": "string"
+									},
+									"author": {
+										"description": "The author of the PDF.",
+										"type": "string"
+									},
+									"producer": {
+										"description": "The producer of the PDF.",
+										"type": "string"
+									},
+									"creator": {
+										"description": "The creator of the PDF, which is the software used to design it.",
+										"type": "string"
+									},
+									"creationDate": {
+										"description": "The creation date of the PDF.",
+										"type": "string",
+										"format": "date-time"
+									},
+									"modificationDate": {
+										"description": "The last modification date of the PDF.",
+										"type": "string",
+										"format": "date-time"
+									},
+									"pageCount": {
+										"description": "The page count of the PDF.",
+										"type": "number"
+									},
+									"filename": {
+										"description": "The file name that was passed in the request, or a random ID.",
+										"type": "string"
+									}
+								},
+								"required": ["pageCount", "filename"]
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/html": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Convert HTML to PDF.",
+			"operationId": "pdf_html_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The URL of the website.",
+									"type": "string"
+								},
+								"html": {
+									"description": "The HTML source. Can be specified instead of `url`",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"fileName": {
+									"description": "The PDF file name. Default is a random ID.",
+									"type": "string"
+								},
+								"options": {
+									"type": "object",
+									"properties": {
+										"scale": {
+											"description": "The scale of the web app. Default is 1.",
+											"example": 1,
+											"type": "number",
+											"minimum": 0.1,
+											"maximum": 2
+										},
+										"displayHeaderFooter": {
+											"description": "Show header and footer. Default is false.",
+											"example": false,
+											"type": "boolean"
+										},
+										"printBackground": {
+											"description": "Whether to include the background in the PDF. Default is `false`.",
+											"example": false,
+											"type": "boolean"
+										},
+										"landscape": {
+											"description": "Whether the PDF should be in landscape orientation. Default is `false`.",
+											"example": false,
+											"type": "boolean"
+										},
+										"pageRanges": {
+											"description": "The page ranges to output.",
+											"example": "1-3,8,15-20",
+											"type": "string"
+										},
+										"format": {
+											"description": "The format of the result PDF. This overwrites the `width` and `height` settings.",
+											"example": "a4",
+											"type": "string",
+											"enum": [
+												"letter",
+												"Letter",
+												"LETTER",
+												"legal",
+												"Legal",
+												"LEGAL",
+												"tabloid",
+												"Tabloid",
+												"TABLOID",
+												"ledger",
+												"Ledger",
+												"LEDGER",
+												"a0",
+												"A0",
+												"a1",
+												"A1",
+												"a2",
+												"A2",
+												"a3",
+												"A3",
+												"a4",
+												"A4",
+												"a5",
+												"A5",
+												"a6",
+												"A6"
+											]
+										},
+										"width": {
+											"description": "The width of the result PDF. Either a number in points or a string with a unit.",
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"height": {
+											"description": "The height of the result PDF. Either a number in points or a string with a unit.",
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"preferCSSPageSize": {
+											"description": "Overwrite the `format`, `width` and `height` settings with the page size defined by CSS. Default is `false`.",
+											"example": false,
+											"type": "boolean"
+										},
+										"margin": {
+											"description": "The margins of the output PDF. Default is no margins.",
+											"type": "object",
+											"properties": {
+												"top": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"bottom": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"left": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"right": {
+													"anyOf": [
+														{
+															"type": "number"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										},
+										"omitBackground": {
+											"description": "Do not use default white background, which makes the PDF transparent. Default is `false`.",
+											"example": false,
+											"type": "boolean"
+										},
+										"tagged": {
+											"description": "Generate accessible PDF. Default is `true`.",
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/markdownstringtopdf": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Convert Markdown to PDF.",
+			"operationId": "pdf_markdownstringtopdf_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"markdownString": {
+									"description": "The Markdown source that will be converted to a PDF.",
+									"type": "string"
+								},
+								"css": {
+									"description": "Custom CSS to change the Markdown look.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"fileName": {
+									"description": "The PDF file name. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["markdownString"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/merge": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Merge PDF files.",
+			"operationId": "pdf_merge_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"files": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"url": {
+												"description": "The PDF URL.",
+												"type": "string"
+											},
+											"buffer": {
+												"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+												"type": "string"
+											},
+											"pages": {
+												"description": "The pages that should be included in the merged document. By default, all pages are included. This is specified as comma-separated page ranges, where 1 means the first page and ^1 the last page.",
+												"example": "1-3,5,^15-^13,^6-",
+												"anyOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													},
+													{
+														"type": "string"
+													}
+												]
+											}
+										}
+									}
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is `false`.",
+									"example": true,
+									"type": "boolean"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["files"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"description": "The result PDF URL.",
+										"type": "string"
+									}
+								},
+								"required": ["url"]
+							}
+						},
+						"application/octet-stream": {}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/pdf-to-image": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Convert PDF to image.",
+			"operationId": "pdf_pdf-to-image_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name prefix of the result images. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/split": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Split PDF file.",
+			"operationId": "pdf_split_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"pages": {
+									"description": "The page ranges that should be contained in the new PDF files. Every subdocument is given as a comma-separated range of pages, where 1 means the first page and ^1 means the last page.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"interval": {
+									"description": "The number of pages that should be contained in every split PDF file. Can be specified instead of `pages`.",
+									"type": "number"
+								},
+								"fileName": {
+									"description": "The file name prefix the result PDFs will have. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"pdfUrls": {
+										"description": "The URLs of all split PDF files.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										}
+									}
+								},
+								"required": ["pdfUrls"]
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/watermark/image": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Draw a watermark image inside the PDF.",
+			"operationId": "pdf_watermark_image_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is false.",
+									"example": true,
+									"type": "boolean"
+								},
+								"repeat": {
+									"description": "Repeats the image across the entire specified range of the PDF. Default is false",
+									"example": true,
+									"type": "boolean"
+								},
+								"imageUrl": {
+									"description": "The URL of the image to draw.",
+									"type": "string"
+								},
+								"imageBuffer": {
+									"description": "The image as a Base64-encoded buffer. Can be specified instead of `imageUrl`.",
+									"type": "string"
+								},
+								"anchor": {
+									"description": "The part of the page on which the image should be drawn. Default is `center`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"align": {
+									"description": "The part of the image that should be aligned with the specified position. Default is the value of `anchor`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"x": {
+									"description": "The horizontal offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"y": {
+									"description": "The vertical offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"width": {
+									"description": "The width of the image in points. This or `height` has to be provided. If only `width` is provided, `height` is calculated automatically.",
+									"example": 200,
+									"type": "number"
+								},
+								"height": {
+									"description": "The height of the image in points. This or `width` has to be provided. If only `height` is provided, `width` is calculated automatically.",
+									"example": 100,
+									"type": "number"
+								},
+								"rotate": {
+									"description": "The counter-clockwise rotation of the image in degrees. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"spacing": {
+									"description": "The space between each image. It only applies if repeat is true. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"opacity": {
+									"description": "The opacity of the given image. The range must be between 0 and 1. Default is 1.",
+									"example": 0.2,
+									"type": "number"
+								},
+								"pages": {
+									"description": "The pages the image should be drawn onto. Given as a range of pages, where 1 means the first page and ^1 means the last page. Default are all Pages.",
+									"type": "string"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {}
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"/pdf/watermark/text": {
+		"post": {
+			"tags": ["PDF"],
+			"summary": "Draw a watermark text inside the PDF.",
+			"operationId": "pdf_watermark_text_post",
+			"security": [
+				{
+					"apiKeyAuth": []
+				}
+			],
+			"parameters": [
+				{
+					"name": "ipaas",
+					"in": "header",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}
+			],
+			"requestBody": {
+				"required": true,
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"description": "The PDF URL.",
+									"type": "string"
+								},
+								"buffer": {
+									"description": "The PDF as a Base64-encoded buffer. Can be specified instead of `url`.",
+									"type": "string"
+								},
+								"getAsUrl": {
+									"description": "Whether the result PDF should be returned as a URL. Default is false.",
+									"example": true,
+									"type": "boolean"
+								},
+								"repeat": {
+									"description": "Repeats the text across the entire specified range of the PDF. Default is false",
+									"example": true,
+									"type": "boolean"
+								},
+								"text": {
+									"description": "The text to draw.",
+									"example": "Hello, world!",
+									"type": "string"
+								},
+								"font": {
+									"description": "The font to use. Default is Helvetica.",
+									"example": "Helvetica",
+									"type": "string",
+									"enum": ["Helvetica", "Courier", "TimesRoman"]
+								},
+								"anchor": {
+									"description": "The part of the page on which the text should be drawn. Default is `center`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"align": {
+									"description": "The part of the text that should be aligned with the specified position. Default is the value of `anchor`.",
+									"example": "center",
+									"type": "string",
+									"enum": [
+										"bottom-left",
+										"bottom",
+										"bottom-right",
+										"left",
+										"center",
+										"right",
+										"top-left",
+										"top",
+										"top-right"
+									]
+								},
+								"x": {
+									"description": "The horizontal offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"y": {
+									"description": "The vertical offset in points relative to the anchor. Default is 0.",
+									"example": 0,
+									"type": "number"
+								},
+								"spacing": {
+									"description": "The space between each text. It only applies if repeat is true. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"rotate": {
+									"description": "The counter-clockwise rotation of the text in degrees. Default is 0.",
+									"example": 45,
+									"type": "number"
+								},
+								"size": {
+									"description": "The font size in points. Default is 32.",
+									"example": 32,
+									"type": "number"
+								},
+								"color": {
+									"description": "The font color as a six-digit hexcode, i.e. RRGGBB. Default is 000000, i.e. black.",
+									"example": "FFFF00",
+									"type": "string"
+								},
+								"pages": {
+									"description": "The pages the text should be drawn onto. Given as a range of pages, where 1 means the first page and ^1 means the last page. Default are all Pages.",
+									"example": "1,3-5,^3-^1",
+									"type": "string"
+								},
+								"opacity": {
+									"description": "The opacity of the text. Must be between 0 and 1. Default is 1",
+									"example": 0.5,
+									"type": "number"
+								},
+								"fileName": {
+									"description": "The file name the result PDF will have. Default is a random ID.",
+									"type": "string"
+								}
+							},
+							"required": ["text"]
+						}
+					}
+				}
+			},
+			"responses": {
+				"200": {
+					"description": "Success",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {}
+							}
+						}
+					}
+				},
+				"400": {
+					"description": "Bad Request",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"status": {
+										"type": "number"
+									},
+									"errorMessage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

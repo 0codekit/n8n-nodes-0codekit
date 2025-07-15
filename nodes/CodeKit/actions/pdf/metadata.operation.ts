@@ -76,6 +76,94 @@ export const description: INodeProperties[] = [
 		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
+		displayName: 'Title',
+		name: 'title',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.METADATA],
+				metadataop: ['edit'],
+			},
+		},
+		default: '',
+		description: 'Title of the PDF document',
+	},
+	{
+		displayName: 'Author',
+		name: 'author',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.METADATA],
+				metadataop: ['edit'],
+			},
+		},
+		default: '',
+		description: 'Author of the PDF document',
+	},
+	{
+		displayName: 'Subject',
+		name: 'subject',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.METADATA],
+				metadataop: ['edit'],
+			},
+		},
+		default: '',
+		description: 'Subject of the PDF document',
+	},
+	{
+		displayName: 'Keywords',
+		name: 'keywords',
+		type: 'fixedCollection',
+		typeOptions: {
+			multipleValues: true,
+		},
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.METADATA],
+				metadataop: ['edit'],
+			},
+		},
+		default: {},
+		description: 'Keywords for the PDF document',
+		options: [
+			{
+				name: 'items',
+				displayName: 'Keyword',
+				values: [
+					{
+						displayName: 'Keyword',
+						name: 'keyword',
+						type: 'string',
+						default: '',
+						description: 'A keyword for the PDF document',
+					},
+				],
+			},
+		],
+	},
+	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.METADATA],
+				metadataop: ['edit'],
+			},
+		},
+		default: '',
+		description: 'Name for the output PDF file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -91,10 +179,15 @@ export const description: INodeProperties[] = [
 				method: 'POST',
 				url: `=/${ResourceType.PDF}/${OperationType.METADATA}/{{$parameter.metadataop}}`,
 				body: {
-					metadataop: '={{$parameter.metadataop}}',
 					url: '={{$parameter.url}}',
 					buffer: '={{$parameter.buffer}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					title: '={{$parameter.title}}',
+					author: '={{$parameter.author}}',
+					subject: '={{$parameter.subject}}',
+					keywords:
+						'={{$parameter.keywords.items ? $parameter.keywords.items.map(k => k.keyword) : undefined}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},

@@ -90,6 +90,19 @@ export const description: INodeProperties[] = [
 		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
+		displayName: 'File Name',
+		name: 'fileName',
+		type: 'string',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.PDF],
+				operation: [OperationType.MERGE],
+			},
+		},
+		default: '',
+		description: 'Name for the merged PDF file',
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
@@ -107,6 +120,7 @@ export const description: INodeProperties[] = [
 				body: {
 					files: '={{$parameter.files}}',
 					getAsUrl: '={{$parameter.getAsUrl}}',
+					fileName: '={{$parameter.fileName}}',
 				},
 			},
 		},
