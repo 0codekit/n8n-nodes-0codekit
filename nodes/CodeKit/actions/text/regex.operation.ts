@@ -15,6 +15,9 @@ export const description: INodeProperties[] = [
 		name: 'text',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 10,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.TEXT],
@@ -25,8 +28,8 @@ export const description: INodeProperties[] = [
 		description: 'The text to evaluate',
 	},
 	{
-		displayName: 'Pattern',
-		name: 'pattern',
+		displayName: 'Expression',
+		name: 'expression',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -38,19 +41,6 @@ export const description: INodeProperties[] = [
 		default: '',
 		description: 'The regex pattern to match against',
 		placeholder: '[a-zA-Z0-9]+',
-	},
-	{
-		displayName: 'Flags',
-		name: 'flags',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: [ResourceType.TEXT],
-				operation: [OperationType.REGEX],
-			},
-		},
-		default: 'g',
-		description: 'Regex flags (e.g., g, i, m)',
 	},
 	{
 		displayName: '',
@@ -69,8 +59,7 @@ export const description: INodeProperties[] = [
 				url: `/${ResourceType.TEXT}/${OperationType.REGEX}`,
 				body: {
 					text: '={{$parameter.text}}',
-					pattern: '={{$parameter.pattern}}',
-					flags: '={{$parameter.flags}}',
+					expression: '={{$parameter.expression}}',
 				},
 			},
 		},

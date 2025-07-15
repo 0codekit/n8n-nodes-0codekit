@@ -1,4 +1,10 @@
-import { INodeProperties } from 'n8n-workflow';
+import {
+	IDataObject,
+	IExecuteSingleFunctions,
+	IHttpRequestOptions,
+	INodeProperties,
+} from 'n8n-workflow';
+import { mapArrayOfObjectsToStringArray } from '../../helpers/utils';
 import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
@@ -15,6 +21,9 @@ export const description: INodeProperties[] = [
 		name: 'text',
 		type: 'string',
 		required: true,
+		typeOptions: {
+			rows: 10,
+		},
 		displayOptions: {
 			show: {
 				resource: [ResourceType.TEXT],
@@ -26,10 +35,9 @@ export const description: INodeProperties[] = [
 		description: 'The text to search within',
 	},
 	{
-		displayName: 'Search Pattern',
-		name: 'searchString',
+		displayName: 'Keyword to Search',
+		name: 'keyword',
 		type: 'string',
-		required: true,
 		displayOptions: {
 			show: {
 				resource: [ResourceType.TEXT],
@@ -41,6 +49,34 @@ export const description: INodeProperties[] = [
 		description: 'The word or pattern to search for',
 	},
 	{
+		displayName: 'Multiple Keywords',
+		name: 'keywordsUI',
+		type: 'fixedCollection',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.CONTAINS],
+			},
+		},
+		default: [],
+		options: [
+			{
+				name: 'keywords',
+				displayName: 'Keywords',
+				values: [
+					{
+						displayName: 'Keyword',
+						name: 'searchString',
+						type: 'string',
+						default: '',
+						placeholder: 'fox',
+						description: 'Additional words or patterns to search for',
+					},
+				],
+			},
+		],
+	},
+	{
 		displayName: 'Case Sensitive',
 		name: 'caseSensitive',
 		type: 'boolean',
@@ -50,8 +86,21 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.CONTAINS],
 			},
 		},
-		default: true,
+		default: false,
 		description: 'Whether the search should be case sensitive',
+	},
+	{
+		displayName: 'Only Complete Words',
+		name: 'onlyCompleteWords',
+		type: 'boolean',
+		displayOptions: {
+			show: {
+				resource: [ResourceType.TEXT],
+				operation: [OperationType.CONTAINS],
+			},
+		},
+		default: false,
+		description: 'Whether to match only complete words',
 	},
 	{
 		displayName: '',
@@ -65,15 +114,33 @@ export const description: INodeProperties[] = [
 		},
 		default: '',
 		routing: {
+			send: {
+				preSend: [],
+			},
 			request: {
 				method: 'POST',
 				url: `/${ResourceType.TEXT}/${OperationType.CONTAINS}`,
 				body: {
 					text: '={{$parameter.text}}',
-					searchString: '={{$parameter.searchString}}',
-					caseSensitive: '={{$parameter.caseSensitive}}',
+					keyword: '={{$parameter.keyword}}',
+					options: {
+						caseSensitive: '={{$parameter.caseSensitive}}',
+						onlyCompleteWords: '={{$parameter.onlyCompleteWords}}',
+					},
 				},
 			},
 		},
 	},
 ];
+
+export async function setKeywordList(
+	this: IExecuteSingleFunctions,
+	requestOptions: IHttpRequestOptions,
+): Promise<IHttpRequestOptions> {
+	const keywordsUI = this.getNodeParameter('keywordsUI') as IDataObject;
+	const keywordsValues = keywordsUI.keywordsValues as IDataObject[];
+
+	const { body } = requestOptions;
+	body.keywordList = mapArrayOfObjectsToStringArray(keywordsValues);
+	return requestOptions;
+}

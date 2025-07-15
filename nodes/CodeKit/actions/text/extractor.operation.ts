@@ -68,6 +68,32 @@ export const description: INodeProperties[] = [
 		default: false,
 	},
 	{
+		displayName: 'Case Sensitive',
+		name: 'caseSensitive',
+		type: 'boolean',
+		description: 'Whether the extraction should be case sensitive',
+		displayOptions: {
+			show: {
+				operation: [OperationType.EXTRACTOR],
+				resource: [ResourceType.TEXT],
+			},
+		},
+		default: false,
+	},
+	{
+		displayName: 'Return Error if Not Found',
+		name: 'returnErrorIfNotFound',
+		type: 'boolean',
+		description: 'Whether to return an error if the pattern is not found',
+		displayOptions: {
+			show: {
+				operation: [OperationType.EXTRACTOR],
+				resource: [ResourceType.TEXT],
+			},
+		},
+		default: false,
+	},
+	{
 		displayName: '',
 		name: 'routing',
 		type: 'hidden',
