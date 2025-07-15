@@ -3,19 +3,20 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Traffic Light',
+	name: 'Traffic Light Rate Limiting',
 	value: OperatorOperation.TRAFFIC_LIGHT,
-	description: 'Check rate limit',
-	action: 'Check rate limit',
+	description: 'Check rate limit status for identifier',
+	action: 'Check rate limit status for identifier',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Identifier',
+		displayName: 'Rate Limit Identifier',
 		name: 'identifier',
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'api-user-123',
 		description: 'Unique identifier for the rate limit check',
 		displayOptions: {
 			show: {
@@ -25,7 +26,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Limit',
+		displayName: 'Request Limit',
 		name: 'limit',
 		type: 'number',
 		typeOptions: {

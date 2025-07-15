@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'URL Expander',
+	name: 'Expand Shortened URL',
 	value: OperatorOperation.URL_EXPANDER,
-	description: 'Expand shortened URL',
-	action: 'Expand shortened URL',
+	description: 'Expand shortened URL to full URL',
+	action: 'Expand shortened URL to full URL',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Shortened URL to expand',
+		placeholder: 'https://bit.ly/3xyz123',
+		description: 'Shortened URL to expand to full URL',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

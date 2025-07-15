@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Create PDF',
+	name: 'Create Empty PDF',
 	value: OperationType.CREATE,
-	description: 'Create an empty Pdf',
-	action: 'Create PDF',
+	description: 'Create a new empty PDF document',
+	action: 'Create a new empty PDF document',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

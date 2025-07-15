@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'PDF to Image',
+	name: 'Convert PDF to Image',
 	value: OperationType.PDF_TO_IMAGE,
-	description: 'Converts a PDF file to an image',
-	action: 'Pdf to image a pdf',
+	description: 'Convert PDF pages to image files',
+	action: 'Convert PDF pages to image files',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -21,10 +21,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Public URL of the PDF file',
+		placeholder: 'https://example.com/document.pdf',
+		description: 'Public URL of the PDF file to convert',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -34,7 +35,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
 		displayName: '',

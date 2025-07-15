@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Update',
+	name: 'Update Shortened URL',
 	value: OperationType.UPDATE,
-	description: 'Update a shortened URL destination',
-	action: 'Update shortened URL',
+	description: 'Update the destination URL of a shortened URL',
+	action: 'Update the destination URL of a shortened URL',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Identifier',
+		displayName: 'URL Identifier',
 		name: 'identifier',
 		type: 'string',
 		required: true,
@@ -22,11 +22,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The shortened URL identifier',
+		description: 'The unique identifier of the shortened URL to update',
 		placeholder: 'to4w5vyb',
 	},
 	{
-		displayName: 'Destination URL',
+		displayName: 'New Destination URL',
 		name: 'destination',
 		type: 'string',
 		required: true,
@@ -37,7 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The destination URL which the shortened URL will point to',
+		description: 'The new destination URL for the shortened URL',
 		placeholder: 'https://example.com',
 	},
 	{

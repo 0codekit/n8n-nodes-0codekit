@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Extractor',
+	name: 'Text Extractor',
 	value: OperationType.EXTRACTOR,
-	description: 'Extract data from a string',
-	action: 'Extractor',
+	description: 'Extract specific data patterns from text',
+	action: 'Extract text patterns',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Start String',
+		displayName: 'Start Pattern',
 		name: 'start',
 		type: 'string',
 		required: true,
@@ -23,9 +23,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'Name: ',
 	},
 	{
-		displayName: 'End String',
+		displayName: 'End Pattern',
 		name: 'end',
 		type: 'string',
 		required: true,
@@ -37,6 +38,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: '\n',
 	},
 	{
 		displayName: 'Base String',

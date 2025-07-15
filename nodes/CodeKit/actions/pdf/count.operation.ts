@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Count PDF Pages',
 	value: OperationType.COUNT,
-	description: 'Count number of pages in a PDF file',
-	action: 'Count pdf pages a pdf',
+	description: 'Count the number of pages in a PDF file',
+	action: 'Count the number of pages in a PDF file',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -21,10 +21,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 		description: 'Public URL of the PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -34,7 +35,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
 		displayName: '',

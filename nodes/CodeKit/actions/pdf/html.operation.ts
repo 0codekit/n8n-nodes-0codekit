@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'HTML to PDF',
+	name: 'Convert HTML to PDF',
 	value: OperationType.HTML,
-	description: 'Converts HTML Code or a URL to PDF with options',
-	action: 'Html to pdf a pdf',
+	description: 'Convert HTML content or webpage to PDF document',
+	action: 'Convert HTML content or webpage to PDF document',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Type of Data',
+		displayName: 'Source Type',
 		name: 'htmlSource',
 		type: 'options',
 		options: [
@@ -20,7 +20,7 @@ export const description: INodeProperties[] = [
 				value: 'url',
 			},
 			{
-				name: 'HTML',
+				name: 'HTML Code',
 				value: 'html',
 			},
 		],
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'url',
+		description: 'Source type for HTML content',
 	},
 	{
-		displayName: 'HTML',
+		displayName: 'HTML Content',
 		name: 'html',
 		type: 'string',
 		displayOptions: {
@@ -45,10 +46,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: '<html><body><h1>Hello World</h1></body></html>',
 		description: 'HTML content to convert to PDF',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Website URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -59,10 +61,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'URL of the HTML page to convert to PDF',
+		placeholder: 'https://example.com',
+		description: 'URL of the webpage to convert to PDF',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -73,7 +76,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

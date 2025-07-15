@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Compare String',
+	name: 'Compare Strings',
 	value: OperationType.COMPARE_STRING,
-	description: 'Compare two strings',
-	action: 'Compare string',
+	description: 'Compare two strings and analyze their similarity',
+	action: 'Compare string similarity',
 };
 
 export const description: INodeProperties[] = [
@@ -23,6 +23,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'Hello World',
 	},
 	{
 		displayName: 'Second String',
@@ -37,6 +38,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'Hello World!',
 	},
 	{
 		displayName: 'Algorithm',

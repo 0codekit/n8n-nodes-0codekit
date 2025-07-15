@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Draw',
+	name: 'Draw on PDF',
 	value: OperationType.DRAW,
-	description: 'Draw inside the Pdf file. Text or Image.',
-	action: 'Pdf draw image or text',
+	description: 'Add text or image content to PDF pages',
+	action: 'Add text or image content to PDF pages',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Draw Pdf',
+		displayName: 'Content Type',
 		name: 'drawop',
 		type: 'options',
 		options: [
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'text',
+		description: 'Type of content to draw on the PDF',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -44,10 +45,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 		description: 'Public URL of the PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -57,10 +59,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -71,7 +73,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

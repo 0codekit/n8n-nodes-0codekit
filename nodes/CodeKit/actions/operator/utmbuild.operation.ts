@@ -5,7 +5,8 @@ import { OperatorOperation } from './operation.types';
 export const option = {
 	name: 'Build UTM Link',
 	value: OperatorOperation.UTM_BUILD,
-	action: 'Build UTM link',
+	description: 'Add UTM parameters to URL for tracking',
+	action: 'Add UTM parameters to URL for tracking',
 };
 
 export const description: INodeProperties[] = [
@@ -15,6 +16,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/page',
 		description: 'Base URL to add UTM parameters to',
 		displayOptions: {
 			show: {
@@ -28,7 +30,8 @@ export const description: INodeProperties[] = [
 		name: 'source',
 		type: 'string',
 		default: '',
-		description: 'UTM source parameter',
+		placeholder: 'newsletter',
+		description: 'UTM source parameter (e.g., newsletter, google)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
@@ -41,7 +44,8 @@ export const description: INodeProperties[] = [
 		name: 'medium',
 		type: 'string',
 		default: '',
-		description: 'UTM medium parameter',
+		placeholder: 'email',
+		description: 'UTM medium parameter (e.g., email, social)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
@@ -54,7 +58,8 @@ export const description: INodeProperties[] = [
 		name: 'campaign',
 		type: 'string',
 		default: '',
-		description: 'UTM campaign parameter',
+		placeholder: 'summer-sale',
+		description: 'UTM campaign parameter (e.g., summer-sale, product-launch)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
@@ -67,7 +72,8 @@ export const description: INodeProperties[] = [
 		name: 'term',
 		type: 'string',
 		default: '',
-		description: 'UTM term parameter',
+		placeholder: 'discount-shoes',
+		description: 'UTM term parameter (e.g., discount-shoes, running-gear)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
@@ -80,7 +86,8 @@ export const description: INodeProperties[] = [
 		name: 'content',
 		type: 'string',
 		default: '',
-		description: 'UTM content parameter',
+		placeholder: 'header-banner',
+		description: 'UTM content parameter (e.g., header-banner, footer-link)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

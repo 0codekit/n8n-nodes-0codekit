@@ -3,18 +3,20 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Parse UTM Link',
+	name: 'Parse UTM Parameters',
 	value: OperatorOperation.UTM_PARSE,
-	action: 'Parse UTM link',
+	description: 'Extract UTM parameters from URL',
+	action: 'Extract UTM parameters from URL',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'URL',
+		displayName: 'URL with UTM Parameters',
 		name: 'url',
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com?utm_source=newsletter&utm_medium=email',
 		description: 'URL with UTM parameters to parse',
 		displayOptions: {
 			show: {

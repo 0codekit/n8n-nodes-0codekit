@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'HTML Parser',
+	name: 'Parse HTML Content',
 	value: OperatorOperation.HTML_PARSER_GET,
-	description: 'Parse HTML content',
-	action: 'Parse HTML content',
+	description: 'Extract data from HTML using CSS selectors',
+	action: 'Extract data from HTML using CSS selectors',
 };
 
 export const description: INodeProperties[] = [
@@ -16,6 +16,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: '<html><body><h1>Hello World</h1></body></html>',
 		description: 'HTML content to parse',
 		displayOptions: {
 			show: {
@@ -29,6 +30,7 @@ export const description: INodeProperties[] = [
 		name: 'selector',
 		type: 'string',
 		default: '',
+		placeholder: 'h1, .class-name, #ID-name',
 		description: 'CSS selector to extract specific elements',
 		displayOptions: {
 			show: {

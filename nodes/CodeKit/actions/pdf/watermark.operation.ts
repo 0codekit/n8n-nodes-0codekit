@@ -3,24 +3,24 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Watermark PDF',
+	name: 'Add PDF Watermark',
 	value: OperationType.WATERMARK,
-	description: 'Edit inside a Pdf in order to create an watermark',
-	action: 'Watermark PDF',
+	description: 'Add text or image watermark to PDF pages',
+	action: 'Add text or image watermark to PDF pages',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Watermark PDF',
+		displayName: 'Watermark Type',
 		name: 'watermarkop',
 		type: 'options',
 		options: [
 			{
-				name: 'Text',
+				name: 'Text Watermark',
 				value: 'text',
 			},
 			{
-				name: 'Image',
+				name: 'Image Watermark',
 				value: 'image',
 			},
 		],
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'text',
+		description: 'Type of watermark to add',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -44,10 +45,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 		description: 'Public URL of the PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -57,10 +59,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -71,7 +73,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

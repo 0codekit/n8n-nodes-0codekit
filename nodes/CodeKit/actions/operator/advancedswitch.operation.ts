@@ -3,19 +3,20 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Advanced Switch',
+	name: 'Extract JSON Values',
 	value: OperatorOperation.ADVANCED_SWITCH,
-	description: 'Get JSON values from keys',
-	action: 'Get JSON values from keys',
+	description: 'Extract values from JSON object using specified keys',
+	action: 'Extract values from JSON object using specified keys',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'JSON Object',
+		displayName: 'JSON Data',
 		name: 'jsonObject',
 		type: 'json',
 		required: true,
 		default: '{}',
+		placeholder: '{"name": "John", "age": 30, "city": "New York"}',
 		description: 'JSON object to extract values from',
 		displayOptions: {
 			show: {
@@ -25,10 +26,11 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Keys',
+		displayName: 'Keys to Extract',
 		name: 'keys',
 		type: 'json',
 		default: '[]',
+		placeholder: '["name", "age"]',
 		description: 'Array of keys to extract from the JSON object',
 		displayOptions: {
 			show: {

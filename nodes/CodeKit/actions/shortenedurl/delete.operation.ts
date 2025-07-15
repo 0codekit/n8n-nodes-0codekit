@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Delete',
+	name: 'Delete Shortened URL',
 	value: OperationType.DELETE,
-	description: 'Delete a shortened URL',
-	action: 'Delete shortened URL',
+	description: 'Permanently remove a shortened URL',
+	action: 'Permanently remove a shortened URL',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Identifier',
+		displayName: 'URL Identifier',
 		name: 'identifier',
 		type: 'string',
 		required: true,
@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The shortened URL identifier',
+		description: 'The unique identifier of the shortened URL to delete',
 		placeholder: 'to4w5vyb',
 	},
 	{

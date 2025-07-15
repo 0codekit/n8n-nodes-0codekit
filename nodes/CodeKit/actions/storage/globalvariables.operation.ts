@@ -3,33 +3,32 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Global Variables',
+	name: 'Manage Global Variables',
 	value: OperationType.GLOBAL_VARIABLES,
-	description:
-		'Store global variables online and access them on different szenarios through our api',
-	action: 'Store global variables',
+	description: 'Store and manage global variables accessible across different workflows',
+	action: 'Store and manage global variables accessible across different workflows',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Choose a Global Variables Operation',
+		displayName: 'Operation Type',
 		name: 'globalvariablesop',
 		type: 'options',
 		options: [
 			{
-				name: 'Add a New Global Variable',
+				name: 'Create Variable',
 				value: 'add',
 			},
 			{
-				name: 'Get a Global Variable',
+				name: 'Get Variable',
 				value: 'get',
 			},
 			{
-				name: 'Delete a Global Variable',
+				name: 'Delete Variable',
 				value: 'del',
 			},
 			{
-				name: 'List All Your Global Variables',
+				name: 'List All Variables',
 				value: 'list',
 			},
 		],

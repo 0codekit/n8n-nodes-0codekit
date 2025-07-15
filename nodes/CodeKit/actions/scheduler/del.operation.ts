@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Delete Task',
+	name: 'Delete Scheduled Task',
 	value: OperationType.DELETE,
-	description: 'Delete scheduler task',
-	action: 'Delete scheduler task',
+	description: 'Remove a scheduled task permanently',
+	action: 'Remove a scheduled task permanently',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'ID of the task to delete',
+		placeholder: 'task-123-abc-456',
+		description: 'Unique identifier of the task to delete',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],

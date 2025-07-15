@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Extract Audio',
+	name: 'Extract Audio From Video',
 	value: OperatorOperation.EXTRACT_AUDIO,
-	description: 'Extract audio from video file',
-	action: 'Extract audio from video file',
+	description: 'Extract audio track from video file',
+	action: 'Extract audio track from video file',
 };
 
 export const description: INodeProperties[] = [
@@ -16,6 +16,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/video.mp4',
 		description: 'URL of the video file to extract audio from',
 		displayOptions: {
 			show: {
@@ -25,7 +26,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Audio Format',
+		displayName: 'Output Audio Format',
 		name: 'audioFormat',
 		type: 'options',
 		required: true,
@@ -52,7 +53,7 @@ export const description: INodeProperties[] = [
 			},
 		],
 		default: 'mp3',
-		description: 'Format of the audio file to extract',
+		description: 'Format of the extracted audio file',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

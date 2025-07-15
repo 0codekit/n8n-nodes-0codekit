@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Regex',
+	name: 'Regular Expression',
 	value: OperationType.REGEX,
-	description: 'Evaluate text against a regex',
-	action: 'Regex',
+	description: 'Process text using regular expressions',
+	action: 'Process with regex',
 };
 
 export const description: INodeProperties[] = [

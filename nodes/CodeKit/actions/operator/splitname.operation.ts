@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Split Name',
+	name: 'Split Full Name',
 	value: OperatorOperation.SPLIT_NAME,
-	description: 'Split full name into first and last name',
-	action: 'Split full name into first and last name',
+	description: 'Split full name into first and last name components',
+	action: 'Split full name into first and last name components',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Full name to split',
+		placeholder: 'John Doe',
+		description: 'Full name to split into first and last name',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

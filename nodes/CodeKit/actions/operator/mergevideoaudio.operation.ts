@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Merge Video Audio',
+	name: 'Merge Video and Audio',
 	value: OperatorOperation.MERGE_VIDEO_AUDIO,
-	description: 'Merge video and audio files',
-	action: 'Merge video and audio files',
+	description: 'Combine video and audio files into single file',
+	action: 'Combine video and audio files into single file',
 };
 
 export const description: INodeProperties[] = [
@@ -16,6 +16,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/video.mp4',
 		description: 'URL of the video file',
 		displayOptions: {
 			show: {
@@ -30,6 +31,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/audio.mp3',
 		description: 'URL of the audio file',
 		displayOptions: {
 			show: {
@@ -43,6 +45,7 @@ export const description: INodeProperties[] = [
 		name: 'fileName',
 		type: 'string',
 		default: 'merged-video-audio.mp4',
+		placeholder: 'my-merged-video.mp4',
 		description: 'Name of the output file after merging video and audio',
 		displayOptions: {
 			show: {

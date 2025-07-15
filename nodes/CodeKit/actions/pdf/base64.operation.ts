@@ -3,18 +3,18 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'PDF to Base64',
+	name: 'Convert PDF to Base64',
 	value: OperationType.BASE64,
-	description: 'Converts a PDF file to a base64 string',
-	action: 'Pdf to base64 a pdf',
+	description: 'Convert PDF file to Base64 encoded string',
+	action: 'Convert PDF file to Base64 encoded string',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Pdf',
+		displayName: 'PDF Source',
 		name: 'pdf',
 		type: 'string',
-		description: 'PDF can be public URL or Buffer String',
+		description: 'PDF file URL or binary buffer data',
 		required: true,
 		displayOptions: {
 			show: {
@@ -23,6 +23,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 	},
 	{
 		displayName: '',

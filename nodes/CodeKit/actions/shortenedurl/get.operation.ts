@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Get',
+	name: 'Get Shortened URL Details',
 	value: OperationType.GET,
-	description: 'Get details of a shortened URL',
-	action: 'Get shortened URL',
+	description: 'Retrieve information about a shortened URL',
+	action: 'Retrieve information about a shortened URL',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Identifier',
+		displayName: 'URL Identifier',
 		name: 'identifier',
 		type: 'string',
 		required: true,
@@ -22,7 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The shortened URL identifier',
+		description: 'The unique identifier of the shortened URL',
 		placeholder: 'to4w5vyb',
 	},
 	{

@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Metadata',
+	name: 'Manage PDF Metadata',
 	value: OperationType.METADATA,
-	description: 'Extract or Manipulate Metadata of a PDF file',
-	action: 'Metadata extract or edit',
+	description: 'View or edit PDF document metadata information',
+	action: 'View or edit PDF document metadata information',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Metadata',
+		displayName: 'Metadata Operation',
 		name: 'metadataop',
 		type: 'options',
 		options: [
@@ -20,7 +20,7 @@ export const description: INodeProperties[] = [
 				value: 'edit',
 			},
 			{
-				name: 'Get Pdf Metadata',
+				name: 'Get Metadata',
 				value: 'info',
 			},
 		],
@@ -32,9 +32,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'edit',
+		description: 'Choose to view or edit PDF metadata',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -44,10 +45,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 		description: 'Public URL of the PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -57,10 +59,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -71,7 +73,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

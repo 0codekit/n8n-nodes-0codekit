@@ -3,32 +3,32 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Permanent Storage for Simple Files',
+	name: 'Permanent Storage',
 	value: OperationType.PERM,
-	description: 'Store files up to 50MB online and access them through our api',
-	action: 'Permanent storage for simple files',
+	description: 'Store and manage permanent data that persists indefinitely',
+	action: 'Manage permanent storage',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Choose a File Storage Operation',
+		displayName: 'Operation Type',
 		name: 'permfilesop',
 		type: 'options',
 		options: [
 			{
-				name: 'Add a New File',
+				name: 'Store File',
 				value: 'add',
 			},
 			{
-				name: 'Get a Stored File',
+				name: 'Get File',
 				value: 'get',
 			},
 			{
-				name: 'Delete a Stored File',
+				name: 'Delete File',
 				value: 'del',
 			},
 			{
-				name: 'List All Your Files',
+				name: 'List Files',
 				value: 'list',
 			},
 		],
@@ -42,7 +42,7 @@ export const description: INodeProperties[] = [
 		default: 'add',
 	},
 	{
-		displayName: 'Binary File Data',
+		displayName: 'File Data',
 		name: 'fileBuffer',
 		type: 'string',
 		required: true,
@@ -54,6 +54,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'Binary file data in base64 format',
 		description: 'Binary file data in base64 format',
 		routing: {
 			request: {

@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Contains',
+	name: 'Contains Check',
 	value: OperationType.CONTAINS,
-	description: 'Check if a string contains another string',
-	action: 'Contains',
+	description: 'Check if text contains specific words or patterns',
+	action: 'Check text contains',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Text',
+		displayName: 'Text to Search',
 		name: 'text',
 		type: 'string',
 		required: true,
@@ -22,10 +22,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The text to search in',
+		placeholder: 'The quick brown fox jumps over the lazy dog',
+		description: 'The text to search within',
 	},
 	{
-		displayName: 'Search String',
+		displayName: 'Search Pattern',
 		name: 'searchString',
 		type: 'string',
 		required: true,
@@ -36,7 +37,8 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The string to search for',
+		placeholder: 'fox',
+		description: 'The word or pattern to search for',
 	},
 	{
 		displayName: 'Case Sensitive',

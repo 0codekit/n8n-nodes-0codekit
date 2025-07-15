@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Add',
+	name: 'Create Shortened URL',
 	value: OperationType.ADD,
-	description: 'Create a new shortened URL',
-	action: 'Create shortened URL',
+	description: 'Create a new shortened URL with optional custom identifier',
+	action: 'Create a new shortened URL with optional custom identifier',
 };
 
 export const description: INodeProperties[] = [

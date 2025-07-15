@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Decrypt',
+	name: 'Decrypt PDF',
 	value: OperationType.DECRYPT,
-	description: 'Decrypt the PDF File',
-	action: 'Decrypt PDF file',
+	description: 'Remove password protection from PDF file',
+	action: 'Remove password protection from PDF file',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -21,10 +21,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Public URL of the PDF file',
+		placeholder: 'https://example.com/encrypted.pdf',
+		description: 'Public URL of the encrypted PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -34,10 +35,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the encrypted PDF file',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -48,7 +49,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

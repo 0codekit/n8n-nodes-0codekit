@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Markdown to Pdf',
+	name: 'Convert Markdown to PDF',
 	value: OperationType.MARKDOWN_TO_PDF,
-	description: 'Convert Markdown to PDF',
-	action: 'Markdown to pdf',
+	description: 'Convert Markdown content to PDF document',
+	action: 'Convert Markdown content to PDF document',
 };
 
 export const description: INodeProperties[] = [
@@ -22,10 +22,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: '# Hello World\n\nThis is **bold** text.',
 		description: 'Markdown content to convert to PDF',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -36,7 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

@@ -3,32 +3,32 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'PDF Pages',
+	name: 'Manage PDF Pages',
 	value: OperationType.PAGES,
-	description: 'Manipulate PDF Pages to rotate, remove, resize and add',
-	action: 'Pages editting',
+	description: 'Add, remove, rotate, or resize PDF pages',
+	action: 'Add, remove, rotate, or resize PDF pages',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'PDF Pages',
+		displayName: 'Page Operation',
 		name: 'pagesop',
 		type: 'options',
 		options: [
 			{
-				name: 'Add',
+				name: 'Add Pages',
 				value: 'add',
 			},
 			{
-				name: 'Rotate',
+				name: 'Rotate Pages',
 				value: 'rotate',
 			},
 			{
-				name: 'Remove',
+				name: 'Remove Pages',
 				value: 'remove',
 			},
 			{
-				name: 'Resize',
+				name: 'Resize Pages',
 				value: 'resize',
 			},
 		],
@@ -42,7 +42,7 @@ export const description: INodeProperties[] = [
 		default: 'add',
 	},
 	{
-		displayName: 'URL',
+		displayName: 'PDF URL',
 		name: 'url',
 		type: 'string',
 		displayOptions: {
@@ -52,10 +52,11 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'https://example.com/document.pdf',
 		description: 'Public URL of the PDF file',
 	},
 	{
-		displayName: 'Buffer',
+		displayName: 'PDF Buffer',
 		name: 'buffer',
 		type: 'string',
 		displayOptions: {
@@ -65,10 +66,10 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'Buffer of the PDF',
+		description: 'Binary buffer data of the PDF file',
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -79,7 +80,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

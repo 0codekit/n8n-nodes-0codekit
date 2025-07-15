@@ -5,8 +5,8 @@ import { OperatorOperation } from './operation.types';
 export const option = {
 	name: 'Get Website Logo',
 	value: OperatorOperation.LOGO,
-	description: 'Get website logo URL',
-	action: 'Get website logo URL',
+	description: 'Extract logo URL from website',
+	action: 'Extract logo URL from website',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Website URL to get logo from',
+		placeholder: 'https://example.com',
+		description: 'Website URL to extract logo from',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

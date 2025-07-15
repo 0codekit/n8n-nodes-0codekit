@@ -8,15 +8,15 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Concatenate Audio',
+	name: 'Concatenate Audio Files',
 	value: OperatorOperation.CONCAT_AUDIO,
-	description: 'Concatenate multiple audio files',
-	action: 'Concatenate multiple audio files',
+	description: 'Combine multiple audio files into a single file',
+	action: 'Combine multiple audio files into a single file',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Audio URLs',
+		displayName: 'Audio File URLs',
 		name: 'audioUrls',
 		type: 'fixedCollection',
 		required: true,
@@ -35,13 +35,14 @@ export const description: INodeProperties[] = [
 						name: 'audioUrl',
 						type: 'string',
 						default: '',
+						placeholder: 'https://example.com/audio.mp3',
 						description: 'URL of the audio file to concatenate',
 					},
 				],
 			},
 		],
 		placeholder: 'Add Audio URL',
-		description: 'Comma-separated list of audio file URLs. Minimum 2 URLs required.',
+		description: 'Audio file URLs to concatenate. Minimum 2 URLs required.',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
@@ -55,6 +56,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/audio.mp3',
 		description: 'URL of the audio file',
 		displayOptions: {
 			show: {
@@ -91,11 +93,11 @@ export const description: INodeProperties[] = [
 			},
 		],
 		default: 'mp3',
-		description: 'Format of the audio file to extract',
+		description: 'Output format for the concatenated audio file',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.EXTRACT_AUDIO],
+				operation: [OperatorOperation.CONCAT_AUDIO],
 			},
 		},
 	},
@@ -104,6 +106,7 @@ export const description: INodeProperties[] = [
 		name: 'fileName',
 		type: 'string',
 		default: 'concatenated-audio.mp3',
+		placeholder: 'my-audio-file.mp3',
 		description: 'Name of the output file after concatenating audio',
 		displayOptions: {
 			show: {

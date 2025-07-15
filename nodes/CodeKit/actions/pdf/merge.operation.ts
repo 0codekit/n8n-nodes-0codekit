@@ -3,15 +3,15 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'PDF Merge',
+	name: 'Merge PDF Files',
 	value: OperationType.MERGE,
-	description: 'Merge multiple pdf files to a single pdf',
-	action: 'PDF Merge a pdf',
+	description: 'Combine multiple PDF files into a single document',
+	action: 'Combine multiple PDF files into a single document',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Files to Merge',
+		displayName: 'PDF Files to Merge',
 		name: 'files',
 		type: 'collection',
 		required: true,
@@ -25,16 +25,18 @@ export const description: INodeProperties[] = [
 				operation: [OperationType.MERGE],
 			},
 		},
+		description: 'PDF files to merge together',
 		options: [
 			{
-				displayName: 'Files',
+				displayName: 'PDF File',
 				name: 'files',
 				values: [
 					{
-						displayName: 'File Url or Binary Data',
+						displayName: 'File URL or Buffer',
 						name: 'filetype',
 						type: 'string',
 						default: '',
+						placeholder: 'https://example.com/document.pdf',
 						description: 'URL of the PDF file or the raw binary data',
 					},
 					{
@@ -45,23 +47,25 @@ export const description: INodeProperties[] = [
 						typeOptions: {
 							multipleValues: true,
 						},
-						description: 'Specify the page ranges to split the pdf into',
+						description: 'Specify page ranges to include from this PDF',
 						options: [
 							{
-								displayName: 'Page Ranges',
+								displayName: 'Page Range',
 								name: 'range',
 								values: [
 									{
 										displayName: 'Start Page',
 										name: 'startPage',
 										type: 'number',
-										default: 0,
+										default: 1,
+										description: 'Starting page number (1-based)',
 									},
 									{
 										displayName: 'End Page',
 										name: 'endPage',
 										type: 'number',
-										default: 0,
+										default: 1,
+										description: 'Ending page number (1-based)',
 									},
 								],
 							},
@@ -72,7 +76,7 @@ export const description: INodeProperties[] = [
 		],
 	},
 	{
-		displayName: 'Get File as URL',
+		displayName: 'Return as URL',
 		name: 'getAsUrl',
 		type: 'boolean',
 		required: true,
@@ -83,7 +87,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Whether you want the PDF as an URL',
+		description: 'Whether to return the PDF as a downloadable URL',
 	},
 	{
 		displayName: '',

@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Get Video Thumbnail',
+	name: 'Generate Video Thumbnail',
 	value: OperatorOperation.THUMBNAIL,
-	description: 'Get thumbnail for video',
-	action: 'Get thumbnail for video',
+	description: 'Generate thumbnail image from video',
+	action: 'Generate thumbnail image from video',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Video URL to get thumbnail from',
+		placeholder: 'https://example.com/video.mp4',
+		description: 'Video URL to generate thumbnail from',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

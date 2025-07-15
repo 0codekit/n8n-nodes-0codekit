@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Parse URL Query',
+	name: 'Parse URL Query Parameters',
 	value: OperatorOperation.PARSE_URL_QUERY,
-	description: 'Parse URL query parameters',
-	action: 'Parse URL query parameters',
+	description: 'Extract query parameters from URL',
+	action: 'Extract query parameters from URL',
 };
 
 export const description: INodeProperties[] = [
@@ -16,6 +16,7 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com?name=John&age=30',
 		description: 'URL with query parameters to parse',
 		displayOptions: {
 			show: {

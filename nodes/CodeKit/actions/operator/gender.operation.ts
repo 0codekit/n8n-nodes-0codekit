@@ -3,20 +3,21 @@ import { ResourceType } from '../resource.types';
 import { OperatorOperation } from './operation.types';
 
 export const option = {
-	name: 'Find Gender',
+	name: 'Detect Gender From Name',
 	value: OperatorOperation.GENDER,
-	description: 'Find gender of name',
-	action: 'Find gender of name',
+	description: 'Determine gender based on first name',
+	action: 'Determine gender based on first name',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Name',
+		displayName: 'First Name',
 		name: 'name',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Name to determine gender for',
+		placeholder: 'John',
+		description: 'First name to determine gender for',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],

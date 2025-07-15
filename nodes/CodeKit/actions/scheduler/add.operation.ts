@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'Add Task',
+	name: 'Schedule Task',
 	value: OperationType.ADD,
-	description: 'Add scheduler task',
-	action: 'Add scheduler task',
+	description: 'Create a new scheduled task with cron expression',
+	action: 'Create a new scheduled task with cron expression',
 };
 
 export const description: INodeProperties[] = [
@@ -16,7 +16,8 @@ export const description: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Name of the scheduled task',
+		placeholder: 'Daily Report Task',
+		description: 'Descriptive name for the scheduled task',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
@@ -25,12 +26,13 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Schedule',
+		displayName: 'Cron Schedule',
 		name: 'schedule',
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Cron expression for the schedule',
+		placeholder: '0 9 * * *',
+		description: 'Cron expression for the schedule (e.g., "0 9 * * *" for daily at 9 AM)',
 		displayOptions: {
 			show: {
 				resource: [ResourceType.SCHEDULER],
@@ -39,11 +41,12 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'URL',
+		displayName: 'Webhook URL',
 		name: 'url',
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'https://example.com/webhook',
 		description: 'URL to call when the task executes',
 		displayOptions: {
 			show: {
@@ -84,10 +87,11 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Payload',
+		displayName: 'Request Payload',
 		name: 'payload',
 		type: 'json',
 		default: '{}',
+		placeholder: '{"message": "Hello World"}',
 		description: 'JSON payload to send with the request',
 		displayOptions: {
 			show: {

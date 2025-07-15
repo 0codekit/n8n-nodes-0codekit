@@ -5,17 +5,18 @@ import { OperatorOperation } from './operation.types';
 export const option = {
 	name: 'Remove Duplicates',
 	value: OperatorOperation.DUPLICATE,
-	description: 'Remove duplicates from list',
-	action: 'Remove duplicates from list',
+	description: 'Remove duplicate items from an array',
+	action: 'Remove duplicate items from an array',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'List',
+		displayName: 'Array Data',
 		name: 'list',
 		type: 'json',
 		required: true,
 		default: '[]',
+		placeholder: '["apple", "banana", "apple", "cherry"]',
 		description: 'Array of items to remove duplicates from',
 		displayOptions: {
 			show: {

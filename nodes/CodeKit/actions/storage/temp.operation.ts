@@ -5,13 +5,13 @@ import { OperationType } from './operation.types';
 export const option = {
 	name: 'Temporary Storage',
 	value: OperationType.TEMP,
-	description: 'Store files temporary for 24 hours',
-	action: 'Temporary file storage',
+	description: 'Store and manage temporary data that expires after a set time',
+	action: 'Manage temporary storage',
 };
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Binary File Data',
+		displayName: 'File Data',
 		name: 'buffer',
 		type: 'string',
 		required: true,
@@ -22,6 +22,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: '',
+		placeholder: 'Binary file data in base64 format',
 		description: 'Binary file data in base64 format',
 	},
 	{
@@ -36,7 +37,7 @@ export const description: INodeProperties[] = [
 			},
 		},
 		default: 'Test.txt',
-		description: 'Important: If you want to keep the filetype. Add the extension to the filename.',
+		description: 'Include the file extension to maintain the proper file type',
 	},
 	{
 		displayName: '',

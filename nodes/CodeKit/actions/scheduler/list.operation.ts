@@ -3,10 +3,10 @@ import { ResourceType } from '../resource.types';
 import { OperationType } from './operation.types';
 
 export const option = {
-	name: 'List Tasks',
+	name: 'List Scheduled Tasks',
 	value: OperationType.LIST,
-	description: 'List scheduler tasks',
-	action: 'List scheduler tasks',
+	description: 'Retrieve all scheduled tasks',
+	action: 'Retrieve all scheduled tasks',
 };
 
 export const description: INodeProperties[] = [
