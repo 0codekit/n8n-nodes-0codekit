@@ -1,6 +1,6 @@
 {
 	"name": "@0codekit/n8n-nodes-0codekit",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "0CodeKit brings you the tool platform for all your projects when working with low-code, no-code, APIs and automation.",
 	"keywords": [
 		"n8n",
