@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Split Full Name',
-	value: OperatorOperation.SPLIT_NAME,
+	value: OperationType.SPLIT_NAME,
 	description: 'Split full name into first and last name components',
 	action: 'Split full name into first and last name components',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.SPLIT_NAME],
+				operation: [OperationType.SPLIT_NAME],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.SPLIT_NAME],
+				operation: [OperationType.SPLIT_NAME],
 			},
 		},
 		default: '',

@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Get Website Logo',
-	value: OperatorOperation.LOGO,
+	value: OperationType.LOGO,
 	description: 'Extract logo URL from website',
 	action: 'Extract logo URL from website',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.LOGO],
+				operation: [OperationType.LOGO],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.LOGO],
+				operation: [OperationType.LOGO],
 			},
 		},
 		default: '',

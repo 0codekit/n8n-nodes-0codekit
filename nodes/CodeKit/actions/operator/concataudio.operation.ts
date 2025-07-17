@@ -5,11 +5,11 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Concatenate Audio Files',
-	value: OperatorOperation.CONCAT_AUDIO,
+	value: OperationType.CONCAT_AUDIO,
 	description: 'Combine multiple audio files into a single file',
 	action: 'Combine multiple audio files into a single file',
 };
@@ -46,7 +46,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.CONCAT_AUDIO],
+				operation: [OperationType.CONCAT_AUDIO],
 			},
 		},
 	},
@@ -61,7 +61,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.CONCAT_AUDIO],
+				operation: [OperationType.CONCAT_AUDIO],
 			},
 		},
 	},
@@ -97,7 +97,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.CONCAT_AUDIO],
+				operation: [OperationType.CONCAT_AUDIO],
 			},
 		},
 	},
@@ -111,7 +111,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.CONCAT_AUDIO],
+				operation: [OperationType.CONCAT_AUDIO],
 			},
 		},
 	},
@@ -122,7 +122,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.CONCAT_AUDIO],
+				operation: [OperationType.CONCAT_AUDIO],
 			},
 		},
 		default: '',
@@ -132,7 +132,7 @@ export const description: INodeProperties[] = [
 			},
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.OPERATOR}/${OperatorOperation.CONCAT_AUDIO}`,
+				url: `/${ResourceType.OPERATOR}/${OperationType.CONCAT_AUDIO}`,
 				body: {
 					audio: '={{$parameter.audioUrls}}',
 					format: '={{$parameter.audioUrl}}',

@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Expand Shortened URL',
-	value: OperatorOperation.URL_EXPANDER,
+	value: OperationType.URL_EXPANDER,
 	description: 'Expand shortened URL to full URL',
 	action: 'Expand shortened URL to full URL',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.URL_EXPANDER],
+				operation: [OperationType.URL_EXPANDER],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.URL_EXPANDER],
+				operation: [OperationType.URL_EXPANDER],
 			},
 		},
 		default: '',

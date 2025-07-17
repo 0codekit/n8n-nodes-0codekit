@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Parse HTML Content',
-	value: OperatorOperation.HTML_PARSER_GET,
+	value: OperationType.HTML_PARSER_GET,
 	description: 'Extract data from HTML using CSS selectors',
 	action: 'Extract data from HTML using CSS selectors',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.HTML_PARSER_GET],
+				operation: [OperationType.HTML_PARSER_GET],
 			},
 		},
 	},
@@ -35,7 +35,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.HTML_PARSER_GET],
+				operation: [OperationType.HTML_PARSER_GET],
 			},
 		},
 	},
@@ -46,7 +46,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.HTML_PARSER_GET],
+				operation: [OperationType.HTML_PARSER_GET],
 			},
 		},
 		default: '',

@@ -1,4 +1,4 @@
-export enum OperatorOperation {
+export enum OperationType {
 	TRAFFIC_LIGHT = 'trafficlight',
 	DUPLICATE = 'duplicate',
 	GENDER = 'gender',

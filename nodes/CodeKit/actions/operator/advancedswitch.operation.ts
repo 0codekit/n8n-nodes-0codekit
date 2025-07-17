@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Extract JSON Values',
-	value: OperatorOperation.ADVANCED_SWITCH,
+	value: OperationType.ADVANCED_SWITCH,
 	description: 'Extract values from JSON object using specified keys',
 	action: 'Extract values from JSON object using specified keys',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.ADVANCED_SWITCH],
+				operation: [OperationType.ADVANCED_SWITCH],
 			},
 		},
 	},
@@ -35,7 +35,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.ADVANCED_SWITCH],
+				operation: [OperationType.ADVANCED_SWITCH],
 			},
 		},
 	},
@@ -46,7 +46,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.ADVANCED_SWITCH],
+				operation: [OperationType.ADVANCED_SWITCH],
 			},
 		},
 		default: '',

@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Remove Duplicates',
-	value: OperatorOperation.DUPLICATE,
+	value: OperationType.DUPLICATE,
 	description: 'Remove duplicate items from an array',
 	action: 'Remove duplicate items from an array',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.DUPLICATE],
+				operation: [OperationType.DUPLICATE],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.DUPLICATE],
+				operation: [OperationType.DUPLICATE],
 			},
 		},
 		default: '',

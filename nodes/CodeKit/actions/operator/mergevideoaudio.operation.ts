@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Merge Video and Audio',
-	value: OperatorOperation.MERGE_VIDEO_AUDIO,
+	value: OperationType.MERGE_VIDEO_AUDIO,
 	description: 'Combine video and audio files into single file',
 	action: 'Combine video and audio files into single file',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+				operation: [OperationType.MERGE_VIDEO_AUDIO],
 			},
 		},
 	},
@@ -36,7 +36,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+				operation: [OperationType.MERGE_VIDEO_AUDIO],
 			},
 		},
 	},
@@ -50,7 +50,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+				operation: [OperationType.MERGE_VIDEO_AUDIO],
 			},
 		},
 	},
@@ -61,14 +61,14 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.MERGE_VIDEO_AUDIO],
+				operation: [OperationType.MERGE_VIDEO_AUDIO],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.OPERATOR}/${OperatorOperation.MERGE_VIDEO_AUDIO}`,
+				url: `/${ResourceType.OPERATOR}/${OperationType.MERGE_VIDEO_AUDIO}`,
 				body: {
 					videoUrl: '={{$parameter.videoUrl}}',
 					audioUrl: '={{$parameter.audioUrl}}',

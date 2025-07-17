@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Build UTM Link',
-	value: OperatorOperation.UTM_BUILD,
+	value: OperationType.UTM_BUILD,
 	description: 'Add UTM parameters to URL for tracking',
 	action: 'Add UTM parameters to URL for tracking',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -35,7 +35,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -49,7 +49,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -63,7 +63,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -77,7 +77,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -91,7 +91,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 	},
@@ -102,7 +102,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.UTM_BUILD],
+				operation: [OperationType.UTM_BUILD],
 			},
 		},
 		default: '',

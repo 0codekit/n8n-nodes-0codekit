@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Detect Gender From Name',
-	value: OperatorOperation.GENDER,
+	value: OperationType.GENDER,
 	description: 'Determine gender based on first name',
 	action: 'Determine gender based on first name',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.GENDER],
+				operation: [OperationType.GENDER],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.GENDER],
+				operation: [OperationType.GENDER],
 			},
 		},
 		default: '',

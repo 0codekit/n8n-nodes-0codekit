@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Extract Audio From Video',
-	value: OperatorOperation.EXTRACT_AUDIO,
+	value: OperationType.EXTRACT_AUDIO,
 	description: 'Extract audio track from video file',
 	action: 'Extract audio track from video file',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.EXTRACT_AUDIO],
+				operation: [OperationType.EXTRACT_AUDIO],
 			},
 		},
 	},
@@ -57,7 +57,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.EXTRACT_AUDIO],
+				operation: [OperationType.EXTRACT_AUDIO],
 			},
 		},
 	},
@@ -68,14 +68,14 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.EXTRACT_AUDIO],
+				operation: [OperationType.EXTRACT_AUDIO],
 			},
 		},
 		default: '',
 		routing: {
 			request: {
 				method: 'POST',
-				url: `/${ResourceType.OPERATOR}/${OperatorOperation.EXTRACT_AUDIO}`,
+				url: `/${ResourceType.OPERATOR}/${OperationType.EXTRACT_AUDIO}`,
 				body: {
 					video: '={{$parameter.videoUrl}}',
 					format: '={{$parameter.audioFormat}}',

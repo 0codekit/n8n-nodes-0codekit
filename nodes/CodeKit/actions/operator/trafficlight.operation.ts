@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Traffic Light Rate Limiting',
-	value: OperatorOperation.TRAFFIC_LIGHT,
+	value: OperationType.TRAFFIC_LIGHT,
 	description: 'Check rate limit status for identifier',
 	action: 'Check rate limit status for identifier',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.TRAFFIC_LIGHT],
+				operation: [OperationType.TRAFFIC_LIGHT],
 			},
 		},
 	},
@@ -37,7 +37,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.TRAFFIC_LIGHT],
+				operation: [OperationType.TRAFFIC_LIGHT],
 			},
 		},
 	},
@@ -50,7 +50,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.TRAFFIC_LIGHT],
+				operation: [OperationType.TRAFFIC_LIGHT],
 			},
 		},
 	},
@@ -61,7 +61,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.TRAFFIC_LIGHT],
+				operation: [OperationType.TRAFFIC_LIGHT],
 			},
 		},
 		default: '',

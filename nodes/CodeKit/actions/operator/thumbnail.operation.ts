@@ -1,10 +1,10 @@
 import { INodeProperties } from 'n8n-workflow';
 import { ResourceType } from '../resource.types';
-import { OperatorOperation } from './operation.types';
+import { OperationType } from './operation.types';
 
 export const option = {
 	name: 'Generate Video Thumbnail',
-	value: OperatorOperation.THUMBNAIL,
+	value: OperationType.THUMBNAIL,
 	description: 'Generate thumbnail image from video',
 	action: 'Generate thumbnail image from video',
 };
@@ -21,7 +21,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.THUMBNAIL],
+				operation: [OperationType.THUMBNAIL],
 			},
 		},
 	},
@@ -32,7 +32,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [ResourceType.OPERATOR],
-				operation: [OperatorOperation.THUMBNAIL],
+				operation: [OperationType.THUMBNAIL],
 			},
 		},
 		default: '',
