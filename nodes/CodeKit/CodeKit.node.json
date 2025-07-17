@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://scalar.0codekit.com/"
+				"url": "https://docs.0codekit.com/main/api-keys/"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://scalar.0codekit.com/"
+				"url": "https://docs.0codekit.com/"
 			}
 		]
 	}

@@ -2,7 +2,7 @@ import { IAuthenticateGeneric, ICredentialType, INodeProperties } from 'n8n-work
 export class CodeKitApi implements ICredentialType {
 	name = 'codeKitApi';
 	displayName = '0CodeKit API';
-	documentationUrl = 'https://scalar.0codekit.com/';
+	documentationUrl = 'https://docs.0codekit.com/';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
